@@ -1,0 +1,16 @@
+[
+  {
+    "model": "communities.freeboard",
+    "fields": {
+      "title": "asdasdasdasda",
+      "content" : "aaaaaaaaaa"
+    }
+  },
+  {
+    "model": "communities.freeboard",
+    "fields": {
+      "title": "asdasdasdasda",
+      "content" : "aaaaaaaaaa"
+    }
+  }
+]
