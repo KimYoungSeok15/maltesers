@@ -1,15 +1,38 @@
 <template>
   <div>
-    <NavigationBar/>
-    <h1>로그인 페이지 구현예정^^</h1>
+    <div style="height: 100px;"></div>     
+    <img src="@/assets/hooni2.png" style="height: 200px; position:relative;" class="" alt="">
+    <div style="height: 50px;"></div>    
+    <h1 style="height: 70px;">LogIn Page</h1>
+    <form @submit.prevent="LogIn">
+      <label for="username">username : </label>
+      <input type="text" id="username" v-model="username"><br>
+      <br>
+      <label for="password1"> password : </label>
+      <input type="password" id="password1" v-model="password"><br>
+      <br>
+      <input type="submit" value="LogIn">
+    </form>
   </div>
 </template>
 
 <script>
-import NavigationBar from "@/components/NavigationBar.vue"
 export default {
-  components: {
-    NavigationBar,
+  data() {
+    return {
+      username : '',
+      password : '',
+    }
+  },
+  methods: {
+    LogIn() {
+      const username = this.username
+      const password = this.password
+      const payload = {
+        username, password
+      }
+      this.$store.dispatch('LogIn', payload)
+    }
   }
 }
 </script>

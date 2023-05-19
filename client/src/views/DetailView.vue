@@ -37,6 +37,7 @@
 import NavigationBar from '@/components/NavigationBar.vue'
 import { mapState } from 'vuex'
 import axios from 'axios'
+
 const URL = `https://api.themoviedb.org/3/movie/`
 const params = {
 api_key: process.env.VUE_APP_Movie_API,
@@ -47,6 +48,31 @@ export default {
     NavigationBar,
   },
   methods:{
+    getMovie() {
+      axios({  
+          methods: 'get',
+          url: URL+this.movieId,
+          params: params,
+      })
+      .then((response) => {
+        console.log(response);
+      this.movieDetail = response.data
+      })
+      axios({  
+          methods: 'get',
+          url: URL+this.movieId+'/recommendations',
+          params: params,
+      })
+      .then((response) => {
+        console.log(response.data.results);
+        for (const movieidx in response.data.results) {
+          if (movieidx === '4'){
+            break
+          }
+          this.recommendDetails.push(response.data.results[movieidx])
+        }
+      });
+    },
     move(data){
       // console.log(data);
       this.$router.push({name:'detail', params: {id: data}})
@@ -54,47 +80,25 @@ export default {
       this.$router.go()
     }
   },
-  beforeRouteUpdate(to,from,next){
-    console.log(to);
-    console.log(from);
-    this.testid = to.params.id
-    next()
-  },
   data(){
     return{
       movieId: Number(this.$route.params.id),
       movieDetail: {},
       recommendDetails: [],
-      testid: this.$route.params.id
+      // id: this.$route.params.id
     }
   },
+  beforeRouteUpdate(to,from,next){
+    this.movieId = to.params.id
+    this.getMovie()
+    next()
+  },
+
   computed: {
     ...mapState(['mainTopMovies', 'playingMovies', 'upComingMovies']),
 	},
   created() {
-    axios({  
-				methods: 'get',
-				url: URL+this.movieId,
-				params: params,
-		})
-		.then((response) => {
-      console.log(response);
-    this.movieDetail = response.data
-		})
-    axios({  
-				methods: 'get',
-				url: URL+this.movieId+'/recommendations',
-				params: params,
-		})
-		.then((response) => {
-      console.log(response.data.results);
-      for (const movieidx in response.data.results) {
-        if (movieidx === '4'){
-          break
-        }
-        this.recommendDetails.push(response.data.results[movieidx])
-      }
-    });
+    this.getMovie()
   }
   
 }

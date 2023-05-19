@@ -18,6 +18,7 @@
 <script>
 import NavigationBar from "@/components/NavigationBar.vue"
 import axios from 'axios'
+const getUsernameURL = "http://127.0.0.1:8000/accounts/user/"
 const URL = "http://127.0.0.1:8000/api/c1/freeboards/"
 export default {
   data(){
@@ -32,17 +33,34 @@ export default {
   methods:{
     postFreeArticle(){
       const title = this.freeTitle
-      const content = this.freeContent      
+      const content = this.freeContent     
+      const token = this.$store.state.token
+      let user_name = ''
       axios({  
-          method: 'post',
-          url: URL,
-          data: { title, content },
+          method: 'get',
+          url: getUsernameURL,
+          headers:  {
+          Authorization : `Token ${token}`
+          },
       })
       .then((response) => {
-        console.log('123123')
-        console.log(response)
-        this.$router.push({name: "community"})
+        user_name = response.data.username
+        console.log(user_name)
+        axios({  
+            method: 'post',
+            url: URL,
+            data: { title, content, user_name },
+            headers:  {
+            Authorization : `Token ${token}`
+            },
+        })
+        .then((response) => {
+          console.log(response)
+          this.$router.push({name: "community"})
+        })        
       })
+
+
     }
   },
   created() {

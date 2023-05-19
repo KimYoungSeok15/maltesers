@@ -33,8 +33,17 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'movies',
     'communities',
+    'accounts',
     
     'corsheaders',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    # registration
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'dj_rest_auth.registration',
+
     
     'rest_framework',
     'django.contrib.admin',
@@ -44,6 +53,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ]
+}
+REST_AUTH = {
+    'SESSION_LOGIN' : False
+}
+SITE_ID = 1
+
+AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

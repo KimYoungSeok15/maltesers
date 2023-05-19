@@ -123,7 +123,7 @@ export default {
             }
           }
           console.log(this.weatherRecommendMovies)
-          const pickIndex = Math.floor(Math.random() * this.weatherRecommendMovies.length)
+          const pickIndex = Math.floor(Math.random() * this.weatherRecommendMovies.length-2)
           const pickMovie = this.weatherRecommendMovies[pickIndex].title
           const weatherURL = this.weatherRecommendMovies[pickIndex].poster_path
           this.weatherRecommendMoviesTitle = pickMovie 

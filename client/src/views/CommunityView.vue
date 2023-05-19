@@ -11,7 +11,8 @@
            <p class="m-0" v-for="article in articleAll" :key="article.id" style="border: solid 1px;">
             <span @click="GoToFreeDetail(article.id)" class="col-5 mx-5">제목: {{ article.title }}</span> <br>
             <span class="col-5 mx-5">article.id: {{ article.id }}</span> <br>
-            <span class="col-5 mx-5">생성시간 : {{ article.created_at }}</span>
+            <span class="col-5 mx-5">생성시간 : {{ article.created_at }}</span> <br>
+            <span class="col-5 mx-5">작성자 : {{ article.user_name }}</span>
         </p>
         </div>
        
@@ -43,21 +44,37 @@ export default {
 			articleAll: ''
 		}
 	},
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
+    }
+  },
   // 전체 게시글을 Django DB에서 받아와서 Store에 저장
   created() {
-    const djangoCommunity = 'http://127.0.0.1:8000/api/c1/freeboards/'
-    axios({
-        methods: 'get',
-        url: djangoCommunity,
-    })
-    .then((response) => {
-      this.articleAll = response.data
-      console.log(this.articleAll)
-    })
+    
+    const djangoCommunity = 'http://127.0.0.1:8000/api/c1/freeboards'
+      this.isLogin
+      if (this.isLogin) {
+        this.$store.dispatch('getfreeArticles')
+        axios({
+            methods: 'get',
+            url: djangoCommunity,
+            headers:  {
+              Authorization : `Token ${this.$store.state.token}`
+            },
+        })
+        .then((response) => {
+          this.articleAll = response.data
+        })        
+      } else {
+        alert('로그인이 필요한 서비스 입니다')
+        this.$router.push({ name: 'login'})
+      }
   },
   methods: {
     GoToFreeDetail(data){
       this.$router.push({name:'communityfreedetail', params: {id: data}})
+      
       // this.$router.go()
     }
   }

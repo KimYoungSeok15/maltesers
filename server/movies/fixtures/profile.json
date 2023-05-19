@@ -1,0 +1,35 @@
+[
+  { 
+    "model": "accounts.Profile",
+    "fields": 
+    {
+      "user_name": "조재웅",
+      "last_login": "1972-03-14",
+      "date_joined": "1972-03-14"
+    }
+  },
+  { 
+    "model": "accounts.Following",
+    "fields": 
+    {
+      "user_name": "조재웅",
+      "following": "ef4556"
+    }
+  },
+  { 
+    "model": "accounts.Following",
+    "fields": 
+    {
+      "user_name": "조재웅",
+      "following": "최예훈"
+    }
+  },
+  { 
+    "model": "accounts.Following",
+    "fields": 
+    {
+      "user_name": "최예훈",
+      "following": "조재웅"
+    }
+  }
+]

@@ -9,10 +9,30 @@
   {
     "model": "communities.reviewboard",
     "fields": {
-      "Movie_title" : "싸탈",
-      "genre_name" : "최예훈",
-      "title": "asdasdasdasda",
-      "content" : "aaaaaaaaaa"
+      "Movie_title" : "쇼생크 탈출",
+      "genre_name" : "최예훈1",
+      "title": "asdasdasdasda1111",
+      "content" : "aaaaaaaaaaㅁㅁㄴㅇㅁㅇ"
+      
+    }
+  },
+  {
+    "model": "communities.reviewboard",
+    "fields": {
+      "Movie_title" : "쇼생크 탈출",
+      "genre_name" : "최예훈2",
+      "title": "asdasdasdasda222",
+      "content" : "aaaaaaaaaaㅁㅁㅁ"
+      
+    }
+  },
+  {
+    "model": "communities.reviewboard",
+    "fields": {
+      "Movie_title" : "쇼생크 탈출",
+      "genre_name" : "최예훈3",
+      "title": "asdasdasdasda333",
+      "content" : "aaaaaaaaaaㅁㄴㅇㅁㄴㅇ"
       
     }
   }

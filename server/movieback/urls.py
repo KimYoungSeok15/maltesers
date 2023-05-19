@@ -20,5 +20,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/m1/', include('movies.urls')),
     path('api/c1/', include('communities.urls')),
-    
+    path('accounts/', include('dj_rest_auth.urls')),
+    path('accounts/signup/', include('dj_rest_auth.registration.urls')),
+    path('accounts/user/', include('dj_rest_auth.urls')),
+    path('accounts/profile/', include('accounts.urls')),
 ]
