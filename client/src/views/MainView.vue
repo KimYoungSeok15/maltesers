@@ -5,19 +5,34 @@
 		<h1>메인페이지입니다</h1>
 		<!-- <div>{{RateSortedMovies}}</div> -->
 		<br>
-		<h2>평점 높은 영화</h2>
+		<h2 class="border">TOP RATED MOVIE</h2>
 		<br>
 		<div class=" d-flex row row-col-2">
 			<div  class="card col-2" v-for="(movie, index) in this.RateSortedMovies" :key="index"> 
 				<main-Top-card :top="movie"/>  
 				<!-- main-Top-card : 컴포넌트, top: prop, movie: for문 변수 -->
-				<span>{{movie.title}}</span>
+				<!-- <span>{{movie.title}}</span>
 				<span>{{movie.vote_average}}</span>
-				<span>{{movie.genre_ids}}</span>
+				<span>{{movie.genre_ids}}</span> -->
 			</div>
 		</div>
 		<br>
-		<h2>최신 영화</h2>
+		<h2 class="border">최신 영화</h2>		
+		<br>
+		<div class=" d-flex row row-col-2">
+			<div  class="card col-2" v-for="(movie, index) in this.LatestSortedMovies" :key="index"> 
+				<main-Top-card :top="movie"/>  		
+			</div>
+		</div>
+		<br>
+		<h2 class="border">인기 영화</h2>	
+		<br>
+		<div class=" d-flex row row-col-2">
+			<div  class="card col-2" v-for="(movie, index) in this.PopularitySortedMovies" :key="index"> 
+				<main-Top-card :top="movie"/>  		
+			</div>
+		</div>
+		<br>
 	</div>	
 </template>
 
@@ -33,24 +48,43 @@ export default {
   data() {
     return {
 			movieAll: '',
-		RateSortedMovies: ''
+			RateSortedMovies: '',
+			LatestSortedMovies: '',
+			PopularitySortedMovies: ''
+		}
+	},
+	computed: {
+		isLogin() {
+		return this.$store.getters.isLogin
 		}
 	},
   // 전체 영화를 Django DB에서 받아와서 Store에 저장
   created() {
     const djangoMovie = 'http://127.0.0.1:8000/api/m1/movies/'
-    axios({
-        methods: 'get',
-        url: djangoMovie,
-    })
-    .then((response) => {
-      // console.log(response.data[0].title) - '대부'
-      this.movieAll = response.data
-			let temp = response.data
-			temp.sort((a,b)=>b.vote_average-a.vote_average)
-			this.RateSortedMovies = temp.slice(0,6)
-      this.$store.dispatch('getAllMovies', this.movieAll)  
-    })
+	this.isLogin
+      if (this.isLogin) {
+		axios({
+			methods: 'get',
+			url: djangoMovie,
+		})
+		.then((response) => {
+		// console.log(response.data[0].title) - '대부'
+		this.movieAll = response.data
+		let temp1 = response.data
+		let temp2 = response.data
+		let temp3 = response.data
+		temp1.sort((a,b)=>b.vote_average-a.vote_average)
+		this.RateSortedMovies = temp1.slice(0,6)
+		temp2.sort((a,b)=>new Date(b.release_date)- new Date(a.release_date))
+		this.LatestSortedMovies = temp2.slice(0,6)
+		temp3.sort((a,b)=>b.popularity-a.popularity)
+		this.PopularitySortedMovies = temp3.slice(0,6)
+		this.$store.dispatch('getAllMovies', this.movieAll)  
+		})
+	} else {
+        alert('로그인이 필요한 서비스 입니다')
+        this.$router.push({ name: 'login'})
+	}
   }
 
 

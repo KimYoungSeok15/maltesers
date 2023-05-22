@@ -11,8 +11,10 @@
       <label for="password1"> password : </label>
       <input type="password" id="password1" v-model="password"><br>
       <br>
-      <input type="submit" value="LogIn">
+      <input class="mb-3" type="submit" value="LogIn">
     </form>
+    <span class="mx-1">아직 회원이 아니신가요?</span>
+    <router-link class="mx-1" to="../signup">가입하기</router-link>
   </div>
 </template>
 

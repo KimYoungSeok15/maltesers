@@ -1,0 +1,11 @@
+[
+  {
+    "model": "communities.Freeboard_comment",
+    "fields": {
+      "freeboard" : "1",
+      "user_name" : "최예훈3",
+      "content": "asdasdasdasda333"
+      
+    }
+  }
+]

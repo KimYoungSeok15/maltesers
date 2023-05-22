@@ -3,20 +3,26 @@ import VueRouter from 'vue-router'
 import MovieView from '../views/MovieView.vue'
 import RandomView from '../views/RandomView.vue'
 import weatherRandomView from '../views/weatherRandomView.vue'
-import DetailView from '../views/DetailView.vue'
+import MovieDetailView from '../views/MovieDetailView.vue'
 import MainView from '../views/MainView.vue'
 import IntroView from '../views/IntroView.vue'
 import LoginView from '../views/LoginView.vue'
 import SignUpView from '../views/SignUpView.vue'
 import JsonTestView from '../views/JsonTestView.vue'
-import CreateFreeArticleView from '../views/CreateFreeArticleView.vue'
-import FreeArticleUpdateView from '../views/FreeArticleUpdateView.vue'
-import FreeArticleDetailView from '../views/FreeArticleDetailView.vue'
-import Community from '../views/CommunityView.vue'
+import ReviewCreateView from '../views/ReviewCreateView.vue'
+import ReviewUpdateView from '../views/ReviewUpdateView.vue'
+import ReviewDetailView from '../views/ReviewDetailView.vue'
+import ReviewView from '../views/ReviewView.vue'
+import Profile from '../views/ProfileView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/profile/:username',
+    name: 'profile',
+    component: Profile
+  }, 
   {
     path: '/',
     name: 'intro',
@@ -43,14 +49,14 @@ const routes = [
     component: RandomView
   },
   {
-    path: '/community',
-    name: 'community',
-    component: Community
+    path: '/review',
+    name: 'review',
+    component: ReviewView
   },
   {
-    path: '/community/:id',
-    name: 'communityfreedetail',
-    component: FreeArticleDetailView
+    path: '/review/:id',
+    name: 'ReviewDetail',
+    component: ReviewDetailView
   },
   {
     path: '/weather',
@@ -60,17 +66,17 @@ const routes = [
   {
     path: '/detail/:id',
     name: 'detail',
-    component: DetailView
+    component: MovieDetailView
   },
   {
-    path: '/createfreearticle',
-    name: 'createfreearticle',
-    component: CreateFreeArticleView
+    path: '/reviewcreate',
+    name: 'reviewcreate',
+    component: ReviewCreateView
   },  
   {
-    path: '/community/:id/update',
-    name: 'freearticleupdate',
-    component: FreeArticleUpdateView
+    path: '/review/:id/update',
+    name: 'reviewupdate',
+    component: ReviewUpdateView
   },  
   {
   path: '/login',

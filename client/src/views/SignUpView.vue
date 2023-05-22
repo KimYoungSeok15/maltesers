@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
@@ -37,8 +38,11 @@ export default {
         username, password1, password2
       }
       this.$store.dispatch('signUp', payload)
+      
     }
-  }
+    
+  },
+  
 }
 </script>
 

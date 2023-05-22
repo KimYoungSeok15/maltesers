@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Freeboard, Reviewboard
+from .models import Freeboard, Freeboard_comment
 
 
 class FreeboardListSerializer(serializers.ModelSerializer):
@@ -8,9 +8,9 @@ class FreeboardListSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
     
-class ReviewboardListSerializer(serializers.ModelSerializer):
+class FreeboardcommentListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Reviewboard
+        model = Freeboard_comment
         fields = '__all__'
 
 

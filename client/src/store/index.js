@@ -46,7 +46,6 @@ export default new Vuex.Store({
     },
     LOGOUT(state){
       state.token = null
-      console.log(state.token)
     },
     SAVE_USERID(state, username){
       state.nowUserName = username
@@ -80,6 +79,7 @@ export default new Vuex.Store({
     },
     signUp(context, payload) {
       const username = payload.username
+      const user_name = payload.username
       const password1 = payload.password1
       const password2 = payload.password2
 
@@ -94,6 +94,26 @@ export default new Vuex.Store({
         console.log(res)
         // context.commit('SIGN_UP', res.data.key)
         context.commit('SAVE_TOKEN', res.data.key)
+        context.commit('SAVE_USERID', username)
+        var current_datetime = new Date();
+        var formatted_datetime = current_datetime.toISOString().slice(0, -1);
+        
+        // 한국 표준시간대(KST)와의 차이를 계산합니다. (분 단위)
+        var kstOffset = 18 * 60; // 한국은 UTC+9
+        
+        // 현재 시간에 한국 표준시간대(KST)와의 차이를 적용합니다.
+        var date_joined = new Date(formatted_datetime);
+        date_joined.setMinutes(date_joined.getMinutes() + kstOffset);
+        const point = 0
+        
+        
+        axios({
+          method: 'post',
+          url: `http://127.0.0.1:8000/accounts/profile/userprofile/${user_name}/`,
+          data: {
+            user_name, date_joined, point
+          }
+        })
       })
       .catch(err => console.log(err))
     },
@@ -113,12 +133,11 @@ export default new Vuex.Store({
         context.commit('SAVE_TOKEN', res.data.key)
         context.commit('SAVE_USERID', username)
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err))   
     },
 
     logout(context){
       context.commit('LOGOUT')
-      console.log(context)
     }
   },
   modules: {

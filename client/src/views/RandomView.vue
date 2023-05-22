@@ -1,8 +1,9 @@
 <template>
   <div>
     <NavigationBar/>
+    <br>
     <h1>랜덤 영화 조회</h1>
-    <button class="btn btn-primary m-3">pick</button>
+    <button @click="refresh" class="btn btn-primary m-3">pick</button>
     <br>
     <img :src="randomMoviesPoster">
     <h3 class="fw-bold mt-3">{{ randomMoviesTitle }}</h3>
@@ -28,6 +29,9 @@ export default {
     }
   },
   methods: {
+    refresh(){
+      this.$router.go()
+    }
   },
   computed: {
     ...mapState(['topRatedMovies']),
@@ -62,5 +66,15 @@ export default {
 </script>
 
 <style>
+  .underline-on-hover {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 19px; /* 초기 글자 크기 */
+  }
 
+  .underline-on-hover:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 19px; /* 마우스를 올렸을 때 큰 글자 크기 */
+  }
 </style>

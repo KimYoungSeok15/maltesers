@@ -1,11 +1,13 @@
 <template>
   <div>
-    <NavigationBar/>       
-    <input @keypress.enter="pleaseRecommendMovie" type="text" placeholder="지역을 입력하세요" v-model="local"><button @click="pleaseRecommendMovie">클릭</button>
+    <NavigationBar/>   
+    <br>
+    <h1>오늘의 추천 영화</h1>    
+    <br>
+    <input @keypress.enter="pleaseRecommendMovie" type="text" placeholder="지역을 입력하세요" v-model="local"><button class="btn btn-primary" @click="pleaseRecommendMovie">클릭</button>
     <br>
     <h2>{{ weatherIntro() }}</h2>
     <div v-if="weather">
-        <button class="btn btn-primary m-3">pick</button>
         <br>
         <img :src="weatherIconURL" alt="">
         <h2>{{ localView }}</h2>
@@ -111,20 +113,16 @@ export default {
           console.log(response)
           this.movieAllData = response.data.results
           this.$store.dispatch('topRatedMovies', this.movieAllData)
-          // this.weatherRecommendMovie[0].genre_ids)
           for (let i of this.$store.state.topRatedMovies) {
-            //console.log(i.genre_ids)
             for (let j of i.genre_ids) {
-              // console.log(j)
               if ( this.weatherRecommendMovieGenre.includes(j) ) {
-                // console.log(i)
                 this.weatherRecommendMovies.push(i)
               }
             }
           }
           console.log(this.weatherRecommendMovies)
-          const pickIndex = Math.floor(Math.random() * this.weatherRecommendMovies.length-2)
-          const pickMovie = this.weatherRecommendMovies[pickIndex].title
+          const pickIndex = Math.floor(Math.random() * this.weatherRecommendMovies.length);
+          const pickMovie = this.weatherRecommendMovies[pickIndex].title;
           const weatherURL = this.weatherRecommendMovies[pickIndex].poster_path
           this.weatherRecommendMoviesTitle = pickMovie 
           this.weatherRecommendMoviesImageURL = `https://image.tmdb.org/t/p/w300${weatherURL}`
