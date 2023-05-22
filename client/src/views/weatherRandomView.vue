@@ -126,6 +126,9 @@ export default {
           const weatherURL = this.weatherRecommendMovies[pickIndex].poster_path
           this.weatherRecommendMoviesTitle = pickMovie 
           this.weatherRecommendMoviesImageURL = `https://image.tmdb.org/t/p/w300${weatherURL}`
+          if (!this.weatherRecommendMoviesTitle) {
+            this.weatherRecommendMoviesTitle = '추천 영화가 없습니다.'        
+          }          
         })
       })
       this.local = ''
@@ -184,6 +187,9 @@ export default {
         const weatherURL = this.weatherRecommendMovies[pickIndex].poster_path
         this.weatherRecommendMoviesTitle = pickMovie 
         this.weatherRecommendMoviesImageURL = `https://image.tmdb.org/t/p/w300${weatherURL}`
+        if (!this.weatherRecommendMoviesTitle) {
+          this.weatherRecommendMoviesTitle = '추천 영화가 없습니다.'        
+        }
       })
     })
   }

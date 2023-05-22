@@ -40,15 +40,17 @@
         <div class="col-1"></div>      
         <div style="font-size:1px" class="col-10">
           <div v-for="comment in Comments" :key=comment.id class="">
-          <span style="font-size:5px" class="col-4">제목 : {{comment.content}}</span> <span class="col-4" style="font-size:5px" v-if="ReviewCreatedAt"> 작성자 : {{comment.user_name}}</span>
-          <hr class="m-1">
-        </div>  
+            <span v-if="!(comment.id in UpdatingCommentId)" style="font-size:5px" class="col-4 mx-3">내용 : {{comment.content}}</span> 
+            <span v-if="!(comment.id in UpdatingCommentId)" class="col-4 mx-3" style="font-size:5px"> 작성자 : {{comment.user_name}} </span>
+            <span @click="StartUpdateComment(comment.id)" class="mx-2" style="color:green">수정</span> <span style="color:red">삭제</span>
+            <hr class="m-1">
+          </div>  
         </div> 
       </div>
     </div> 
     <div class="container mt-5">
       <h1> 댓글 작성 </h1>
-      <input type="text" v-model="CommentContext">
+      <input type="text" v-model="CommentCreateContext">
       <button @click="CreateComment" class="btn btn-primary ml-2" value="Add">Add</button>
     </div>    
   </div>
@@ -79,7 +81,9 @@ export default {
       User: '',
       WriterIsUser: false,
       Comments: '',
-      CommentContext: ''
+      CommentCreateContext: '',
+      CommentUpdateContext: '',
+      UpdatingCommentId: [],
     }
   },
   methods: {
@@ -101,7 +105,7 @@ export default {
       const token = this.$store.state.token
       const freeboard_id = this.ReviewId
       const user_name = this.User
-      const content = this.CommentContext
+      const content = this.CommentCreateContext
       axios({  
         method: 'post',
         url: commentURL + freeboard_id + '/',
@@ -119,7 +123,31 @@ export default {
         })
       this.$router.go()
       
-    }
+    },
+    StartUpdateComment(comment_id){
+      this.UpdatingCommentId.push(comment_id)
+    },
+    UpdateComment(content){
+      const token = this.$store.state.token
+      const freeboard_id = this.ReviewId
+      const user_name = this.User
+      axios({  
+        method: 'post',
+        url: commentURL + freeboard_id + '/',
+        data: {
+          freeboard_id,
+          user_name,
+          content 
+          },
+        headers:  {
+        Authorization : `Token ${token}`
+          },
+        })
+      .then((response) => {
+        console.log(response)
+        })
+      this.$router.go()
+    } 
   },
   created() {
       const token = this.$store.state.token
@@ -171,7 +199,9 @@ export default {
     })
     .then((response) => {
       this.Comments = response.data
-      console.log(this.Comments)
+      for (let i=0; i<this.Comments.length; i++) {
+        this.UpdatingCommentId.push(response.data[i].id)   // 각 comment의 id를 배열에 담는다.
+      }
     })
     .catch((err)=>{
       console.log(err)

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Movie, Comment
+from .models import Movie, Comment, Genre
 
 
 class MovieListSerializer(serializers.ModelSerializer):
@@ -26,3 +26,8 @@ class MovieSerializer(serializers.ModelSerializer):
         # read_only_fields = ('user', )
 
 
+class GenreListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Genre
+        fields = '__all__'

@@ -49,8 +49,8 @@ export default {
 		.then((response) => {
 		// console.log(response.data[0].title) - '대부'
 		this.movieAll = response.data
-				let temp = response.data
-				this.RateSortedMovies = temp.sort((a,b)=>b.vote_average-a.vote_average)
+		let temp = response.data
+		this.RateSortedMovies = temp.sort((a,b)=>b.vote_average-a.vote_average)
 		this.$store.dispatch('getAllMovies', this.movieAll)  
 		console.log(this.$store.state.allMovies)
 		})

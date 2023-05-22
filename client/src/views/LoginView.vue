@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div style="height:1000px">
     <div style="height: 100px;"></div>     
-    <img src="@/assets/hooni2.png" style="height: 200px; position:relative;" class="" alt="">
+    <img @click="GoMain" src="@/assets/hooni2.png" id="image" alt="">
     <div style="height: 50px;"></div>    
     <h1 style="height: 70px;">LogIn Page</h1>
     <form @submit.prevent="LogIn">
@@ -34,11 +34,22 @@ export default {
         username, password
       }
       this.$store.dispatch('LogIn', payload)
+    },
+    GoMain() {
+      this.$router.push({name:'intro'})
     }
   }
 }
 </script>
 
 <style>
-
+#image {
+  z-index: 2; /* 다른 요소들보다 앞에 위치하여 hover 효과를 유지 */
+  height: 200px; 
+  position: relative;
+}
+#image:hover{
+  transition: transform 0.3s ease; /* 변환 효과의 지속 시간과 가속도 설정 */
+  transform: scale(1.2); /* 마우스를 올렸을 때 이미지 크기 확대 */
+}
 </style>

@@ -4,8 +4,10 @@ from rest_framework.decorators import api_view
 
 from rest_framework import status
 from django.shortcuts import get_object_or_404, get_list_or_404
-from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer
-from .models import Movie, Comment
+from .serializers import MovieListSerializer, MovieSerializer, CommentSerializer, GenreListSerializer
+from .models import Movie, Comment, Genre
+from django.http import QueryDict, JsonResponse
+from ast import literal_eval
 
 
 # 영화 전체 정보 
@@ -64,3 +66,32 @@ def comment_create(request, movie_id):
         serializer.save(movie=movie)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
+
+# 영화 전체 정보 
+@api_view(['GET'])
+# @permission_classes([IsAuthenticated])
+def all_genres(request):
+    if request.method == 'GET':
+        genre_list = get_list_or_404(Genre)
+        serializer = GenreListSerializer(genre_list, many=True)
+        return Response(serializer.data)
+    
+# 해당 영화의 장르 이름 보내주기
+@api_view(['POST'])
+# @permission_classes([IsAuthenticated])
+def movie_genrename(request):
+    if request.method == 'POST':
+        genre_list = get_list_or_404(Genre) # 전체 장르 출력
+        print(request.data['genre_id_list'])
+        genre_name_list = []
+        for i in genre_list:
+             if i.id in request.data['genre_id_list']:
+                print(i)
+                genre_name_list.append(i.name)
+        data = {
+            'genre_name_list': genre_name_list
+        }
+        return JsonResponse(data)
+
+        
+        

@@ -1,5 +1,5 @@
 <template>
-  <div class="" id="app">
+  <div class="" id="app" st>
     <router-view/>
   </div>
 </template>
@@ -20,7 +20,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
+  background-color: rgb(46, 46, 46);  
+  /* color: #2c3e50; */
 }
 
 nav {
@@ -35,5 +37,6 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
 
 </style>

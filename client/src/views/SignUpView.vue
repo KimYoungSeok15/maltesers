@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="height: 100px;"></div>    
-    <img src="@/assets/hooni2.png" style="height: 200px; position:relative;" class="" alt="">    
+    <img src="@/assets/hooni2.png" id="image" class="" alt="">    
     <div style="height: 50px;"></div>
     <h1 style="height: 100px;">Sign Up Page</h1>
     <form @submit.prevent="signUp">
@@ -16,6 +16,7 @@
       <br>
       <input type="submit" value="SignUp">
     </form>
+    <button @click="GoBack" class="mt-3">돌아가기</button>
   </div>
 </template>
 
@@ -39,6 +40,9 @@ export default {
       }
       this.$store.dispatch('signUp', payload)
       
+    },
+    GoBack() {
+      this.$router.push({ name: 'login' })
     }
     
   },
@@ -48,5 +52,15 @@ export default {
 
 
 <style>
-
+#image {
+  height: 200px; 
+  position:relative;
+  z-index: 2; /* 다른 요소들보다 앞에 위치하여 hover 효과를 유지 */
+  height: 200px; 
+  position: relative;
+}
+#image:hover{
+  transition: transform 0.3s ease; /* 변환 효과의 지속 시간과 가속도 설정 */
+  transform: scale(1.2); /* 마우스를 올렸을 때 이미지 크기 확대 */
+}
 </style>

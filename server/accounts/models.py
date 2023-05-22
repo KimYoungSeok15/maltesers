@@ -30,3 +30,15 @@ class UserLikeMovie(models.Model):
 class Following(models.Model):
     user_name = models.CharField(max_length=100, null=True)
     following = models.CharField(max_length=100, null=True)
+
+# 전체 좋아요 목록
+class Likes(models.Model):
+    user_name = models.CharField(max_length=100, null=True)
+    movie_id = models.CharField(max_length=100, null=True)
+    movie_name = models.CharField(max_length=100, null=True)
+
+# 전체 픽한 영화 목록
+class Pick_movies(models.Model):
+    user_name = models.CharField(max_length=100, null=True)
+    movie_id = models.CharField(max_length=100, null=True)
+    movie_name = models.CharField(max_length=100, null=True)

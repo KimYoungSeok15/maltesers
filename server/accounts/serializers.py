@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Profile, Following, UserLikeGenre, UserLikeMovie
+from .models import Profile, Following, UserLikeGenre, UserLikeMovie, Likes, Pick_movies
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -23,6 +23,15 @@ class UserLikeMovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserLikeMovie
         fields = '__all__'
-    
+
+class LikesListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserLikeMovie
+        fields = '__all__'
+
+class  PickMoviesListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserLikeMovie
+        fields = '__all__'
 
 

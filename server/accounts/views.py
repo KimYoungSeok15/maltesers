@@ -156,5 +156,19 @@ def user_like_movie(request, username):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 # 팔로우 여부 확인
+@api_view(['GET'])
+def follow_check(request):
+    pass 
 
 # 언팔로우 = 팔로우 관계 삭제 구ㄹ현
+
+# 좋아요 전체목록
+# 좋아요를 누를 시 관계 추가
+@api_view(['GET', 'POST'])
+def likes(request):
+    pass 
+
+# 특정 유저가 좋아요한 영화 목록
+@api_view(['GET', 'POST'])
+def user_likes(request, username):
+    pass 

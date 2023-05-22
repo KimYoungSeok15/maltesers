@@ -5,13 +5,15 @@
     <div class="container border">
       <br>
       <div class="row">
-        <form>
-          <input type="file" ref="fileInput"  @change="handleFileChange">
-          <button @click="uploadFile">Upload</button>
-        </form>
-        <div class="profile_pic_box">
+        <div v-if="true" class="profile_pic_box">
           <img style="width: 100px; height: 200%; object-fit: cover;" :src="profile_pic_URL" alt="">
         </div>
+        <br>
+        <form v-if="profile_pic_check()">
+          <input style="width:300px" type="file" ref="fileInput"  @change="handleFileChange">
+          <button @click="uploadFile">프로필 사진 Upload</button>
+        </form>
+        <br>
         <br>
         <h1>{{page_user_name}}님의 프로필 페이지</h1>
         <p>가입일 : {{date_joined.slice(0, 10)}} | 가입 시간: {{date_joined.slice(11,19)}}</p>
@@ -36,6 +38,14 @@
           </div>
         </div>
       </div>   -->
+      <div>
+        <h3>선호 영화 장르</h3>
+        <input type="text" placeholder="영화 장르를 입력해주세요옹">
+        <button>Add</button>
+      </div>
+      <div>
+        <h3>좋아요한 영화 목록</h3>
+      </div>
       <br>
       <h3>{{page_user_name}}님이 쓴 글</h3>
       <div v-if="profile_freeboard_list">
@@ -77,6 +87,8 @@ export default {
             follow_status : '111111',
             selectedFile: null,
             profile_pic_URL: '',
+            is_your_profile: false,
+            profile_pic_URL_check: true
           
         }
     },
@@ -162,13 +174,25 @@ export default {
         
         // this.$router.go()
       },
+      profile_pic_check() {
+        if (this.$store.state.nowUserName == this.page_user_name) {
+          this.is_your_page = true
+        }
+        return this.is_your_page
+      },
+      profile_URL_check() {
+        if (this.profile_pic_URL == '') {
+          this.profile_pic_URL_check = false
+        }
+        return this.profile_pic_URL_check
+      }
     },
   created() {
     // 자유게시판 게시글 작성자 누르면 작성자 이름 받아옴
     const page_user_name_Incoded = document.location.href.split('/')[4]
     this.page_user_name = decodeURIComponent(page_user_name_Incoded)
     const djangoProfile = 'http://127.0.0.1:8000/accounts/profile/userprofile/'
-
+    
     axios({
         methods: 'get',
         url: djangoProfile+`${this.page_user_name}`,

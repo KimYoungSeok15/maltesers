@@ -135,27 +135,6 @@
     },
     { "model": "movies.movie",
       "fields": {
-        "adult": false,
-        "backdrop_path": "/tmU7GeKVybMWFButWEGl2M4GeiP.jpg",
-        "genre_ids": [
-          18,
-          80
-        ],
-        "movie_id": 238,
-        "original_language": "en",
-        "original_title": "The Godfather",
-        "overview": "시실리에서 이민온 뒤, 정치권까지 영향력을 미치는 거물로 자리잡은 돈 꼴레오네는 갖가지 고민을 호소하는 사람들의 문제를 해결해주며 대부라 불리운다. 한편 솔로소라는 인물은 꼴레오네가와 라이벌인 탓타리아 패밀리와 손잡고 새로운 마약 사업을 제안한다. 돈 꼴레오네가 마약 사업에 참여하지 않기로 하자, 돈 꼴레오네를 저격해 그는 중상을 입고 사경을 헤매게 된다. 그 뒤, 돈 꼴레오네의 아들 소니는 조직력을 총 동원해 다른 패밀리들과 피를 부르는 전쟁을 시작하는데... 가족의 사업과 상관없이 대학에 진학한 뒤 인텔리로 지내왔던 막내 아들 마이클은 아버지가 총격을 당한 뒤, 아버지를 구하기 위해 위험천만한 협상 자리에 나선다.",
-        "popularity": 97.406,
-        "poster_path": "/cOwVs8eYA4G9ZQs7hIRSoiZr46Q.jpg",
-        "release_date": "1972-03-14",
-        "title": "대부",
-        "video": false,
-        "vote_average": 8.7,
-        "vote_count": 17914
-      }    
-    },
-    { "model": "movies.movie",
-      "fields": {
       "adult": false,
       "backdrop_path": "/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg",
       "genre_ids": [
@@ -178,65 +157,23 @@
     { "model": "movies.movie",
       "fields": {
       "adult": false,
-      "backdrop_path": "/ejnlCzBd5pOGAYCpxC93NXSrdrz.jpg",
+      "backdrop_path": "/hn7oqr6RVqr3u6dcGoPRPi4jj1m.jpg",
       "genre_ids": [
+        28,
         35,
-        14
-      ],
-      "movie_id": 772071,
-      "original_language": "es",
-      "original_title": "Cuando Sea Joven",
-      "overview": "",
-      "popularity": 20.383,
-      "poster_path": "/6gIJuFHh5Lj4dNaPG3TzIMl7L68.jpg",
-      "release_date": "2022-09-14",
-      "title": "Cuando Sea Joven",
-      "video": false,
-      "vote_average": 8.6,
-      "vote_count": 225
-      }
-    },
-    { "model": "movies.movie",
-      "fields": {
-      "adult": false,
-      "backdrop_path": "/oo4PVK6AyLZN49BokxDFGyclN86.jpg",
-      "genre_ids": [
-        18,
         80
       ],
-      "movie_id": 240,
-      "original_language": "en",
-      "original_title": "The Godfather Part II",
-      "overview": "아버지의 장례식 도중에 맏아들 파올로가 총에 맞아 죽고, 비토(로버트 드니로)는 겨우 도망쳐 미국으로 건너온다. 대부로 성장한 후 비토는 다시 치치오를 찾아 복수를 한다. 새롭게 등장한 젊은 대부 마이클(알 파치노)은 본거지를 라스베가스로 옮기고 가족의 사업을 가능한 합법적인 것으로 바꾸려고 애쓴다. 그런 과중 중에 자신을 제거하려는 음모를 알게되고 그는 냉혹하고 신속하게 반대파들을 제거, 조직을 더욱 확대해 나간다. 이를 위해 마이클은 배신한 형마저 죽이고, 일 때문에 아내와 헤어지는 등 인간적으로는 계속 외로워져 가는데...",
-      "popularity": 44.322,
-      "poster_path": "/cj9UsJEN5bNf6ZoF1BbKjKN81hc.jpg",
-      "release_date": "1974-12-20",
-      "title": "대부 2",
+      "movie_id": 567646,
+      "original_language": "ko",
+      "original_title": "극한직업",
+      "overview": "불철주야 달리고 구르지만 실적은 바닥, 급기야 해체 위기를 맞는 마약반!  더 이상 물러설 곳이 없는 팀의 맏형 고반장은 국제 범죄조직의 국내 마약 밀반입 정황을 포착하고 장형사, 마형사, 영호, 재훈까지 4명의 팀원들과 함께 잠복 수사에 나선다.  마약반은 24시간 감시를 위해 범죄조직의 아지트 앞 치킨집을 인수해 위장 창업을 하게 되고, 뜻밖의 절대미각을 지닌 마형사의 숨은 재능으로 치킨집은 일약 맛집으로 입소문이 나기 시작한다.  수사는 뒷전, 치킨장사로 눈코 뜰 새 없이 바빠진 마약반에게 어느 날 절호의 기회가 찾아오는데…",
+      "popularity": 17.109,
+      "poster_path": "/jbHNkNydiZstlqhhBSvG19lm4NL.jpg",
+      "release_date": "2019-01-23",
+      "title": "극한직업",
       "video": false,
-      "vote_average": 8.6,
-      "vote_count": 10816
-      }
-    },
-    { "model": "movies.movie",
-      "fields": {
-      "adult": false,
-      "backdrop_path": "/vI3aUGTuRRdM7J78KIdW98LdxE5.jpg",
-      "genre_ids": [
-        35,
-        18,
-        10749
-      ],
-      "movie_id": 19404,
-      "original_language": "hi",
-      "original_title": "दिलवाले दुल्हनिया ले जायेंगे",
-      "overview": "영국에서 유학중인 라즈(샤룩 칸)와 인도 처녀 심란(까졸).  심란은 부모님이 정해주신 약혼자가 있는데 약혼을 앞두고 친구들과 유럽 여행을 떠나게 된다.  여행 중 우연히 만남 샤룩과 까졸. 두 남녀의 연속된 우연과 좌충우돌 사랑 만들기.  그렇게 사랑하게 된 그들이지만 까졸은 약혼자가 있는 몸. 인도로 돌아가게 된다.  샤룩 또한 그녀를 못 잊어 인도로 뒤 따라 들어가지만 엄격한 까졸의 부모를 설득하기가 힘이 든다. 도망가자는 까졸의 제안을 거부하고 샤룩은 끝내 그녀의 부모님의 허락을 얻어 내기 위해 고군분투한다.",
-      "popularity": 21.666,
-      "poster_path": "/2CAL2433ZeIihfX1Hb2139CX0pW.jpg",
-      "release_date": "1995-10-19",
-      "title": "용감한 자가 신부를 데려가리",
-      "video": false,
-      "vote_average": 8.6,
-      "vote_count": 4128
+      "vote_average": 7.025,
+      "vote_count": 217
       }
     },
     { "model": "movies.movie",
@@ -286,21 +223,23 @@
     { "model": "movies.movie",
       "fields": {
       "adult": false,
-      "backdrop_path": "/tj6iPnz18hGfr0LKqWmG6Cp3niO.jpg",
+      "backdrop_path": "/8AE7M2lMsyvowfT36porzGtmOtI.jpg",
       "genre_ids": [
-        18
+        878,
+        18,
+        10749
       ],
-      "movie_id": 389,
+      "movie_id": 38,
       "original_language": "en",
-      "original_title": "12 Angry Men",
-      "overview": "뉴욕시의 법정에 아버지를 칼로 찌른 한 소년의 살인혐의를 두고, 12인의 배심원들은 만장일치 합의를 통해 소년의 유무죄 여부를 가려줄 것을 요구받는다. 판사는 유죄일 경우 이 소년은 사형이 불가피하다는 것을 이들에게 미리 일러둔다.  배심원 방에 모인 이들은 투표를 통해 유무죄 여부를 가리기로 한다. 사람들이 전부 소년이 유죄로 판단하는 가운데, 오직 한 배심원만이 소년이 무죄라고 주장하는데...",
-      "popularity": 32.983,
-      "poster_path": "/xzh6Rq9cKnE1M309PzC5S5QWF9S.jpg",
-      "release_date": "1957-04-10",
-      "title": "12명의 성난 사람들",
+      "original_title": "Eternal Sunshine of the Spotless Mind",
+      "overview": "조엘은 아픈 기억만을 지워준다는 라쿠나사를 찾아가 헤어진 연인 클레멘타인의 기억을 지우기로 결심한다. 기억이 사라져 갈수록 조엘은 사랑이 시작되던 순간, 행복한 기억들, 가슴 속에 각인된 추억들을 지우기 싫어지기만 하는데... 당신을 지우면 이 아픔도 사라질까요? 사랑은 그렇게 다시 기억된다.",
+      "popularity": 49.819,
+      "poster_path": "/6HNRo7VYpvM5x5O921bEF2BG7f4.jpg",
+      "release_date": "2004-03-19",
+      "title": "이터널 선샤인",
       "video": false,
-      "vote_average": 8.5,
-      "vote_count": 7257
+      "vote_average": 8.1,
+      "vote_count": 13364
       }
     },
     { "model": "movies.movie",
@@ -368,28 +307,6 @@
       "video": false,
       "vote_average": 8.5,
       "vote_count": 29684
-      }
-    },
-    { "model": "movies.movie",
-      "fields": {
-      "adult": false,
-      "backdrop_path": "/l6hQWH9eDksNJNiXWYRkWqikOdu.jpg",
-      "genre_ids": [
-        14,
-        18,
-        80
-      ],
-      "movie_id": 497,
-      "original_language": "en",
-      "original_title": "The Green Mile",
-      "overview": "미국 루이지애나의 콜드 마운틴 교도소. 폴은 사형수 감방의 간수장으로 일하고 있다. 그의 일은 사형수들을 감독하고, 그린 마일이라 불리는 초록색 복도를 거쳐 그들을 사형 집행장까지 안내하는 것. 폴은 그들이 죽음을 맞이하는 순간까지 평화롭게 지낼 수 있도록 최선을 다한다. 어느 날 존 커피라는 사형수가 이송되어 온다. 그는 쌍둥이 여자아이를 살해한 흉악범. 하지만 순진한 눈망울에 겁을 잔뜩 집어먹은 그의 모습에 폴은 당혹감을 느낀다. 게다가 그는 초자연적 능력으로 폴의 지병을 깨끗하게 치료해주기까지 한다. 존을 전기 의자로 데려가야 할 날이 다가오면서 폴은 그가 무죄라는 확신을 갖게 되는데...",
-      "popularity": 66.382,
-      "poster_path": "/yuSpRhrTIJa5JN8oESrfD2bndp1.jpg",
-      "release_date": "1999-12-10",
-      "title": "그린 마일",
-      "video": false,
-      "vote_average": 8.5,
-      "vote_count": 15390
       }
     },
     { "model": "movies.movie",
@@ -517,29 +434,6 @@
       "video": false,
       "vote_average": 8.5,
       "vote_count": 11247
-      }
-    },
-    { "model": "movies.movie",
-      "fields": {
-      "adult": false,
-      "backdrop_path": "/uBZQOYZLIU9dBmd62fdzBAoropu.jpg",
-      "genre_ids": [
-        28,
-        12,
-        16,
-        18
-      ],
-      "movie_id": 704264,
-      "original_language": "en",
-      "original_title": "Primal: Tales of Savagery",
-      "overview": "",
-      "popularity": 11.004,
-      "poster_path": "/9NBBkdxH0TjQEBSN2AzeE1sgsF9.jpg",
-      "release_date": "2019-11-21",
-      "title": "Primal: Tales of Savagery",
-      "video": false,
-      "vote_average": 8.5,
-      "vote_count": 263
       }
     },
     { "model": "movies.movie",
@@ -1322,6 +1216,881 @@
     "vote_average": 5.8,
     "vote_count": 338
     }
-  }
-   
+  },
+  {   "model": "movies.movie",
+      "fields": {
+        "adult": false,
+        "backdrop_path": "/cyecB7godJ6kNHGONFjUyVN9OX5.jpg",
+        "genre_ids": [
+          28,
+          878,
+          12
+        ],
+        "movie_id": 1726,
+        "original_language": "en",
+        "original_title": "Iron Man",
+        "overview": "천재적인 두뇌와 재능으로 세계 최강의 무기업체를 이끄는 CEO이자, 타고난 매력으로 셀러브리티 못지않은 화려한 삶을 살아가던 억만장자 토니 스타크. 아프가니스탄에서 자신이 개발한 신무기 발표를 성공리에 마치고 돌아가던 그는 게릴라군의 갑작스런 공격에 의해 가슴에 치명적인 부상을 입고 게릴라군에게 납치된다. 가까스로 목숨을 건진 그에게 게릴라군은 자신들을 위한 강력한 무기를 개발하라며 그를 위협한다. 그러나 그는 게릴라군을 위한 무기 대신, 탈출을 위한 무기가 장착된 철갑수트를 몰래 만드는 데 성공하고, 그의 첫 수트인 Mark 1를 입고 탈출에 성공한다.",
+        "popularity": 79.661,
+        "poster_path": "/318YNPBDdt4VU1nsJDdImGc8Gek.jpg",
+        "release_date": "2008-04-30",
+        "title": "아이언맨",
+        "video": false,
+        "vote_average": 7.633,
+        "vote_count": 24341
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/3j5dZIR2sJs5SnzI7haAGJqnkHJ.jpg",
+      "genre_ids": [
+        16,
+        14,
+        27,
+        878
+      ],
+      "movie_id": 846867,
+      "original_language": "en",
+      "original_title": "Mad God",
+      "overview": "잠재의식 속 가장 원시적인 공포에서 착안하게 이미지화된 고문당한 영혼들, 노쇠한 벙커 그리고 일그러진 괴물들이 있는 세계를 ‘어쌔신(The Assassin)’을 따라가보자. 이 영화 속 모든 세트, 생물체, 형상은 모두 전통적인 스톱 모션 기법을 활용해 수작업으로 제작한 이 애니메이션 걸작은 스톱 모션 애니메이션의 시대를 넘어선 예술에 대한 오마주일 것이다.",
+      "popularity": 19.697,
+      "poster_path": "/sEULzxEZvrJvhz91wKxpbih25Sk.jpg",
+      "release_date": "2022-06-16",
+      "title": "매드 갓",
+      "video": false,
+      "vote_average": 6.9,
+      "vote_count": 209
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/Ai4ax5yBpbOcKLuKuxvHQtY9pYy.jpg",
+      "genre_ids": [
+        18,
+        35,
+        10749,
+        80
+      ],
+      "movie_id": 892515,
+      "original_language": "fr",
+      "original_title": "Mascarade",
+      "overview": "매력적인 댄서 아드리앵은 오토바이 사고로 경력이 엉망이 되고, 나태함으로 자신의 젊음을 낭비한다. 아드리앵의 삶은 음모와 자신의 성적 매력을 이용한 사기를 벌이며 살아가는 마고를 만나면서 변화한다.",
+      "popularity": 17.611,
+      "poster_path": "/eZx7SUnQetww3ePIlvTUDYuZMo9.jpg",
+      "release_date": "2022-11-01",
+      "title": "위선의 종말",
+      "video": false,
+      "vote_average": 7,
+      "vote_count": 231
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/7lmBufEG7P7Y1HClYK3gCxYrkgS.jpg",
+      "genre_ids": [
+        12,
+        28,
+        878
+      ],
+      "movie_id": 10138,
+      "original_language": "en",
+      "original_title": "Iron Man 2",
+      "overview": "세계 최강의 무기업체를 이끄는 CEO이자, 타고난 매력으로 화려한 삶을 살아가던 토니 스타크. 기자회견을 통해 자신이 아이언맨이라고 정체를 밝힌 이후, 정부로부터 아이언맨 수트를 국가에 귀속시키라는 압박을 받지만 이를 거부한다. 스타크 인더스트리의 운영권까지 수석 비서였던 페퍼 포츠에게 일임하고 히어로로서의 인기를 만끽하며 지내던 토니 스타크. 하지만 그 시각, 아이언맨의 수트 기술을 스타크 가문에 빼앗긴 후 쓸쓸히 돌아가신 아버지의 복수를 다짐해 온 위플래시는 수트의 원천 기술 개발에 성공, 치명적인 무기를 들고 직접 토니 스타크를 찾아 나선다.",
+      "popularity": 80.835,
+      "poster_path": "/7rUFYRfYV6c4yXiKBvKWOCRjimc.jpg",
+      "release_date": "2010-04-28",
+      "title": "아이언맨 2",
+      "video": false,
+      "vote_average": 6.834,
+      "vote_count": 19276
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/v39H1nUYxQmSphz83VoV4HYjuHt.jpg",
+      "genre_ids": [
+        18,
+        35
+      ],
+      "movie_id": 636173,
+      "original_language": "ko",
+      "original_title": "드림",
+      "overview": "선수 생활 사상 최악의 위기를 맞은 쏘울리스 축구 선수 홍대. 계획도, 의지도 없던 홈리스 풋볼 월드컵 감독으로 재능기부에 나서게 된다. 각본 없는 각본으로 열정리스 현실파 PD 소민이 다큐 제작으로 합류하게 되면서 뜯어진 운동화와 슬리퍼, 늘어진 반팔 티셔츠를 필두로 운동이라고는 한 번도 해본 적 없는 특별한 선수들이 국가대표로 선발된다. 택견인지 축구인지 헷갈리는 실력과 발보다 말이 앞서는 홈리스 선수들의 환장할 팀워크, 다큐에 대사와 상황 그리고 진정성 없는 연출을 강요하는 소민에 기가 막히는 감독 홍대. 하지만 포기할 틈도 없이, 월드컵 출전일은 코앞으로 다가오는데...",
+      "popularity": 15.09,
+      "poster_path": "/9RIY2JW0JLQl2MOXdkeFAVqP57T.jpg",
+      "release_date": "2023-04-26",
+      "title": "드림",
+      "video": false,
+      "vote_average": 6,
+      "vote_count": 3
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/cDA5NGs3o8mdgxqlqEGrDi56z2B.jpg",
+      "genre_ids": [
+        16,
+        18,
+        9648,
+        14
+      ],
+      "movie_id": 802699,
+      "original_language": "ja",
+      "original_title": "とつくにの少女",
+      "overview": "옛날 먼 곳에 두 개의 땅이 있었다. 세계는 내지와 외지로 나뉘었다. 사람들은 저주의 매개체인 '바깥 존재'들이 사는 외지 두려워했다. 어느 날, 인간이 살고 있는 내지의 경계에서, 그런 존재는 버려진 시체 더미 위에서 소녀를 발견한다.소녀는 자신의 이름이 시바라고 말하며 자신을 발견한 존재에게 \"선생님\"이라고 부르며 애정을 표현한다. 이 이야기는 낮과 밤을 가르는 흐릿한 황혼 속에 머물러 있는 두 사람의 이야기다.",
+      "popularity": 23.223,
+      "poster_path": "/bcCnrEPPC0zeI2Msnt2RPARYgbH.jpg",
+      "release_date": "2022-03-10",
+      "title": "바깥 나라의 소녀",
+      "video": false,
+      "vote_average": 7.4,
+      "vote_count": 14
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/aFTYFqrWp4RS46Twm87l5e0ItYb.jpg",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "movie_id": 68721,
+      "original_language": "en",
+      "original_title": "Iron Man 3",
+      "overview": "어벤저스의 일원으로 활약한 뉴욕 사건 이후, 트라우마로 인해 영웅으로서의 삶에 회의를 느끼는 토니 스타크. 그가 혼란을 겪는 사이 최악의 테러리스트 만다린을 내세운 익스트리미스 집단 AIM이 스타크 저택에 공격을 퍼붓는다. 이 공격으로 그에게 남은 건 망가진 수트 한 벌 뿐. 모든 것을 잃어버린 그는 다시 테러의 위험으로부터 세계와 사랑하는 여인을 지켜내야 하는 동시에 머릿속을 떠나지 않던 한가지 물음의 해답도 찾아야만 한다. 과연 그가 아이언맨인가? 수트가 아이언맨인가?",
+      "popularity": 63.852,
+      "poster_path": "/pGMfidaVkjMVHXNIl7yippnipFT.jpg",
+      "release_date": "2013-04-18",
+      "title": "아이언맨 3",
+      "video": false,
+      "vote_average": 6.927,
+      "vote_count": 20633
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/ryaZmqEnsRaeKUanGFHmPCFDs9M.jpg",
+      "genre_ids": [
+        28,
+        12,
+        16,
+        10751
+      ],
+      "movie_id": 230896,
+      "original_language": "en",
+      "original_title": "Iron Man & Hulk: Heroes United",
+      "overview": "이제껏 없었던 강력한 위기로부터 지구를 구하기 위해 아이언맨과  헐크가 뭉쳤다. 헐크의 감마 에너지를 스타크 아크 래디에이터에 충전시키려던 하이드라 과학자들은, 파괴 본능을 강하게 지닌 전기를 빨아들이는 잭스라는 괴물을 만들어내고, 잭스가 만들어내는 계속되는 암전을 멈출 수 있는 유일한 방안이다. 그러나 잭스를 멈추기에 앞서 우선, 이 히어로 듀오는 무섭게 으르렁대는 웬디고와 어보미네이션을 거쳐야만 한다. 너무 늦기 전에 두 영웅은 서로간의 다툼을 멈추고 함께 협력하는 방법을 찾을 수 있을것인가!",
+      "popularity": 10.447,
+      "poster_path": "/e7F2ZNA7wMneoSKGonLKjDmjFEd.jpg",
+      "release_date": "2013-12-03",
+      "title": "아이언맨 & 헐크",
+      "video": false,
+      "vote_average": 5.8,
+      "vote_count": 162
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/kqMYb35r3NCsFeaV1EfBg3rzZWE.jpg",
+      "genre_ids": [
+        878,
+        16,
+        28
+      ],
+      "movie_id": 169934,
+      "original_language": "ja",
+      "original_title": "アイアンマン：ライズ・オブ・テクノヴォア",
+      "overview": "‘스타크 인더스트리’의 대표 토니 스타크(아이언맨)는 새롭게 개발한‘하워드’위성을 세상에 발표한다. 그는 하워드 위성을 통해 폭력과 살인, 테러리즘 등의 범죄를 사건이 일어나기 전에 탐지해서 방지할 수 있는 세상이 열리게 된다고 말한다. 한편 위성 발사를 앞두고 레이더스 무장용병의 공격과 함께 나타난 에제키엘은 부식성 생물학적 세포의 존재로 사람들을 무차별 살상하고 콘트롤타워를 순식간에 폭파시킨다. 아이언맨 조차 속수무책으로 당하고, 이 사건으로 아이언맨의 동료인 로디(워머신)가 희생당한다. 300여명의 사상자가 발생한 이 사건으로 S.H.I.E.L.D의 총책임자 닉 퓨리는 책임을 묻기 위해 토니를 불러들이지만, 토니는 ‘에제키엘’ 을 쫓는다.  토니를 잡기 위해 S.H.I.E.L.D의 요원 나타샤와 호크 아이가 따라붙고 에제키엘에 관한 단서를 쫓던 토니는 자신의 비서 페퍼의 도움으로 테크노 유기 갑옷과 관련된 비밀거래 장소로 찾아간다. 토니는 나타샤와 호크 아이의 추적을 따돌리고 일명 ‘처벌자’로 불리는 프랭크 캐슬의 도움으로 에제키엘의 비밀을 알게된다. 토니의 예전 동업자였던 오바디아 스테인의 아들이자 천재 과학자인 에제키엘은 수년간 테크노 유기갑옷의 불법연구에 관련되어 왔고 테크노보어로 엄청난 초능력을 갖게 되었다.  드디어 S.H.I.E.L.D 본부에 모습을 드러낸 에제키엘은 시스템을 해킹하고 세계의 모든 컴퓨터에 액세스, 하워드를 이용해 세계 주요 위성을 장악하려는 음모를 꾸민다. 이를 저지하려는 아이언맨은 에제키엘과 운명적 대결을 펼치게 되는데…",
+      "popularity": 15.788,
+      "poster_path": "/eHDez1uN5X2ZAq4niX7HvhyZIIO.jpg",
+      "release_date": "2013-04-24",
+      "title": "아이언맨: 라이즈 오브 테크노보어",
+      "video": false,
+      "vote_average": 5.8,
+      "vote_count": 143
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/b60ahN7mEoJiRsXMSc4lh4bkVBV.jpg",
+      "genre_ids": [
+        99
+      ],
+      "movie_id": 635802,
+      "original_language": "en",
+      "original_title": "Elon Musk: The Real Life Iron Man",
+      "overview": "최근 스페이스 X를 통해 민간 우주선 발사에 성공하며 전기 자동차 테슬라, 태양에너지 기업 솔라시티, 보링컴퍼니, 뉴럴링크 등 다양한 미래 사업으로 인류의 영웅으로 부상하는 ‘일론 머스크’의 삶과 인생",
+      "popularity": 3.013,
+      "poster_path": "/lzU1sjjTIFhk7YoXl9OPnXNxiKJ.jpg",
+      "release_date": "2018-12-04",
+      "title": "일론 머스크: 리얼 아이언맨",
+      "video": false,
+      "vote_average": 5.5,
+      "vote_count": 13
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/2gkvlpOoJdhdsFpAvn1zUk5mzqB.jpg",
+      "genre_ids": [
+        18
+      ],
+      "movie_id": 995206,
+      "original_language": "ja",
+      "original_title": "最後まで行く",
+      "overview": "",
+      "popularity": 11.847,
+      "poster_path": "/zZFqGmhJMUiTuEJSneIbI7N5sCw.jpg",
+      "release_date": "2023-05-19",
+      "title": "最後まで行く",
+      "video": false,
+      "vote_average": 0,
+      "vote_count": 0
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/c6H7Z4u73ir3cIoCteuhJh7UCAR.jpg",
+      "genre_ids": [
+        878,
+        28,
+        12
+      ],
+      "movie_id": 524434,
+      "original_language": "en",
+      "original_title": "Eternals",
+      "overview": "이터널스는 7천년 전 우주선 도모를 타고 지구에 온 순간부터 지구를 사랑한 히어로들이다. 이들의 임무는 기괴한 크리처 데비안츠에게서 인간을 지키는 것. 임무를 부여한 이는 그들을 탄생시킨 천상의 존재 셀레스티얼이다. 이터널스는 시간의 흐름을 느낄 수 없기에, 공간을 기준 삼아 연대기를 구성하는 뱀파이어처럼 세계 곳곳에 흩어져 자신만의 삶을 살아가고 있다. 물질을 변화시키는 세르시는 런던에서 박물관 학자가 됐고, 우주의 기운을 총처럼 쏘는 킹고는 발리우드 배우로 살며, 타인을 조종하는 드루이그는 아마존에 소국을 만들었다. 괴력의 소유자 길가메시는 호주 사막에서 정신 건강이 위험해진 테나를 돌보며 살고 있다. 세르시는 데비안츠의 공세가 심해지자 오랜 연인 이카리스, 소녀처럼 보이는 불멸의 존재 스프라이트와 함께 이터널스를 불러모으기 시작한다.",
+      "popularity": 109.869,
+      "poster_path": "/aNtAP8ZzUMdnCPoqYgVOcgI0Eh4.jpg",
+      "release_date": "2021-11-03",
+      "title": "이터널스",
+      "video": false,
+      "vote_average": 6.967,
+      "vote_count": 7138
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/5XQLZibhGQUxsnd093DZHDIwbzY.jpg",
+      "genre_ids": [
+        16,
+        35,
+        10751,
+        12
+      ],
+      "movie_id": 382517,
+      "original_language": "en",
+      "original_title": "Open Season: Scared Silly",
+      "overview": "수다쟁이 사슴 엘리엇이 숲속 친구들 앞에서 늑대 인간과 맞서 싸운 모험담을 늘어놓자 거구의 회색곰 부그는 그 이야기에 겁을 먹고는 약속했던 캠핑 여행을 떠나지 않겠다고 말한다. 이에 엘리엇과 친구들은 부그의 두려움을 없애주기 위해 가짜 늑대 인간 작전에 돌입한다. 그런데 변장한 친구가 말벌에 쏘이고 진흙탕에 빠지는 소동 끝에 괴기한 모습으로 바뀌면서 엘리엇조차 진짜 늑대 인간이 나타났다고 믿게 된다. 한편 우연히 그 현장을 목격한 사냥꾼 쇼는 보안관에게 늑대 인간 사냥을 허락받는다. 사냥에 굶주린 쇼는 이번 기회에 숲속의 다른 동물들까지 사냥할 계획을 세운다. 사냥꾼의 표적이 된 엘리엇은 쇼보다 먼저 늑대 인간을 찾아서 숲속의 평화를 되찾자고 부그를 설득한다. 용기를 낸 부그와 엘리엇 일행은 늑대 인간이 목격된 ‘죽은 곰의 협곡’으로 향하는데…",
+      "popularity": 18.133,
+      "poster_path": "/mjNpSMDwiqvXwUxOWdmStfvCx9b.jpg",
+      "release_date": "2015-12-18",
+      "title": "부그와 엘리엇: 늑대 인간의 공포",
+      "video": false,
+      "vote_average": 5.9,
+      "vote_count": 293
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/tMvLze1KGP3rFIVNRRrWdC1FGp8.jpg",
+      "genre_ids": [
+        35,
+        27,
+        9648
+      ],
+      "movie_id": 520023,
+      "original_language": "en",
+      "original_title": "Bodies Bodies Bodies",
+      "overview": "‘소피’는 소심한 성격의 동성 연인 ‘비’와 함께 오랜 친구 ‘데이비드’의 호화 별장에서 열리는 파티에 참석한다. 비는 소피와 다른 친구들 사이에 묘한 긴장감이 감돌고 있음을 느끼고, 술과 약물에 취한 일행은 어둠 속에서 살인자 찾기 게임을 시작한다. 친구 ‘앨리스’가 데려온 정체를 알 수 없는 나이 많은 남자 ‘그레그’가 첫 번째 게임의 시체가 되고 누가 살인자인지 맞히려고 하다 친구들 사이에 갈등이 드러난다. 다시 두 번째 게임을 하려는 찰나 허리케인으로 전력이 차단되고 통신도 두절되면서 그들은 외딴 별장에 갇힌 신세가 된다. 그러던 중 진짜 시체가 발견되고 실제 살인 사건이 연이어 발생하면서 극도의 불안과 공포를 느끼게 된 그들은 점점 서로에 대한 비열한 폭로와 모욕을 쏟아 내며 불신과 적대감을 드러내는데…",
+      "popularity": 24.829,
+      "poster_path": "/xy8XviIN3sFeCQQ7xJQTkcJd7mL.jpg",
+      "release_date": "2022-08-05",
+      "title": "공포의 파티",
+      "video": false,
+      "vote_average": 6.46,
+      "vote_count": 623
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/6b6UpsOXmjO8mJKYsGTG9HW49CN.jpg",
+      "genre_ids": [
+        18,
+        10749
+      ],
+      "movie_id": 1443,
+      "original_language": "en",
+      "original_title": "The Virgin Suicides",
+      "overview": "1970년대 미국의 조용하고 보수적인 한 마을. 좀처럼 이웃 사람들과 어울리지 않는 리스본 가족의 아름다운 다섯 자매 중 한 명인 열세살 세실리아가 자살을 기도한다. 이 사건으로 비밀에 가득찬 리스본 일가의 실체가 나타나기 시작하는데...",
+      "popularity": 15.991,
+      "poster_path": "/wDrTeDUuWf7SRQnkVea2ZpOcwnt.jpg",
+      "release_date": "1999-12-31",
+      "title": "처녀 자살 소동",
+      "video": false,
+      "vote_average": 7.1,
+      "vote_count": 2740
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/14QbnygCuTO0vl7CAFmPf1fgZfV.jpg",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "movie_id": 634649,
+      "original_language": "en",
+      "original_title": "Spider-Man: No Way Home",
+      "overview": "미스테리오의 계략으로 세상에 정체가 탄로난 스파이더맨 피터 파커는 하루 아침에 평범한 일상을 잃게 된다. 문제를 해결하기 위해 닥터 스트레인지를 찾아가 도움을 청하지만 뜻하지 않게 멀티버스가 열리면서 각기 다른 차원의 불청객들이 나타난다. 닥터 옥토퍼스를 비롯해 스파이더맨에게 깊은 원한을 가진 숙적들의 강력한 공격에 피터 파커는 사상 최악의 위기를 맞게 되는데…",
+      "popularity": 313.758,
+      "poster_path": "/voddFVdjUoAtfoZZp2RUmuZILDI.jpg",
+      "release_date": "2021-12-15",
+      "title": "스파이더맨: 노 웨이 홈",
+      "video": false,
+      "vote_average": 8.0,
+      "vote_count": 17374
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/2nU5H8XIgtMkJrxsryP6nJuAHQ.jpg",
+      "genre_ids": [
+        16,
+        12,
+        10751,
+        14
+      ],
+      "movie_id": 805051,
+      "original_language": "en",
+      "original_title": "The Ogglies",
+      "overview": "쓰레기와 지독한 냄새 때문에 아무도 찾지 않는 ‘냄새 마을’. 마을을 구하기 위해 ‘맥스’는 ‘폼 워디’ 박사의 도움을 받아 악취 제거 로봇을 발명한다.  ‘맥스’와 친구들은 발명품 실험을 위해 냄새 마을 쓰레기장으로 찾아가고  그 곳으로 이사 온 녹색 괴물 오글리 가족과 만나게 된다. 더러운 게 최고의 위생! 녹슨 플라스틱과 다 쓴 건전지 스프는 최고의 음식!  이런 독특한 오글리 가족과 친구가 된 ‘맥스’는 마을을 구할 방법을 찾게 된다.  한편, ‘맥스’의 엄마는 고약한 건설업 사장 ‘해머’와 손을 잡아 테마파크를 짓기 위한 계획을 세우고, 쓰레기장 철거 작전을 시작하는데…  과연 ‘맥스’와 친구들은 오글리 가족의 집을 지켜낼 수 있을까?",
+      "popularity": 13.096,
+      "poster_path": "/om1ZwECjUzwyVsVcSwDSelUUgkh.jpg",
+      "release_date": "2021-05-06",
+      "title": "오글리스: 웰컴 투 냄새 마을",
+      "video": false,
+      "vote_average": 7.1,
+      "vote_count": 58
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/bqYaybcmBk4CUfx9VsIA0EbSBF0.jpg",
+      "genre_ids": [
+        14,
+        28
+      ],
+      "movie_id": 557,
+      "original_language": "en",
+      "original_title": "Spider-Man",
+      "overview": "평범하고 내성적인 고등학생 피터 파커는 우연히 방사능에 감염된 거미에 물린다.그 후, 피터는 손에서 거미줄이 튀어 나오고 벽을 기어 오를 수 있는 거미와 같은 능력을 갖게 된다. 다가오는 위험을 본능적으로 감지하는 초감각과 엄청난 파워를 소유하게 된 것이다. 피터는 짝사랑하던 메리 제인의 관심을 끌기 위해 멋진 스포츠카를 구입하는데 초능력을 처음 사용한다. 그러다 사랑하는 벤 아저씨의 죽음을 계기로 그 힘을 악의 세력에 대항하는데 쓰기로 결심한다. 한편 피터의 절친 해리 오스본의 아버지인 노만은 실험 도중 가스에 중독되어 악의 화신 그린 고블린으로 변하는데...",
+      "popularity": 87.195,
+      "poster_path": "/eXbCqcUsUDUq2qqGmU5i20S0tjo.jpg",
+      "release_date": "2002-05-01",
+      "title": "스파이더맨",
+      "video": false,
+      "vote_average": 7.3,
+      "vote_count": 17111
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/qGQf2OHIkoh89K8XeKQzhxczf96.jpg",
+      "genre_ids": [
+        28,
+        12,
+        16,
+        878
+      ],
+      "movie_id": 324857,
+      "original_language": "en",
+      "original_title": "Spider-Man: Into the Spider-Verse",
+      "overview": "평범한 10대 마일스 모랄레스는 우연히 방사능 거미에 물려 스파이더맨 능력을 가지게 된다. 혼란스러워하던 마일스는 악당과 싸우고 있는 피터 파커를 마주치게 되고 피터 파커는 마일스가 자신과 같은 능력을 가지고 있음을 직감한다. 여러 개의 평행세계가 존재한다는 것을 알게 된 마일스와 피터 파커는 이후 스파이더우먼 스파이더 그웬, 스파이더맨 누아르, 스파이더햄 등 평행세계 속 공존하는 모든 스파이더맨들을 만나게 되는데... 하나의 유니버스에서 만나 팀을 결성한 스파이더맨들은 과연 세계를 구할 수 있을까?",
+      "popularity": 166.83,
+      "poster_path": "/vnWgIIEWAvWKOI65tm6h6VRbyY8.jpg",
+      "release_date": "2018-12-14",
+      "title": "스파이더맨: 뉴 유니버스",
+      "video": false,
+      "vote_average": 8.4,
+      "vote_count": 12738
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/w1oD1MzHjnBJc5snKupIQaSBLIh.jpg",
+      "genre_ids": [
+        14,
+        28,
+        12
+      ],
+      "movie_id": 559,
+      "original_language": "en",
+      "original_title": "Spider-Man 3",
+      "overview": "대중의 사랑을 듬뿍 받으며 진정한 영웅으로 거듭난 스파이더맨, 피터 파커는 어느 날, 외계에서 온 수수께끼의 유기체인 심비오트에 감염되고 스파이더맨은 오리지날 스파이더맨에서 블랙 슈트 스파이더맨으로 변화한다. 한층 업그레이드 되고 강력해진 파워를 얻게 된 스파이더맨은 자신의 힘에 도취되어 마음껏 세상을 즐긴다. 그러나 아버지의 복수를 위해 뉴 고블린이 된 해리와 물리 실험에 노출되어 능력을 얻게 된 피터의 삼촌을 죽인 진범 샌드맨은 호시탐탐 스파이더맨을 노리는데...",
+      "popularity": 61.374,
+      "poster_path": "/tbPLMa0cZ4bUnyCYD0loAJeoz2H.jpg",
+      "release_date": "2007-05-01",
+      "title": "스파이더맨 3",
+      "video": false,
+      "vote_average": 6.385,
+      "vote_count": 12693
+      } 
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/mDfJG3LC3Dqb67AZ52x3Z0jU0uB.jpg",
+      "genre_ids": [
+        12,
+        28,
+        878
+      ],
+      "movie_id": 299536,
+      "original_language": "en",
+      "original_title": "Avengers: Infinity War",
+      "overview": "타노스는 6개의 인피니티 스톤을 획득해 신으로 군림하려 한다. 그것은 곧 인류의 절반을 학살해 우주의 균형을 맞추겠다는 뜻. 타노스는 닥터 스트레인지가 소유한 타임 스톤, 비전의 이마에 박혀 있는 마인드 스톤을 차지하기 위해 지구를 침략한다. 아이언맨과 스파이더맨은 가디언즈 오브 갤럭시의 멤버들과 타노스를 상대한다. 지구에선 캡틴 아메리카, 완다, 블랙 위도우, 블랙 팬서 등이 비전을 지키기 위해 뭉친다.",
+      "popularity": 229.727,
+      "poster_path": "/kmP6viwzcEkZeoi1LaVcQemcvZh.jpg",
+      "release_date": "2018-04-25",
+      "title": "어벤져스: 인피니티 워",
+      "video": false,
+      "vote_average": 8.262,
+      "vote_count": 26897
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/9BBTo63ANSmhC4e6r62OJFuK2GL.jpg",
+      "genre_ids": [
+        878,
+        28,
+        12
+      ],
+      "movie_id": 24428,
+      "original_language": "en",
+      "original_title": "The Avengers",
+      "overview": "에너지원 큐브를 이용한 적의 등장으로 인류가 위험에 처하자 국제평화유지기구인 쉴드의 국장 닉 퓨리는 어벤져스 작전을 위해 전 세계에 흩어져 있던 슈퍼히어로들을 찾아나선다. 아이언맨부터 토르, 헐크, 캡틴 아메리카는 물론, 쉴드의 요원인 블랙 위도우, 호크 아이까지, 최고의 슈퍼히어로들이 어벤져스의 멤버로 모이게 되지만, 각기 개성이 강한 이들의 만남은 예상치 못한 방향으로 흘러가는데...",
+      "popularity": 121.25,
+      "poster_path": "/1uHRkB2Q00Y4i7I7KNd0jGi4OmY.jpg",
+      "release_date": "2012-04-25",
+      "title": "어벤져스",
+      "video": false,
+      "vote_average": 7.7,
+      "vote_count": 28598
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/7RyHsO4yDXtBv1zUU3mTpHeQ0d5.jpg",
+      "genre_ids": [
+        12,
+        878,
+        28
+      ],
+      "movie_id": 299534,
+      "original_language": "en",
+      "original_title": "Avengers: Endgame",
+      "overview": "어벤져스의 패배 이후 지구는 초토화됐고 남은 절반의 사람들은 정신적 고통을 호소하며 하루하루를 근근이 버텨나간다. 와칸다에서 싸우다 생존한 히어로들과 우주의 타이탄 행성에서 싸우다 생존한 히어로들이 뿔뿔이 흩어졌는데, 아이언맨과 네뷸라는 우주를 떠돌고 있고 지구에 남아 있는 어벤져스 멤버들은 닉 퓨리가 마지막에 신호를 보내다 만 송신기만 들여다보며 혹시 모를 우주의 응답을 기다리는 중이다. 애초 히어로의 삶을 잠시 내려놓고 가족과 시간을 보내던 호크아이 역시 헤아릴 수 없는 마음의 상처를 입은 채 사라지고 마는데...",
+      "popularity": 116.093,
+      "poster_path": "/z7ilT5rNN9kDo8JZmgyhM6ej2xv.jpg",
+      "release_date": "2019-04-24",
+      "title": "어벤져스: 엔드게임",
+      "video": false,
+      "vote_average": 8.266,
+      "vote_count": 23168
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/6YwkGolwdOMNpbTOmLjoehlVWs5.jpg",
+      "genre_ids": [
+        28,
+        12,
+        878
+      ],
+      "movie_id": 99861,
+      "original_language": "en",
+      "original_title": "Avengers: Age of Ultron",
+      "overview": "토니 스타크는 뉴욕전쟁 때와 같은 사태가 벌어지지 않도록 한때 가동하려다 중단된 휴면 상태의 평화 유지 프로그램을 작동 시키려 한다. 배너 박사와 함께 지구를 지킬 최강의 인공지능 울트론을 탄생시키게 되지만, 울트론은 예상과 다르게 지배를 벗어나 폭주하기 시작하고 어벤져스는 지구의 운명이 걸린 거대한 시험대에 오르게 된다. 울트론이 자신을 복제해 위협을 가하자 이를 저지하기 위해 아이언맨, 캡틴 아메리카, 토르, 헐크, 블랙위도우, 호크아이 등으로 구성된 어벤져스와 새로 합류하게 되는 퀵 실버, 스칼렛 위치 남매와 불안한 동맹을 맺는다.",
+      "popularity": 92.608,
+      "poster_path": "/sTUiA9zY6O4qFlmRC69nG6dngTh.jpg",
+      "release_date": "2015-04-22",
+      "title": "어벤져스: 에이지 오브 울트론",
+      "video": false,
+      "vote_average": 7.28,
+      "vote_count": 21290
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/8N91uYwrr1uepEKbmym1tgfXlzS.jpg",
+      "genre_ids": [
+        16,
+        10751,
+        28,
+        12,
+        878
+      ],
+      "movie_id": 14613,
+      "original_language": "en",
+      "original_title": "Next Avengers: Heroes of Tomorrow",
+      "overview": "울트론의 세력 확장을 피해 숨어 지내던 어벤져의 아이들은 우연히 자신들의 운명을 깨닫고 울트론에게 맞서 싸우기로 결심한다.",
+      "popularity": 14.482,
+      "poster_path": "/fpG1NDbcLV2a7c8X7LC4FPISBT7.jpg",
+      "release_date": "2008-09-02",
+      "title": "넥스트 어벤져스: 히어로즈 오브 투모로우",
+      "video": false,
+      "vote_average": 6.858,
+      "vote_count": 225
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/jqFC2WjYF07hx2X7cs0XmY9jBX6.jpg",
+      "genre_ids": [
+        28,
+        878
+      ],
+      "movie_id": 1003598,
+      "original_language": "en",
+      "original_title": "Avengers: Secret Wars",
+      "overview": "An upcoming film in the Marvel Cinematic Universe's sixth Phase and the finale of The Multiverse Saga. Plot unknown.",
+      "popularity": 32.466,
+      "poster_path": "/8chwENebfUEJzZ7sMUA0nOgiCKk.jpg",
+      "release_date": "2026-04-29",
+      "title": "어벤져스: 시크릿 워즈",
+      "video": false,
+      "vote_average": 0.0,
+      "vote_count": 0
+      } 
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/uR952NrgispGuyqIdUbkR24vE0u.jpg",
+      "genre_ids": [
+        28,
+        878
+      ],
+      "movie_id": 1003596,
+      "original_language": "en",
+      "original_title": "Avengers: The Kang Dynasty",
+      "overview": "An upcoming film in the Marvel Cinematic Universe's sixth Phase and part of The Multiverse Saga. Plot unknown.",
+      "popularity": 34.106,
+      "poster_path": "/utZTb3VBrH0zR77BcISU67pHuAx.jpg",
+      "release_date": "2025-05-01",
+      "title": "어벤져스: 캉 다이너스티",
+      "video": false,
+      "vote_average": 0.0,
+      "vote_count": 0
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/fryen9fnjlm0YibKTDNGzWNBOSo.jpg",
+      "genre_ids": [
+        53,
+        878,
+        28,
+        12
+      ],
+      "movie_id": 9320,
+      "original_language": "en",
+      "original_title": "The Avengers",
+      "overview": "비와 안개의 나라로 알려진 영국 날씨, 정상적인 날씨를 위해 작동 중인 기상안전보호 프로그램에 이상이 생긴다. 날씨는 국가 안보와 밀접한 관련이 있기 때문에, '마더(mother): 짐 브로드벤트 분)'라 불리는 영국 첩보국장은 일급 비밀요원 존 스티드(John Steed: 랄프 피네스 분)를 시켜 이 사건을 조사하게 한다.  존은 중절모와 잘 다듬어진 테일러 양복을 입은 전형적인 영국 신사. 어떤 상황에서도 절대 흥분하지 않는 그는 사안이 사안인지라 날씨에 능통한 기상학 박사 에마 필(Emma Peel: 우마 써먼 분)을 파트너 삼아 사건을 조사한다.  존과 에마는 유력한 용의자로 의심되는 어거스트 드 윈터 박사(Sir August de Wynter: 숀 코넬리 분)를 찾아가고 여기서 존은 에마와 똑같은 사람의 공격을 받는다. 그러나 이는 어거스트가 에마와 똑같은 인물을 복제해 사람들을 혼란케 하고 에마를 위험에 몰아넣어서 자기 편으로 삼고자 하는 전략이다.  어거스트의 진짜 목적은 기괴한 날씨를 수단삼아 전 세계를 혼란에 빠뜨리고, 자기가 직접 날씨를 조작, 이를 팔아서 부와 권력을 손에 쥐려하는데 있다.  어거스트와 무시무시한 음모를 막고 평화를 지키려는 존과 에마의 싸움은 시작되었다.",
+      "popularity": 19.219,
+      "poster_path": "/1p5thyQ4pCy876HpdvFARqJ62N9.jpg",
+      "release_date": "1998-08-13",
+      "title": "어벤저",
+      "video": false,
+      "vote_average": 4.363,
+      "vote_count": 619
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/9tjIgkkbajG2zMI4Yk21hpttXv0.jpg",
+      "genre_ids": [
+        28,
+        16,
+        10751,
+        12,
+        878
+      ],
+      "movie_id": 14609,
+      "original_language": "en",
+      "original_title": "Ultimate Avengers: The Movie",
+      "overview": "수퍼 군인 혈청으로 탄생한 캡틴 아메리카는 2차 세계대전이 한창이던 1945년, 나치와 전투를 벌이던 중 북극의 빙하에 갇혀 냉동된다. 21세기가 되어 그의 혈액으로부터 수퍼 군인 혈청을 추출하려는 미군에 의해 다시 깨어난 그는 또 다시 거대한 악의 세력에 위협받는 세계를 구하기 위해 나서야할 상황을 맞이하는데...",
+      "popularity": 15.366,
+      "poster_path": "/fKQqZEDmvKMCXEQztvMJHGou9dO.jpg",
+      "release_date": "2006-02-21",
+      "title": "얼티밋 어벤져스",
+      "video": false,
+      "vote_average": 6.753,
+      "vote_count": 299
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/ldxi7dKtud2KrStUr8V9P65ixNr.jpg",
+      "genre_ids": [
+        12,
+        16,
+        28,
+        878
+      ],
+      "movie_id": 14611,
+      "original_language": "en",
+      "original_title": "Ultimate Avengers 2: Rise of the Panther",
+      "overview": "신비한 와칸다는 세계 대부분이 알지 못하는 아프리카의 가장 어두운 심장부에 있습니다. 폐쇄된 국경 뒤에 숨겨진 고립된 땅, 젊은 왕 블랙 팬서에 의해 강력하게 보호됩니다. 하지만 잔인한 외계 침략자들이 공격할 때, 그 위협은 흑표범에게 그의 백성들의 신성한 법령을 거스르고 외부인들에게 도움을 요청하는 것 외에는 선택의 여지가 없게 합니다.",
+      "popularity": 13.32,
+      "poster_path": "/h1PKqtjuTifmTU0EqM4W0Br2pHX.jpg",
+      "release_date": "2006-08-08",
+      "title": "얼티밋 어벤져스 2",
+      "video": false,
+      "vote_average": 6.721,
+      "vote_count": 247
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/qzzAt0GakCZzbCeCJ0sFGhMIcdv.jpg",
+      "genre_ids": [
+        28,
+        14
+      ],
+      "movie_id": 323660,
+      "original_language": "en",
+      "original_title": "Avengers Grimm",
+      "overview": "사악한 럼펄스킨은 평화로웠던 스노우화이트의 왕국을 불시에 공격해 다른 세상으로 가는 입구인 마법 거울을 빼앗아 지구로 들어간다. 인간들의 세계에서 흑마술을 부리며 왕처럼 군림하려는 계략을 가진 그를 막기 위해 스노우화이트와 신데렐라, 라푼젤, 잠자는 숲속의 공주 슬리핑 뷰티, 빨간 망토 소녀도 서둘러 지구로 쫓아간다. 지구를 구하기 위해선 럼펄스킨이 가진 거울을 빼앗고 도시 점령을 막아야 한다. 현대의 지구에 나타난 다섯 명의 공주들과 시장이 된 악당의 피할 수 없는 대결이 시작되는데…",
+      "popularity": 19.814,
+      "poster_path": "/l8oD6Ch9VcSK1qXJND5kHMkSBAH.jpg",
+      "release_date": "2015-03-17",
+      "title": "슈퍼히어로 어벤져",
+      "video": false,
+      "vote_average": 4.0,
+      "vote_count": 108
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+        
+      ],
+      "movie_id": 1051387,
+      "original_language": "en",
+      "original_title": "Avengers: Quantum Encounter",
+      "overview": "",
+      "popularity": 7.756,
+      "poster_path": "/bjVPUVREsbDYJsQwZMAE68yHUoY.jpg",
+      "release_date": "2022-07-14",
+      "title": "Avengers: Quantum Encounter",
+      "video": false,
+      "vote_average": 3.5,
+      "vote_count": 2
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/1r42uwYTbX7aOWxtS1qPCAdOBQJ.jpg",
+      "genre_ids": [
+        16,
+        878,
+        28
+      ],
+      "movie_id": 257346,
+      "original_language": "ja",
+      "original_title": "アベンジャーズ コンフィデンシャル：ブラック・ウィドウ ＆ パニッシャー",
+      "overview": "지구의 안보가 위협당하는 위기의 상황에서 슈퍼히어로들을 불러모아 세상을 구하는, 일명 [어벤져스] 작전.  지구의 평화를 위협하는 적의 등장으로 인류가 위험에 처하자 국제평화유지기구인 쉴드 (S.H.I.E.L.D)의 국장 닉 퓨이는 [어벤져스] 작전을 위해 전 세계에 흩어져 있던 슈퍼히어로들을 찾아나선다. 아이언맨부터 토르, 헐크, 캡틴 아메리카는 물론, 쉴드의 요원인 블랙 위도우, 호크 아이까지, 최고의 슈퍼히어로들이 [어벤져스]의 멤버로 모이게 되지만, 각기 개성이 강한 이들의 만남은 예상치 못한 방향으로 흘러가는데…",
+      "popularity": 33.651,
+      "poster_path": "/bsXC1PaRg8eEvVXCTVtNwLLvcyl.jpg",
+      "release_date": "2014-04-19",
+      "title": "어벤져스 컨피덴셜: 블랙 위도우 앤 퍼니셔",
+      "video": false,
+      "vote_average": 6.296,
+      "vote_count": 208
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/2BNKxbq4muNcwTjSDNCYnvr1dM8.jpg",
+      "genre_ids": [
+        18
+      ],
+      "movie_id": 37799,
+      "original_language": "en",
+      "original_title": "The Social Network",
+      "overview": "2003년 가을, 하버드대의 컴퓨터 천재 마크는 비밀 엘리트 클럽의 윈클보스 형제에게 하버드 선남선녀들만 교류할 수 있는 하버드 커넥션 사이트 제작을 의뢰 받는다. 하지만 여기서 획기적인 아이디어를 생각해낸 마크는 인맥 교류 사이트 페이스북을 개발, 절친 왈도의 도움으로 사이트를 오픈한다. 페이스북은 순식간에 모두의 마음을 사로잡고, 유명한 냅스터의 창시자 숀의 참여로 전세계로 번지면서 마크는 기업가치 58조원, 전세계 최연소 억만장자가 된다. 하지만 그 순간 윈클보스 형제는 물론 왈도마저 전대미문의 소송을 제기하는데...",
+      "popularity": 29.706,
+      "poster_path": "/4WAq2IZuVvWl0Wd1YIgBXdYgXna.jpg",
+      "release_date": "2010-10-01",
+      "title": "소셜 네트워크",
+      "video": false,
+      "vote_average": 7.35,
+      "vote_count": 10855
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/sORO7a1cSghfWE5GD4cSJ0qTN8O.jpg",
+      "genre_ids": [
+        28,
+        12,
+        14
+      ],
+      "movie_id": 521720,
+      "original_language": "en",
+      "original_title": "Avengers Grimm: Time Wars",
+      "overview": "시공간의 균열로 인해 마법 세계와의 통로가 열렸다! 아틀란티스의 여왕 막다는 마법의 힘으로 온 세상을 손에 넣고자 한다. 이를 막기 위해 나타난 어벤져스들은 막다의 계략으로 차원의 틈에 휘말려 과거에 갇히고 만다. 여왕의 손에서 미래와 세상을 구하기 위한 최후의 전쟁이 시작된다!",
+      "popularity": 12.974,
+      "poster_path": "/4ARjDBmYpOocL8kVTyWWSSzx5Df.jpg",
+      "release_date": "2018-05-01",
+      "title": "어벤져스 그림: 시간 전쟁",
+      "video": false,
+      "vote_average": 4.8,
+      "vote_count": 51
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/f8lQnoUG0UVK6xXOvfoP0alVJrW.jpg",
+      "genre_ids": [
+        27,
+        18,
+        878
+      ],
+      "movie_id": 1255,
+      "original_language": "ko",
+      "original_title": "괴물",
+      "overview": "아버지가 운영하는 한강매점, 늘어지게 낮잠 자던 강두는 우연히 특이한 광경을 목격하게 된다. 생전 보도 못한 무언가가 한강다리에 매달려 움직이는 것이다. 정체를 알 수 없는 괴물은 둔치 위로 올라와 사람들을 거침없이 깔아뭉개고, 무차별로 물어뜯기 시작한다. 순식간에 아수라장으로 돌변하는 한강변. 강두도 뒤늦게 딸 현서를 데리고 정신없이 도망가지만, 꼭 잡았던 현서의 손을 놓치고 만다. 하루아침에 집과 생계, 그리고 현서까지 모든 것을 잃게 된 강두 가족. 돈도 없고 빽도 없는 그들은 위험구역으로 선포된 한강 어딘가에 있을 현서를 찾아 나선다.",
+      "popularity": 20.174,
+      "poster_path": "/AswplPGdIc5Uv8OGklFSw9TRtgd.jpg",
+      "release_date": "2006-07-27",
+      "title": "괴물",
+      "video": false,
+      "vote_average": 6.976,
+      "vote_count": 2416
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/me6ehKZCupiBp4QVZ340V3R5lNA.jpg",
+      "genre_ids": [
+        28,
+        12,
+        14
+      ],
+      "movie_id": 558,
+      "original_language": "en",
+      "original_title": "Spider-Man 2",
+      "overview": "우연한 사고로 특별한 능력을 갖게된 피터 파커는 대학생과 슈퍼 히어로의 신분을 오가며 짜릿한 생활을 하지만 사랑 하는 메리 제인에게조차 자신의 마음을 열 수 없는 현실은 그들을 안타까운 로맨스로 이끈다. 한편 스파이더맨에게 아버지를 잃고 복수심에 불타는 피터의 친구 해리가 연구 중 폭발로 기계촉수와 엄청난 파워를 갖게된 닥터 옥토퍼스에게 뿌리치지 못할 제안을 하면서 도시 전체가 걷잡을 수 없는 위험에 휘말리게 되고, 스파이더맨의 운명은 점차 예측불가능한 상황으로 전개되는데...",
+      "popularity": 22.58,
+      "poster_path": "/hHrdrG8aRkLlrQaAJZjKhaweJNa.jpg",
+      "release_date": "2004-06-25",
+      "title": "스파이더맨 2",
+      "video": false,
+      "vote_average": 7.2,
+      "vote_count": 13684
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/k0hlAzTryCYX1O1LyC6P8tAa8s0.jpg",
+      "genre_ids": [
+        28,
+        12,
+        14
+      ],
+      "movie_id": 102382,
+      "original_language": "en",
+      "original_title": "The Amazing Spider-Man 2",
+      "overview": "스파이더맨의 삶에 완전히 적응한 피터 파커는 거미줄로 뉴욕을 활강하며 위험에 처한 시민들을 구해주고 사랑하는 연인 그웬과 데이트를 즐기며 행복하게 살아간다. 그러던 어느 날, 스파이더맨의 열렬한 팬이자 오스코프사의 전기 엔지니어인 맥스는 작업 중 치명적인 사고로 자신에게 엄청난 능력이 생긴 것을 발견한다. 하지만 이 능력으로 인해 뉴욕을 마비시킨 대규모 정전사태가 발생하고 사태를 해결하기 위해 나선 자신의 영웅 스파이더맨에게 공격을 당하자 배신감을 느끼고 분노하는데...",
+      "popularity": 93.048,
+      "poster_path": "/qcK4RLIQc2UxdYaaj7jFJwmxBkP.jpg",
+      "release_date": "2014-04-16",
+      "title": "어메이징 스파이더맨 2",
+      "video": false,
+      "vote_average": 6.488,
+      "vote_count": 11987
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": null,
+      "genre_ids": [
+        35
+      ],
+      "movie_id": 347158,
+      "original_language": "en",
+      "original_title": "Bikini Avengers",
+      "overview": "When the Jade Empress steals the world's largest diamonds, super heroes Bikini Avenger and Thong Girl must stop her before she uses the gems to build a dangerous sci-fi weapon.",
+      "popularity": 8.981,
+      "poster_path": "/ehTYWuPKwl8sXPX0I6LnvJUDaVl.jpg",
+      "release_date": "2015-02-24",
+      "title": "Bikini Avengers",
+      "video": false,
+      "vote_average": 5.5,
+      "vote_count": 15
+      }
+    },
+    { "model": "movies.movie",
+      "fields": {
+      "adult": false,
+      "backdrop_path": "/r5uAQQahZzcTYyPdlomDggyxHkV.jpg",
+      "genre_ids": [
+        35,
+        14
+      ],
+      "movie_id": 538153,
+      "original_language": "en",
+      "original_title": "Avengers of Justice: Farce Wars",
+      "overview": "은하계 최강의 빌런 조크스터는 태양을 없애 지구에 새로운 빙하기를 불러일으키고자 한다. 슈퍼히어로 슈퍼배트는 히어로 동료들과 함께 조크스터에 맞서 지구를 지켜내야만 한다. 이제 전 인류의 운명이 걸린 최후의 대결이 시작된다.",
+      "popularity": 7.77,
+      "poster_path": "/yymsCwKPbJIF1xcl2ih8fl7OxAa.jpg",
+      "release_date": "2018-07-20",
+      "title": "어벤져스 오브 저스티스",
+      "video": false,
+      "vote_average": 4.038,
+      "vote_count": 13
+      }
+    }   
 ]

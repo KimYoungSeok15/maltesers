@@ -9,4 +9,6 @@ urlpatterns = [
     path('comments/', views.comment_list),
     path('comments/<int:comment_pk>/', views.comment_detail),
     path('movies/<int:movie_id>/comments/', views.comment_create),
+    path('movies/genres/', views.all_genres), # 전체 장르 보내기
+    path('movies/genrename/', views.movie_genrename), # 해당 영화 장르 이름 보내기
 ]

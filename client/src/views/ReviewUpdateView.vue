@@ -80,7 +80,7 @@ export default {
         if(this.ReviewWriter === this.User){
           this.WriterIsUser = true
           this.updatedTitle = response.data.title
-          this.updatatedContent = response.data.content
+          this.updatedContent = response.data.content
           this.movieTitle = response.data.Movie_title
           this.genreName = response.data.genre_name
           this.rating = response.data.rating
@@ -92,7 +92,7 @@ export default {
     updateReview(){  // 게시물 수정 요청
       const token = this.token
       const title = this.updatedTitle
-      const content = this.updatatedContent
+      const content = this.updatedContent
       const Movie_title = this.movieTitle
       const user_name = this.User
       const genre_name = this.genreName

@@ -133,7 +133,10 @@ export default new Vuex.Store({
         context.commit('SAVE_TOKEN', res.data.key)
         context.commit('SAVE_USERID', username)
       })
-      .catch(err => console.log(err))   
+      .catch(err => {
+        console.log(err)
+        alert('아이디와 비밀번호를 확인해주세요')
+      })   
     },
 
     logout(context){

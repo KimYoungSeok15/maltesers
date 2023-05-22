@@ -5,7 +5,7 @@
 		<h1>메인페이지입니다</h1>
 		<!-- <div>{{RateSortedMovies}}</div> -->
 		<br>
-		<h2 class="border">TOP RATED MOVIE</h2>
+		<h2 class="border">평점 높은 영화</h2>
 		<br>
 		<div class=" d-flex row row-col-2">
 			<div  class="card col-2" v-for="(movie, index) in this.RateSortedMovies" :key="index"> 
