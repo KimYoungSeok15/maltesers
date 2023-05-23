@@ -3,10 +3,12 @@
     <NavigationBar/>
     <br>
     <h1>랜덤 영화 조회</h1>
-    <button @click="refresh" class="btn btn-primary m-3">pick</button>
+    <button @click="refresh" class="btn btn-primary m-3">Random!</button>
     <br>
-    <img :src="randomMoviesPoster">
-    <h3 class="fw-bold mt-3">{{ randomMoviesTitle }}</h3>
+    <img :src="`https://image.tmdb.org/t/p/w300${randomMovies.poster_path}`">
+    <h3 class="fw-bold mt-3">{{ randomMovies.title }}</h3>
+    <p class="fw-bold mt-3">{{ randomMovies_genre_name }}</p>
+    <p class="fw-bold mt-3">{{ randomMovies.overview}}</p>
 
   </div>
 </template>
@@ -24,8 +26,8 @@ export default {
   data() {
     return {
       inDex: 0,
-      randomMoviesPoster :null,
-      randomMoviesTitle :null,
+      randomMovies :null,
+      randomMovies_genre_name :null,
     }
   },
   methods: {
@@ -38,27 +40,48 @@ export default {
 
   },
   created() {
-    const TMDBURL = 'https://api.themoviedb.org/3/movie/top_rated?'
-    const params = {
-      api_key: process.env.VUE_APP_Movie_API,
-      language: 'ko-KR',
-      page: '1',
-    }
+    const HooniMovie = 'http://127.0.0.1:8000/api/m1/movies/'
+    
     axios({
         methods: 'get',
-        url: TMDBURL,
-        params: params,
+        url: HooniMovie,
     })
     .then((response) => {
-      console.log(response)
-      this.movieAllData = response.data.results
-      this.$store.dispatch('topRatedMovies', this.movieAllData)
-      const pickIndex = Math.floor(Math.random() * (this.$store.state.topRatedMovies.length-1))
-      console.log(pickIndex)
-      this.inDex = pickIndex
-      this.randomMoviesTitle = this.$store.state.topRatedMovies[this.inDex].title
-      this.randomMoviesPoster = `https://image.tmdb.org/t/p/w300${this.$store.state.topRatedMovies[this.inDex].poster_path}`
+      console.log(response.data.length-1)
+      let previousNumbers = [];
 
+      function generateUniqueRandomNumber() {
+        const randomIndex = Math.floor(Math.random() * response.data.length);
+        
+        if (previousNumbers.includes(randomIndex)) {
+          // 이미 나온 수라면 재귀적으로 다시 호출하여 새로운 수를 생성합니다.
+          return generateUniqueRandomNumber();
+        }
+        
+        previousNumbers.push(randomIndex);
+        
+        // 중복을 방지한 유일한 수를 반환합니다.
+        return randomIndex;
+      }
+
+      // 사용 예시
+      console.log(generateUniqueRandomNumber());
+
+      this.randomMovies = response.data[generateUniqueRandomNumber()]
+      console.log(this.randomMovies.genre_ids)
+      const genre_id_list = this.randomMovies.genre_ids
+      axios({
+          method: 'post',
+          url: "http://127.0.0.1:8000/api/m1/movies/genrename/",
+          data: {
+            genre_id_list
+          }
+      })
+      .then((res) => {
+        console.log(res.data.genre_name_list)
+        this.randomMovies_genre_name = res.data.genre_name_list
+
+      })
     })
   }
 }
