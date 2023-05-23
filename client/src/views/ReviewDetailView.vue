@@ -139,10 +139,10 @@ export default {
         Authorization : `Token ${token}`
           },
         })
-      .then((response) => {
-        console.log(response)
+      .then(() => {
+        this.GetComments()
+        this.CommentCreateContext = ''
         })
-      this.$router.go()
       
     },
     StartUpdateComment(comment_id, content){  // 토글기능. 리스트에 없으면 넣고 있으면 뺀다
