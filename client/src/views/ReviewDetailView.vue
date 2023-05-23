@@ -104,6 +104,7 @@ export default {
         this.Comments = response.data
       })
       .catch((err)=>{
+        this.Comments=[]
         console.log(err)
       })
     },
