@@ -15,9 +15,11 @@
 				<main-Top-card :top="movie"/>  
 			</div>
 		</div>
-    <div class="pagination">
-      <button v-for="page in totalPages" :key="page" @click="goToPage(page)" :class="{ active: currentPage === page }">{{ page }}</button>
-    </div>		
+		<nav aria-label="Search results pages">
+			<div class="pagination">
+				<button v-for="page in totalPages" :key="page" @click="goToPage(page)" :class="{ active: currentPage === page }">{{ page }}</button>
+			</div>
+		</nav>		
 	</div>	
 </template>
 

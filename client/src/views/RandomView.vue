@@ -5,7 +5,9 @@
     <h1>랜덤 영화 조회</h1>
     <button @click="refresh" class="btn btn-primary m-3">Random!</button>
     <br>
-    <img :src="`https://image.tmdb.org/t/p/w300${randomMovies.poster_path}`">
+    <router-link :to="`../detail/${randomMovies.movie_id}`">
+      <img :src="`https://image.tmdb.org/t/p/w300${randomMovies.poster_path}`">
+    </router-link>
     <h3 class="fw-bold mt-3">{{ randomMovies.title }}</h3>
     <p class="fw-bold mt-3">{{ randomMovies_genre_name }}</p>
     <p class="fw-bold mt-3">{{ randomMovies.overview}}</p>
@@ -63,7 +65,7 @@ export default {
         console.log(generateUniqueRandomNumber());
 
         this.randomMovies = response.data[generateUniqueRandomNumber()]
-        console.log(this.randomMovies.genre_ids)
+        console.log(this.randomMovies)
         const genre_id_list = this.randomMovies.genre_ids
         axios({
             method: 'post',

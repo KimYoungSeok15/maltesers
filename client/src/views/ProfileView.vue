@@ -406,7 +406,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
   .mycontainer {
     min-height: 942.39px;
   }
