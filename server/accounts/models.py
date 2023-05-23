@@ -25,6 +25,7 @@ class UserLikeMovie(models.Model):
     user_name = models.CharField(max_length=100, null=True)
     movie_name = models.CharField(max_length=30, null=True)
     movie_id = models.CharField(max_length=30, null=True)
+    poster_path = models.CharField(max_length=200, null=True)
     
 # 전체 팔로우 목록
 class Following(models.Model):
