@@ -9,33 +9,35 @@
           <br>
           <span style="font-size:30px;" class="col-4">제목 : {{ReviewTitle}}</span><p class="col-4"></p><span class="col-4" v-if="ReviewCreatedAt"> 작성자 : {{ReviewWriter}}</span>
           <hr>
-          <div class="border">
-            <p> 영화 제목 : {{MovieTitle}}</p>
+          <p class="d-flex justify-content-end mx-3 px-3" style="font-size:15px;" v-if="ReviewUpdatedAt"> 작성일자 : {{ReviewUpdatedAt}}</p>
+          <p class="d-flex justify-content-end mx-3 px-3" style="font-size:15px;" v-if="ReviewCreatedAt"> 수정일자 : {{ReviewCreatedAt}}</p>
+          <div class="d-flex justify-content-end border-top mx-3 px-3">
+            <p class="m-0">영화 제목: {{ MovieTitle }}</p>
           </div>
-          <div class="border">
+          <div class="d-flex justify-content-end mx-3 px-3">
             <p> 장르 : {{Genre}}</p>
-          </div>                    
-          <div class="border">
-            <p> 내용 : {{ReviewContent}}</p>
-          </div>                    
-          <div class="border">
+          </div>     
+          <div class="d-flex justify-content-end mx-3 px-3">
             <p> 평점 : {{Rating}}</p>
-          </div>                    
-          <p style="font-size:15px;" v-if="ReviewUpdatedAt"> 작성일자 : {{ReviewUpdatedAt}}</p>
-          <p style="font-size:15px;" v-if="ReviewCreatedAt"> 수정일자 : {{ReviewCreatedAt}}</p>
+          </div>                
+          <div class="" style="height:200px">
+            <br>
+            <p> 내용 : {{ReviewContent}}</p>
+          </div>                   
           <hr>
 
-          <div class="row border">
+          <div class="row">
             <div class="col-3"></div>
-            <div class="col-2"><router-link class="btn btn-primary" to="/review">뒤로가기</router-link></div>
-            <div class="col-2"><router-link class="btn btn-primary" v-if="WriterIsUser" :to="`/review/${ReviewId}/update`">수정하기</router-link></div>
-            <div class="col-2"><div @click="DeleteReview" class="btn btn-primary" v-if="WriterIsUser">삭제하기</div></div>
+            <div class="col-2"><router-link class="btn btn-outline-light" to="/review">뒤로가기</router-link></div>
+            <div class="col-2"><router-link class="btn btn-outline-light" v-if="WriterIsUser" :to="`/review/${ReviewId}/update`">수정하기</router-link></div>
+            <div class="col-2"><div @click="DeleteReview" class="btn btn-outline-light" v-if="WriterIsUser">삭제하기</div></div>
           </div>
+          <br>
         </div>
       </div>
     </div>
     <div class="container mt-5">
-      <h2> 댓글 리스트 </h2>
+      <p> 댓글 리스트 </p>
       <div class="row">
         <div class="col-1"></div>      
         <div v-if="Comments" style="font-size:1px" class="col-10">
@@ -50,10 +52,9 @@
         </div> 
       </div>
     </div> 
-    <div class="container mt-5">
-      <h1> 댓글 작성 </h1>
-      <input @keyup.enter="CreateComment" type="text" v-model="CommentCreateContext">
-      <button @click="CreateComment" class="btn btn-primary ml-2" value="Add">Add</button>
+    <div class="container mt-3">
+      <input @keyup.enter="CreateComment" type="text" v-model="CommentCreateContext" placeholder="댓글 입력">
+      <button @click="CreateComment" class="btn btn-outline-light m-2" value="Add">Add</button>
     </div>    
   </div>
 </template>

@@ -297,6 +297,7 @@ export default {
     your_profile_check() {
       if (this.$store.state.nowUserName == this.page_user_name) {
         this.is_your_page = true
+        console.log(this.is_your_page, 'asdasdasasd')
       }
       return this.is_your_page
     },

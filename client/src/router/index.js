@@ -14,10 +14,16 @@ import ReviewUpdateView from '../views/ReviewUpdateView.vue'
 import ReviewDetailView from '../views/ReviewDetailView.vue'
 import ReviewView from '../views/ReviewView.vue'
 import Profile from '../views/ProfileView.vue'
+import recommend from '../views/RecommendView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/recommend',
+    name: 'recommend',
+    component: recommend
+  }, 
   {
     path: '/profile/:username',
     name: 'profile',
