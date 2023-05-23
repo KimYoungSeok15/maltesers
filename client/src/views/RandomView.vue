@@ -1,17 +1,23 @@
 <template>
-  <div style="height:1000px;">
+  <div>
     <NavigationBar/>
-    <br>
-    <h1>랜덤 영화 조회</h1>
-    <button @click="refresh" class="btn btn-primary m-3">Random!</button>
-    <br>
-    <router-link :to="`../detail/${randomMovies.movie_id}`">
-      <img :src="`https://image.tmdb.org/t/p/w300${randomMovies.poster_path}`">
-    </router-link>
-    <h3 class="fw-bold mt-3">{{ randomMovies.title }}</h3>
-    <p class="fw-bold mt-3">{{ randomMovies_genre_name }}</p>
-    <p class="fw-bold mt-3">{{ randomMovies.overview}}</p>
-
+    <div class="backdropcontainer" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${randomMovies.backdrop_path})`}" >
+      <h1>랜덤 영화 조회</h1>
+      <button @click="refresh" class="btn btn-primary m-3">Random!</button>
+      <br>
+      <div class="container">
+        <div class="border row">
+          <router-link class="col-4 my-5" :to="`../detail/${randomMovies.movie_id}`" >
+            <img :src="`https://image.tmdb.org/t/p/w300${randomMovies.poster_path}`">
+          </router-link> 
+          <div class="col-4">
+            <h3 class="fw-bold mt-3">{{ randomMovies.title }}</h3>
+            <p class="fw-bold mt-3">{{ randomMovies_genre_name }}</p>
+            <p class="fw-bold mt-3">{{ randomMovies.overview}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -104,5 +110,8 @@ export default {
     text-decoration: underline;
     font-weight: bold;
     font-size: 19px; /* 마우스를 올렸을 때 큰 글자 크기 */
+  }
+  .backdropcontainer {
+    min-height: 1000px
   }
 </style>

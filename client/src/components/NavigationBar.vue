@@ -8,7 +8,8 @@
 			<router-link style="text-decoration: none;" to="/movies">Movie</router-link> |
 			<router-link style="text-decoration: none;" to="/random">Random</router-link> |
 			<router-link style="text-decoration: none;" to="/review">Reviews</router-link> |
-			<router-link style="text-decoration: none;" to="/weather">Today's Recommended Movie</router-link>
+			<router-link style="text-decoration: none;" to="/weather">날씨 랜덤 무비</router-link> |
+			<router-link style="text-decoration: none;" to="/recommend">Recommended Movie</router-link>
 		</span>
     <span class="">
 		<a class="btn mx-3 btn-outline-light" @click="GoProfile">{{user}}</a>
@@ -46,6 +47,7 @@ export default {
 			this.$store.dispatch('logout')
 			},
 		GoProfile() {
+			// 여기에서 인코딩된 입력값을 전송하거나 처리할 수 있습니다.
 			this.$router.push({name:'profile', params: {username: this.user}})
 			this.$router.go()
 		},

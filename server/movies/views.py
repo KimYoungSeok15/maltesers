@@ -67,7 +67,7 @@ def comment_create(request, movie_id):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
 
-# 영화 전체 정보 
+# 장르 전체 정보 
 @api_view(['GET'])
 # @permission_classes([IsAuthenticated])
 def all_genres(request):

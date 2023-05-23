@@ -9,32 +9,43 @@
       <div class="row">
         <div class="col-1"></div>
         <router-link to="/reviewcreate" class="btn btn-primary col-2 m-2"> 리뷰 작성</router-link>
+        <div class="col-1"></div>
+        
       </div>
+      <div class="">
+          <input type="text" placeholder="영화 리뷰 키워드 입력" v-model="article_key">
+          <button class="btn btn-primary m-2">검색</button>
+        </div>
       <br>
       <div class="row">
         <div class="col-1"></div>
-          <div v-if="articleAll" class="col-10">
-            <div class="m-0 rounded" v-for="article in articleAll" :key="article.id" style="border: solid 1px;">
-              <div>
-                <span @click="GoToFreeDetail(article.id)" class="underline-on-hover col-5 mx-5">영화제목 : {{ article.Movie_title }} </span>
-              </div>
-              <div>
-                <span @click="GoToFreeDetail(article.id)" class="underline-on-hover col-5 mx-5">제목 : {{ article.title }} </span>
-              </div>                
-              <div>
-                <span @click="GoToFreeDetail(article.id)" class="underline-on-hover col-5 mx-5">장르 : {{ article.genre_name }} </span>
-              </div>
-              <div>
-                <span @click="GoToFreeDetail(article.id)" class="underline-on-hover col-5 mx-5">평점 : {{ article.rating }} </span>
-              </div>
-              <div>
-                <span class="text-end underline-on-hover" @click="GoToProfile(article.user_name)" >작성자 : {{ article.user_name }}</span>
-                <p class="text-end m-0 px-3">생성시간 : {{ article.created_at.slice(0, 10) }} {{ article.created_at.slice(11, 19) }}</p> 
+        <div v-if="articleAll" class="col-10">
+          <div class="row">
+            <div class="col-4 mb-3" v-for="article in articleAll" :key="article.id">
+              <div class="card border-white" style="background-color: transparent;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ article.Movie_title }}</h5>
+                  <p class="card-text underline-on-hover" @click="GoToFreeDetail(article.id)">제목: {{ article.title }}</p>
+                  <p class="card-text">장르: {{ article.genre_name }}</p>
+                  <p class="card-text">평점: {{ article.rating }}</p>
+                  <div class="card-footer text-end border-white">
+                    <p class="card-text">
+                      <button @click="GoToFreeDetail(article.id)" class="btn btn-outline-light">리뷰 보기</button>
+                      <br>
+                      <br>
+                      작성자: <span @click="GoToProfile(article.user_name)" class="underline-on-hover">{{ article.user_name }}</span>
+                    </p>
+                    <p class="card-text m-0 px-3">
+                      생성시간: {{ article.created_at.slice(0, 10) }} {{ article.created_at.slice(11, 19) }}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      <br>
+      </div>
+    <br>
     </div>
     <br><br><br><br><br><br><br><br><br><br>
   </div>
@@ -52,6 +63,7 @@ export default {
   data() {
     return {
 			articleAll: '',
+      article_key: '',
 		}
 	},
   computed: {
