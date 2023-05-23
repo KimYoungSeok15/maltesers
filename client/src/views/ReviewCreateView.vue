@@ -9,24 +9,25 @@
       <br>
         <div class="row">
             <div class="col-1">제목 :</div>
-            <input class="col-10" type="text" v-model="reviewTitle" placeholder="제목을 입력해주세요">
+            <input class="col-4" type="text" v-model="reviewTitle" placeholder="제목을 입력해주세요">
+            <div class=""></div>
+            <br>
+            <div class="col-1">영화 제목 :</div>
+            <input class="col-4" type="text" v-model="movieTitle" placeholder="내용을 입력해주세요">
+            <div class=""></div>
+            <br>
+            <div class="col-1">장르 :</div>
+            <input class="col-4" type="text" v-model="genreName" placeholder="내용을 입력해주세요">
+            <div class=""></div>
+            <br>
+            <div class="col-1">평점 :</div>
+            <input class="col-1" type="number" min="1" max="10" v-model="rating" placeholder="">
             <div class=""></div>
             <br>
             <div class="col-1">내용 :</div>
             <input class="col-10" style="height:500px;"  type="text" v-model="reviewContent" placeholder="내용을 입력해주세요">
             <div class=""></div>
             <br>
-            <div class="col-1">영화 제목 :</div>
-            <input class="col-10" type="text" v-model="movieTitle" placeholder="내용을 입력해주세요">
-            <div class=""></div>
-            <br>
-            <div class="col-1">장르 :</div>
-            <input class="col-10" type="text" v-model="genreName" placeholder="내용을 입력해주세요">
-            <div class=""></div>
-            <br>
-            <div class="col-1">평점 :</div>
-            <input class="col-1" type="number" min="1" max="10" v-model="rating" placeholder="">
-            <div class=""></div>
             <div><button @click="postReview" class="btn btn-primary col-2 mt-4" value="Add">Add</button></div>
         </div>
     </div>

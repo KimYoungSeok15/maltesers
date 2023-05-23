@@ -62,13 +62,13 @@ def search_freeboard_list(request, search_keyword):
     related_freeboards = []
     for ll in related_freeboard_list:
         if search_keyword in ll.title or search_keyword in ll.content:
-            print(ll.title, ll.content)
             related_freeboards.append(ll)
-
+            print(ll)
     related_freeboards_json = []        
     for k in related_freeboards:
         related_freeboards_json.append(
-            {
+            {   
+                "id": k.id,
                 "title": k.title,
                 "content" : k.content,
                 "created_at" : k.created_at,
