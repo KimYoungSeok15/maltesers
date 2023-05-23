@@ -9,7 +9,7 @@
           <img style="width: 100px; height: 200%; object-fit: cover;" :src="profile_pic_URL" alt="">
         </div>
         <br>
-        <form v-if="profile_pic_check()">
+        <form v-if="your_profile_check()">
           <input style="width:300px" type="file" ref="fileInput"  @change="handleFileChange">
           <button @click="uploadFile">프로필 사진 Upload</button>
         </form>
@@ -40,8 +40,11 @@
       </div>   -->
       <div>
         <h3>선호 영화 장르</h3>
-        <input type="text" placeholder="영화 장르를 입력해주세요옹">
-        <button>Add</button>
+        <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name">
+        <button  v-if="your_profile_check()" class="btn text-light btn-outline-light" @click="addLikeGenre" >Add</button>
+        <div class="" v-for="genre in like_genre_list" :key="genre.id">
+          {{ genre.genre_name }} <button v-if="your_profile_check()" class="btn text-light btn-outline-light p-1" @click="genreDel(genre.id)">Delete</button>
+        </div>
       </div>
       <div>
         <h3>좋아요한 영화 목록</h3>
@@ -88,7 +91,10 @@ export default {
             selectedFile: null,
             profile_pic_URL: '',
             is_your_profile: false,
-            profile_pic_URL_check: true
+            profile_pic_URL_check: true,
+
+            like_genre_name: '',
+            like_genre_list: ''
           
         }
     },
@@ -97,6 +103,37 @@ export default {
     },
     
     methods : {
+      refresh_genre() {
+        const user_name = this.page_user_name
+        axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/accounts/profile/userprofile/user_like_genre/${user_name}/`,
+        headers:  {
+            Authorization : `Token ${this.$store.state.token}`
+          }
+        })
+        .then((res) => {
+          this.like_genre_list = res.data
+        })
+        .catch(() => {
+          console.log("좋아하는 장르 데이터베이스 빈 값")
+          this.like_genre_list = ''
+        })
+      },
+      genreDel(data) {
+        const like_genre_id = data
+        console.log(typeof like_genre_id)
+        axios({
+            method: 'delete',
+            url: `http://127.0.0.1:8000/accounts/profile/userprofile/user_like_genre_del/${like_genre_id}/`,
+            headers:  {
+                Authorization : `Token ${this.$store.state.token}`
+              }
+            })
+            .then(() => {
+              this.refresh_genre()
+            })
+      },
       handleFileChange(event) {
       this.selectedFile = event.target.files[0];
       },
@@ -127,72 +164,102 @@ export default {
             
           } catch(err) {
             console.log(err)
+            
           }
       }
     },
-      clickFollow() {
-        const user_name = this.$store.state.nowUserName
-        const following = this.page_user_name
+    // 좋아하는 장르 프로필에 추가
+    addLikeGenre() {
+      const user_name = this.page_user_name
+      const genre_name = this.like_genre_name
+      if (genre_name == '') {
+        alert("장르를 입력해주세요!")
+      } else {
         axios({
-          method: 'post',
-          url: "http://127.0.0.1:8000/accounts/profile/followings/",
-          headers:  {
-              Authorization : `Token ${this.$store.state.token}`
-          },
-          data: {
-            user_name,
-            following
-          }
+        method: 'post',
+        url: `http://127.0.0.1:8000/accounts/profile/userprofile/user_like_genre/${user_name}/`,
+        headers:  {
+            Authorization : `Token ${this.$store.state.token}`
+        },
+        data: {
+          user_name,
+          genre_name
+        }
         })
-      .then(() => {
-        alert("팔로우 완료")
-        // 현재 페이지 사용자 팔로우 한 사람 수 갱신
-       
-        axios({
-          method: 'get',
-          url: `http://127.0.0.1:8000/accounts/profile/followings/count/${this.page_user_name}/`,
-          headers:  {
-              Authorization : `Token ${this.$store.state.token}`
-          },
+        .then(() => {
+          this.like_genre_name=''
+          this.refresh_genre()
         })
-        .then((response) => {
-          console.log(response)
-          this.how_many_people_follow_page_user_name = response.data[0].following_count
-        })
-      })
-      .catch((error) => {
-        if (error.response.status === 400 && error.response.data.error === '자기 자신을 팔로우할 수 없습니다.') {
-      // 자기 자신을 팔로우하려고 한 경우
-          alert('자기 자신을 팔로우할 수 없습니다.');
-        } else {
-          alert('이미 팔로우한 사용자입니다.')
+      }  
+    },
+    clickFollow() {
+      const user_name = this.$store.state.nowUserName
+      const following = this.page_user_name
+      axios({
+        method: 'post',
+        url: "http://127.0.0.1:8000/accounts/profile/followings/",
+        headers:  {
+            Authorization : `Token ${this.$store.state.token}`
+        },
+        data: {
+          user_name,
+          following
         }
       })
-      },
-      GoToFreeDetail(data){
-        this.$router.push({name:'ReviewDetail', params: {id: data.id}})
-        
-        // this.$router.go()
-      },
-      profile_pic_check() {
-        if (this.$store.state.nowUserName == this.page_user_name) {
-          this.is_your_page = true
-        }
-        return this.is_your_page
-      },
-      profile_URL_check() {
-        if (this.profile_pic_URL == '') {
-          this.profile_pic_URL_check = false
-        }
-        return this.profile_pic_URL_check
+    .then(() => {
+      alert("팔로우 완료")
+      // 현재 페이지 사용자 팔로우 한 사람 수 갱신
+    
+      axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/accounts/profile/followings/count/${this.page_user_name}/`,
+        headers:  {
+            Authorization : `Token ${this.$store.state.token}`
+        },
+      })
+      .then((response) => {
+        console.log(response)
+        this.how_many_people_follow_page_user_name = response.data[0].following_count
+      })
+    })
+    .catch((error) => {
+      if (error.response.status === 400 && error.response.data.error === '자기 자신을 팔로우할 수 없습니다.') {
+    // 자기 자신을 팔로우하려고 한 경우
+        alert('자기 자신을 팔로우할 수 없습니다.');
+      } else {
+        alert('이미 팔로우한 사용자입니다.')
       }
+    })
+    },
+    GoToFreeDetail(data){
+      this.$router.push({name:'ReviewDetail', params: {id: data.id}})
+      
+      // this.$router.go()
+    },
+    your_profile_check() {
+      if (this.$store.state.nowUserName == this.page_user_name) {
+        this.is_your_page = true
+      }
+      return this.is_your_page
+    },
     },
   created() {
     // 자유게시판 게시글 작성자 누르면 작성자 이름 받아옴
     const page_user_name_Incoded = document.location.href.split('/')[4]
     this.page_user_name = decodeURIComponent(page_user_name_Incoded)
     const djangoProfile = 'http://127.0.0.1:8000/accounts/profile/userprofile/'
-    
+
+    axios({
+        method: 'get',
+        url: `http://127.0.0.1:8000/accounts/profile/userprofile/user_like_genre/${this.page_user_name}/`,
+        headers:  {
+            Authorization : `Token ${this.$store.state.token}`
+          }
+        })
+        .then((res) => {
+          console.log(res.data)
+          this.like_genre_list = res.data
+        })
     axios({
         methods: 'get',
         url: djangoProfile+`${this.page_user_name}`,
@@ -230,7 +297,8 @@ export default {
           this.how_many_people_follow_page_user_name = response.data[0].following_count
           this.how_many_people_follow_page_user_name_list = response.data[0].following_list
         })
-        .catch(() => {
+        .catch((err) => {
+          console.log(err)
           this.how_many_people_follow_page_user_name = 0
         })
         // 처음 프로필 페이지 불러올 때 현재 페이지 사용자가 팔로우한 사람 수 갱신
@@ -246,7 +314,8 @@ export default {
           this.how_many_people_page_user_name_follow = response.data[0].following_count
           this.how_many_people_page_user_name_follow_list = response.data[0].following_list
         })
-        .catch(()=> {
+        .catch((err)=> {
+          console.log(err)
           this.how_many_people_page_user_name_follow = 0
         })
     })

@@ -24,6 +24,8 @@ class UserLikeMovieSerializer(serializers.ModelSerializer):
         model = UserLikeMovie
         fields = '__all__'
 
+
+
 class LikesListSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserLikeMovie

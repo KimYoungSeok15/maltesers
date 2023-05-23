@@ -128,9 +128,8 @@ def follower_count(request, username):
 @api_view(['GET', 'POST'])
 def user_like_genre(request, username):
     if request.method == 'GET':
-        print('asdasdasdsadsadsaasdasd')
         user_profile = get_list_or_404(UserLikeGenre, user_name=username)
-        serializer = UserLikeGenreSerializer(user_profile)
+        serializer = UserLikeGenreSerializer(user_profile, many=True)
         return Response(serializer.data)
     
     elif request.method == 'POST':
@@ -139,12 +138,25 @@ def user_like_genre(request, username):
             serializer.save()
             # serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def user_like_genre_del(request, like_genre_id):
+    like_genre_one = get_object_or_404(UserLikeGenre, id=like_genre_id)
+
+    if request.method == 'DELETE':
+        like_genre_one .delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+   
+
         
 # 유저가 좋아하는 영화 출력, 유저가 좋아하는 영화 추가
 @api_view(['GET', 'POST'])
 def user_like_movie(request, username):
     if request.method == 'GET':
         user_profile = get_list_or_404(UserLikeMovie, user_name=username)
+        print(user_profile)
         serializer = UserLikeMovieSerializer(user_profile)
         return Response(serializer.data)
     
@@ -162,11 +174,12 @@ def follow_check(request):
 
 # 언팔로우 = 팔로우 관계 삭제 구ㄹ현
 
-# 좋아요 전체목록
-# 좋아요를 누를 시 관계 추가
+
 @api_view(['GET', 'POST'])
 def likes(request):
-    pass 
+    pass
+
+
 
 # 특정 유저가 좋아요한 영화 목록
 @api_view(['GET', 'POST'])
