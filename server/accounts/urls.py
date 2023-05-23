@@ -14,6 +14,6 @@ urlpatterns = [
     path('follow/check/<str:username>/', views.follow_check), 
     
 
-    # path('Likes/', views.likes), #좋아요 전체 목록
-    # path('Likes/<str:username>/', views.user_likes), # 특정 유저가 좋아요 한 영화 목록
+    path('Likes/<str:user_name>/', views.user_like_movie), #좋아요 전체 목록
+    path('Likes/del/<int:user_likes_id>/', views.user_likes_del), # 특정 유저가 좋아요 한 영화 목록
 ]

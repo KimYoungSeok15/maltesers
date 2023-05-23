@@ -48,6 +48,9 @@
       </div>
       <div>
         <h3>좋아요한 영화 목록</h3>
+        <div v-for="movie in like_movie_list" :key=movie.id >
+          <a :href="`http://localhost:8080/detail/${movie.movie_id}`">{{ movie.movie_name }}</a><button @click="likeMovieDel(movie.id)" class="btn text-light btn-outline-light p-1 m-1">Delete</button> 
+        </div>
       </div>
       <br>
       <h3>{{page_user_name}}님이 쓴 글</h3>
@@ -94,7 +97,9 @@ export default {
             profile_pic_URL_check: true,
 
             like_genre_name: '',
-            like_genre_list: ''
+            like_genre_list: '',
+
+            like_movie_list: ''
           
         }
     },
@@ -103,6 +108,39 @@ export default {
     },
     
     methods : {
+      like_movie_print(user_name) {
+        const token = this.$store.state.token
+        axios({  
+          method: 'get',
+          url: `http://127.0.0.1:8000/accounts/profile/Likes/${user_name}/`,
+          headers:  {
+            Authorization : `Token ${token}`
+          },
+        })
+        .then((res) => {
+          console.log(res)
+          this.like_movie_list = res.data
+        })
+        .catch((err) => {
+          console.log(err)
+          this.like_movie_list = ''
+        })
+      },
+      likeMovieDel(id) {
+        const token = this.$store.state.token
+        const user_name = this.page_user_name
+        axios({  
+          method: 'delete',
+          url: `http://127.0.0.1:8000/accounts/profile/Likes/del/${id}/`,
+          headers:  {
+            Authorization : `Token ${token}`
+          },
+        })
+        .then((res) => {
+          console.log(res)
+          this.like_movie_print(user_name)
+        })
+      },
       refresh_genre() {
         const user_name = this.page_user_name
         axios({
@@ -248,7 +286,7 @@ export default {
     const page_user_name_Incoded = document.location.href.split('/')[4]
     this.page_user_name = decodeURIComponent(page_user_name_Incoded)
     const djangoProfile = 'http://127.0.0.1:8000/accounts/profile/userprofile/'
-
+    this.like_movie_print(this.page_user_name)
     axios({
         method: 'get',
         url: `http://127.0.0.1:8000/accounts/profile/userprofile/user_like_genre/${this.page_user_name}/`,
@@ -259,6 +297,9 @@ export default {
         .then((res) => {
           console.log(res.data)
           this.like_genre_list = res.data
+        })
+        .catch((err) => {
+          console.log(err)
         })
     axios({
         methods: 'get',
@@ -319,6 +360,9 @@ export default {
           this.how_many_people_page_user_name_follow = 0
         })
     })
+    .catch((err) => {
+      console.log(err)
+    })
     axios({
             method: 'get',
             url: `http://127.0.0.1:8000/accounts/profile/userprofile/${this.page_user_name}/`,
@@ -331,6 +375,9 @@ export default {
               this.profile_pic_URL = `http://127.0.0.1:8000${res.data.profile_pic}`
               console.log(this.profile_pic_URL)
               
+            })
+            .catch((err) => {
+              console.log(err)
             })
     }
 
@@ -349,5 +396,14 @@ export default {
     height: 100%;
     position: relative;
     overflow: hidden;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  /* 링크에 마우스가 올라갔을 때 글씨를 볼드체로 변경 */
+  a:hover {
+    font-weight: bold;
   }
 </style>

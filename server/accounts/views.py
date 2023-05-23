@@ -153,19 +153,31 @@ def user_like_genre_del(request, like_genre_id):
         
 # 유저가 좋아하는 영화 출력, 유저가 좋아하는 영화 추가
 @api_view(['GET', 'POST'])
-def user_like_movie(request, username):
+@permission_classes([IsAuthenticated])
+def user_like_movie(request, user_name):
     if request.method == 'GET':
-        user_profile = get_list_or_404(UserLikeMovie, user_name=username)
+        user_profile = get_list_or_404(UserLikeMovie, user_name=user_name)
         print(user_profile)
-        serializer = UserLikeMovieSerializer(user_profile)
+        serializer = UserLikeMovieSerializer(user_profile, many=True)
         return Response(serializer.data)
     
-    elif request.method == 'POST':
+    if request.method == 'POST':
         serializer = UserLikeMovieSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             # serializer.save(user=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+    
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def user_likes_del(request, user_likes_id):
+    like_movie_one = get_object_or_404(UserLikeMovie, id=user_likes_id)
+
+    if request.method == 'DELETE':
+        like_movie_one.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
 
 # 팔로우 여부 확인
 @api_view(['GET'])
@@ -174,14 +186,3 @@ def follow_check(request):
 
 # 언팔로우 = 팔로우 관계 삭제 구ㄹ현
 
-
-@api_view(['GET', 'POST'])
-def likes(request):
-    pass
-
-
-
-# 특정 유저가 좋아요한 영화 목록
-@api_view(['GET', 'POST'])
-def user_likes(request, username):
-    pass 
