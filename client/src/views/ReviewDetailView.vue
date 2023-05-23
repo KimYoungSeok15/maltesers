@@ -38,11 +38,13 @@
       <h2> 댓글 리스트 </h2>
       <div class="row">
         <div class="col-1"></div>      
-        <div style="font-size:1px" class="col-10">
+        <div v-if="Comments" style="font-size:1px" class="col-10">
           <div v-for="comment in Comments" :key=comment.id class="">
-            <span v-if="!(comment.id in UpdatingCommentId)" style="font-size:5px" class="col-4 mx-3">내용 : {{comment.content}}</span> 
-            <span v-if="!(comment.id in UpdatingCommentId)" class="col-4 mx-3" style="font-size:5px"> 작성자 : {{comment.user_name}} </span>
-            <span @click="StartUpdateComment(comment.id)" class="mx-2" style="color:green">수정</span> <span style="color:red">삭제</span>
+            <span v-if="!(UpdatingCommentId.includes(comment.id))" style="font-size:5px" class="col-4 mx-3">내용 : {{comment.content}}</span> 
+            <input v-if="UpdatingCommentId.includes(comment.id)" @keyup.enter="UpdateComment(comment.id, comment.content)" v-model="comment.content" style="font-size:5px" class="col-4 mx-3">
+            <span v-if="!(UpdatingCommentId.includes(comment.id))" class="col-4 mx-3" style="font-size:5px"> 작성자 : {{comment.user_name}} </span>
+            <span v-if="comment.user_name === User" @click="StartUpdateComment(comment.id, comment.content)" class="mx-2" style="color:green">수정</span> 
+            <span v-if="comment.user_name === User" @click="DeleteComment(comment.id)" style="color:red">삭제</span>
             <hr class="m-1">
           </div>  
         </div> 
@@ -50,7 +52,7 @@
     </div> 
     <div class="container mt-5">
       <h1> 댓글 작성 </h1>
-      <input type="text" v-model="CommentCreateContext">
+      <input @keyup.enter="CreateComment" type="text" v-model="CommentCreateContext">
       <button @click="CreateComment" class="btn btn-primary ml-2" value="Add">Add</button>
     </div>    
   </div>
@@ -63,6 +65,7 @@ import axios from 'axios'
 const ReviewURL = `http://127.0.0.1:8000/api/c1/freeboards/`
 const getUsernameURL = "http://127.0.0.1:8000/accounts/user/"
 const commentURL = "http://127.0.0.1:8000/api/c1/freeboards/article/comment/"
+const commentUpdateURL = "http://127.0.0.1:8000/api/c1/freeboards/comment/"
 export default {
   components: {
     NavigationBar,
@@ -87,6 +90,23 @@ export default {
     }
   },
   methods: {
+    // 댓글 가져오기
+    GetComments(){
+      const token = this.$store.state.token
+      axios({  
+          method: 'get',
+          url: commentURL + this.ReviewId + '/',
+          headers:  {
+          Authorization : `Token ${token}`
+        },
+      })
+      .then((response) => {
+        this.Comments = response.data
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
+    },
     // 현재 리뷰 삭제
     DeleteReview() {
         axios({  
@@ -124,30 +144,53 @@ export default {
       this.$router.go()
       
     },
-    StartUpdateComment(comment_id){
-      this.UpdatingCommentId.push(comment_id)
+    StartUpdateComment(comment_id, content){  // 토글기능. 리스트에 없으면 넣고 있으면 뺀다
+      console.log(comment_id)
+      if (this.UpdatingCommentId.includes(comment_id)) {
+          // 이미 수정 중인 경우
+          this.UpdateComment(comment_id, content);
+        } 
+      else {
+        this.UpdatingCommentId.push(comment_id);
+      }
+      console.log(this.UpdatingCommentId)
     },
-    UpdateComment(content){
+    UpdateComment(comment_id, content){
       const token = this.$store.state.token
-      const freeboard_id = this.ReviewId
-      const user_name = this.User
       axios({  
-        method: 'post',
-        url: commentURL + freeboard_id + '/',
+        method: 'put',
+        url: commentUpdateURL + comment_id + '/',
         data: {
-          freeboard_id,
-          user_name,
           content 
           },
         headers:  {
         Authorization : `Token ${token}`
           },
         })
-      .then((response) => {
-        console.log(response)
+      .then((res) => {
+        this.UpdatingCommentId = this.UpdatingCommentId.filter(function(element) {
+          return element !== res.data.id
+        });
+      })
+    },
+    DeleteComment(id){
+      const token = this.$store.state.token
+      axios({
+        method: 'delete',
+        data: {
+          id
+        },
+        url: commentUpdateURL + id + '/',
+        headers: {
+          Authorization : `Token ${token}`
+        }
         })
-      this.$router.go()
-    } 
+        .then(()=>{
+          // 댓글 가져오기
+          this.GetComments()
+        }
+        )
+    }
   },
   created() {
       const token = this.$store.state.token
@@ -199,9 +242,6 @@ export default {
     })
     .then((response) => {
       this.Comments = response.data
-      for (let i=0; i<this.Comments.length; i++) {
-        this.UpdatingCommentId.push(response.data[i].id)   // 각 comment의 id를 배열에 담는다.
-      }
     })
     .catch((err)=>{
       console.log(err)

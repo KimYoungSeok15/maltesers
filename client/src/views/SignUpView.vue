@@ -17,7 +17,6 @@
       <input type="submit" value="SignUp">
     </form>
     <button @click="GoBack" class="mt-3">돌아가기</button>
-    <div style="height: 300px;"></div>
   </div>
 </template>
 
