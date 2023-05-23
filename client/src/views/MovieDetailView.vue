@@ -9,6 +9,7 @@
           <div class="col-1"></div>
           <div class="col-4"> 
             <h1>{{movieDetail.title}} </h1>
+            <button @click="likes_plus(movieDetail)" >좋아요</button>
             <br>
             <p>평점 :{{movieDetail.vote_average}}</p>
             <p>개봉일 :{{movieDetail.release_date}}</p>
@@ -48,6 +49,27 @@ export default {
     NavigationBar,
   },
   methods:{
+    // 좋아요 리스트에 추가
+    likes_plus(movieDetail) {
+      alert('좋아요 추가')
+      const user_name = this.$store.state.nowUserName
+      const movie_id = movieDetail.id
+      const movie_name = movieDetail.title
+      const token = this.$store.state.token
+      axios({  
+          method: 'post',
+          url: `http://127.0.0.1:8000/accounts/profile/Likes/${user_name}/`,
+          data: {
+            user_name, movie_name, movie_id
+          },
+          headers:  {
+            Authorization : `Token ${token}`
+          },
+      })
+      .then((res) => {
+        console.log(res)
+      })
+    },  
     getMovie() {
       axios({  
           methods: 'get',
