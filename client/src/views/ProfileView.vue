@@ -2,23 +2,27 @@
   <div>
     <NavigationBar/>
     <br>
-    <div class="container border">
+    <div class="container border mycontainer" >
       <br>
       <div class="row">
-        <div v-if="true" class="profile_pic_box">
-          <img style="width: 100px; height: 200%; object-fit: cover;" :src="profile_pic_URL" alt="">
+        <div class="profile_pic_box">
+          <img @click="toggleForm()" class="circle custom-cursor" style="width: 300px; height: 300%; object-fit: cover;" src="@/assets/gibone_profile.png" v-if="profile_pic_URL==`http://127.0.0.1:8000null`">
+          <img @click="toggleForm()" class="circle custom-cursor" style="width: 300px; height: 300%; object-fit: cover;" :src="profile_pic_URL" v-else>
         </div>
         <br>
-        <form v-if="your_profile_check()">
-          <input style="width:300px" type="file" ref="fileInput"  @change="handleFileChange">
-          <button @click="uploadFile">프로필 사진 Upload</button>
+        <form id="myForm" style="display: none;" v-if="your_profile_check()">
+          <br>
+          <input value="파일 선택" style="width:300px" type="file" ref="fileInput"  @change="handleFileChange">
+          <button @click="uploadFile">사진 Upload</button>
+          <br>
         </form>
-        <br>
-        <br>
-        <h1>{{page_user_name}}님의 프로필 페이지</h1>
-        <p>가입일 : {{date_joined.slice(0, 10)}} | 가입 시간: {{date_joined.slice(11,19)}}</p>
-        <p>포인트 : {{ page_user_point }}</p>
-        <div class=""></div>
+        <div>
+          <br>
+          <br>
+          <h2>{{page_user_name}}님의 프로필 페이지</h2>
+          <p>가입일 : {{date_joined.slice(0, 10)}} | 가입 시간: {{date_joined.slice(11,19)}}</p>
+          <p>포인트 : {{ page_user_point }}</p>
+        </div>
       </div>
       <button @click="clickFollow" class="btn btn-primary mx-3" :class="follow_status">팔로우</button>
       <span>{{page_user_name}}님이 팔로우하고 있는 사람: {{how_many_people_page_user_name_follow}}</span> |
@@ -26,18 +30,18 @@
       <br>
       <br>
       <br>
-      <!-- <div class="container">
+      <div class="container">
         <div class="row">
           <p class="col-3">{{page_user_name}}님이 팔로우하고 있는 사람 목록</p>
           <div class="content-container col-3" v-for="people in how_many_people_follow_page_user_name_list" :key="people.id">
             <p>{{people.user_name}}</p>
           </div>
-          <p class="col-3">{{page_user_name}}님을 팔로우하고 있는 사람 목록
+          <p class="col-3">{{page_user_name}}님을 팔로우하고 있는 사람 목록</p>
           <div class="content-container col-3" v-for="people in how_many_people_page_user_name_follow_list" :key="people.id">
             <p>{{people.following}}</p>
           </div>
         </div>
-      </div>   -->
+      </div>  
       <div>
         <h3>선호 영화 장르</h3>
         <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name">
@@ -46,14 +50,22 @@
           {{ genre.genre_name }} <button v-if="your_profile_check()" class="btn text-light btn-outline-light p-1" @click="genreDel(genre.id)">Delete</button>
         </div>
       </div>
-      <div>
+      <br>
+      <div class="container">
         <h3>좋아요한 영화 목록</h3>
-        <div v-for="movie in like_movie_list" :key=movie.id >
-          <a :href="`http://localhost:8080/detail/${movie.movie_id}`">{{ movie.movie_name }}</a><button @click="likeMovieDel(movie.id)" class="btn text-light btn-outline-light p-1 m-1">Delete</button> 
+        <div class="row">
+          <div class="col-3" v-for="movie in like_movie_list" :key=movie.id >
+            <router-link :to="`../detail/${movie.movie_id}`"><img class="donggle_poster" :src="`https://image.tmdb.org/t/p/w200${movie.poster_path}`"></router-link>
+            <br>
+            <a :href="`http://localhost:8080/detail/${movie.movie_id}`">{{ movie.movie_name }}</a>
+            <br>
+            <button @click="likeMovieDel(movie.id)" class="btn text-light btn-outline-light p-1 m-1">Delete</button> 
+          </div>
         </div>
       </div>
-      <br>
+      <div style="min-height: 30px;"></div>
       <h3>{{page_user_name}}님이 쓴 글</h3>
+      <br>
       <div v-if="profile_freeboard_list">
         <div class="" v-for="freeboard_article in profile_freeboard_list" :key="freeboard_article.id">
           <div class="border">
@@ -106,8 +118,15 @@ export default {
     components: {
     NavigationBar,
     },
-    
     methods : {
+      toggleForm() {
+        const form = document.getElementById("myForm");
+        if (form.style.display === "none") {
+          form.style.display = "block";
+        } else {
+          form.style.display = "none";
+        }
+      },
       like_movie_print(user_name) {
         const token = this.$store.state.token
         axios({  
@@ -120,6 +139,7 @@ export default {
         .then((res) => {
           console.log(res)
           this.like_movie_list = res.data
+
         })
         .catch((err) => {
           console.log(err)
@@ -387,6 +407,10 @@ export default {
 </script>
 
 <style>
+  .mycontainer {
+    min-height: 942.39px;
+  }
+
   .content-container {
     height: 50px; /* 원하는 높이 설정 */
     overflow: auto; /* 스크롤바를 추가하기 위해 overflow 속성 사용 */
@@ -396,11 +420,22 @@ export default {
     height: 100%;
     position: relative;
     overflow: hidden;
+    
+  }
+  .circle {
+    border-radius: 50%;
+  }
+  .donggle_poster {
+    border-radius: 5%;
+  }
+  .custom-cursor {
+  cursor: pointer;
   }
   a {
     text-decoration: none;
     color: white;
   }
+  
 
   /* 링크에 마우스가 올라갔을 때 글씨를 볼드체로 변경 */
   a:hover {

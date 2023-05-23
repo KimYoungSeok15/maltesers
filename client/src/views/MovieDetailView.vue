@@ -55,12 +55,13 @@ export default {
       const user_name = this.$store.state.nowUserName
       const movie_id = movieDetail.id
       const movie_name = movieDetail.title
+      const poster_path = movieDetail.poster_path
       const token = this.$store.state.token
       axios({  
           method: 'post',
           url: `http://127.0.0.1:8000/accounts/profile/Likes/${user_name}/`,
           data: {
-            user_name, movie_name, movie_id
+            user_name, movie_name, movie_id, poster_path
           },
           headers:  {
             Authorization : `Token ${token}`
