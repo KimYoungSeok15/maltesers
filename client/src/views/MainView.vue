@@ -8,7 +8,7 @@
 		<h2 class="border">평점 높은 영화</h2>
 		<br>
 		<div class=" d-flex row row-col-2">
-			<div  class="card col-2" v-for="(movie, index) in this.RateSortedMovies" :key="index"> 
+			<div class="col-2" v-for="(movie, index) in this.RateSortedMovies" :key="index"> 
 				<main-Top-card :top="movie"/>  
 				<!-- main-Top-card : 컴포넌트, top: prop, movie: for문 변수 -->
 				<!-- <span>{{movie.title}}</span>
@@ -20,7 +20,7 @@
 		<h2 class="border">최신 영화</h2>		
 		<br>
 		<div class=" d-flex row row-col-2">
-			<div  class="card col-2" v-for="(movie, index) in this.LatestSortedMovies" :key="index"> 
+			<div  class="col-2" v-for="(movie, index) in this.LatestSortedMovies" :key="index"> 
 				<main-Top-card :top="movie"/>  		
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 		<h2 class="border">인기 영화</h2>	
 		<br>
 		<div class=" d-flex row row-col-2">
-			<div  class="card col-2" v-for="(movie, index) in this.PopularitySortedMovies" :key="index"> 
+			<div  class="col-2" v-for="(movie, index) in this.PopularitySortedMovies" :key="index"> 
 				<main-Top-card :top="movie"/>  		
 			</div>
 		</div>

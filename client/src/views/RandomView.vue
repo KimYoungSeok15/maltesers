@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:1000px;">
     <NavigationBar/>
     <br>
     <h1>랜덤 영화 조회</h1>
@@ -32,7 +32,52 @@ export default {
   },
   methods: {
     refresh(){
-      this.$router.go()
+      this.render()
+    },
+    render(){
+      const HooniMovie = 'http://127.0.0.1:8000/api/m1/movies/'
+      
+      axios({
+        methods: 'get',
+        url: HooniMovie,
+      })
+      .then((response) => {
+        console.log(response.data.length-1)
+        let previousNumbers = [];
+
+        function generateUniqueRandomNumber() {
+          const randomIndex = Math.floor(Math.random() * response.data.length);
+          
+          if (previousNumbers.includes(randomIndex)) {
+            // 이미 나온 수라면 재귀적으로 다시 호출하여 새로운 수를 생성합니다.
+            return generateUniqueRandomNumber();
+          }
+          
+          previousNumbers.push(randomIndex);
+          
+          // 중복을 방지한 유일한 수를 반환합니다.
+          return randomIndex;
+        }
+
+        // 사용 예시
+        console.log(generateUniqueRandomNumber());
+
+        this.randomMovies = response.data[generateUniqueRandomNumber()]
+        console.log(this.randomMovies.genre_ids)
+        const genre_id_list = this.randomMovies.genre_ids
+        axios({
+            method: 'post',
+            url: "http://127.0.0.1:8000/api/m1/movies/genrename/",
+            data: {
+              genre_id_list
+            }
+        })
+        .then((res) => {
+          console.log(res.data.genre_name_list)
+          this.randomMovies_genre_name = res.data.genre_name_list
+
+        })
+      })
     }
   },
   computed: {
@@ -40,49 +85,7 @@ export default {
 
   },
   created() {
-    const HooniMovie = 'http://127.0.0.1:8000/api/m1/movies/'
-    
-    axios({
-        methods: 'get',
-        url: HooniMovie,
-    })
-    .then((response) => {
-      console.log(response.data.length-1)
-      let previousNumbers = [];
-
-      function generateUniqueRandomNumber() {
-        const randomIndex = Math.floor(Math.random() * response.data.length);
-        
-        if (previousNumbers.includes(randomIndex)) {
-          // 이미 나온 수라면 재귀적으로 다시 호출하여 새로운 수를 생성합니다.
-          return generateUniqueRandomNumber();
-        }
-        
-        previousNumbers.push(randomIndex);
-        
-        // 중복을 방지한 유일한 수를 반환합니다.
-        return randomIndex;
-      }
-
-      // 사용 예시
-      console.log(generateUniqueRandomNumber());
-
-      this.randomMovies = response.data[generateUniqueRandomNumber()]
-      console.log(this.randomMovies.genre_ids)
-      const genre_id_list = this.randomMovies.genre_ids
-      axios({
-          method: 'post',
-          url: "http://127.0.0.1:8000/api/m1/movies/genrename/",
-          data: {
-            genre_id_list
-          }
-      })
-      .then((res) => {
-        console.log(res.data.genre_name_list)
-        this.randomMovies_genre_name = res.data.genre_name_list
-
-      })
-    })
+    this.render()
   }
 }
 
