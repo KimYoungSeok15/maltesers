@@ -2,10 +2,12 @@
   <div class="back" >
     <NavigationBar/>
     <br>
-    <div class="container" :style="{ 'background': `url(https://image.tmdb.org/t/p/original${movieDetail.backdrop_path})`, 'opacity': '0.7' }">
+    id="now_playing_card" 
+    
+    <div :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${movieDetail.backdrop_path})`}">
       <br>
       <div class="row">
-          <img class="col-4" :src="`https://image.tmdb.org/t/p/w400${movieDetail.poster_path}`" alt="">
+          <img class="col-4" :src="`https://image.tmdb.org/t/p/w400${movieDetail.poster_path}`" style="'opacity': '1';" alt="">
           <div class="col-1"></div>
           <div class="col-4"> 
             <h1>{{movieDetail.title}} </h1>
