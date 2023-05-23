@@ -1,13 +1,10 @@
 <template>
   <div class="back" >
     <NavigationBar/>
-    <br>
-    id="now_playing_card" 
-    
     <div :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${movieDetail.backdrop_path})`}">
       <br>
       <div class="row">
-          <img class="col-4" :src="`https://image.tmdb.org/t/p/w400${movieDetail.poster_path}`" style="'opacity': '1';" alt="">
+          <img class="col-4 donggle_poster" :src="`https://image.tmdb.org/t/p/w400${movieDetail.poster_path}`" style="'opacity': '1';" alt="">
           <div class="col-1"></div>
           <div class="col-4"> 
             <h1>{{movieDetail.title}} </h1>
@@ -23,16 +20,16 @@
           </div>
           <br>
       </div>
-    </div>
-    <h2>비슷한 영화</h2>
-    <div class="row">
+      <h2>비슷한 영화</h2>
+      <div class="row">
       <span class="col-3" v-for="mv in recommendDetails" :key="mv.id">
         <span @click="move(mv.id)">
           <p>{{mv.title}}</p>
-            <img style="width:300px; height:400px; object-fit: cover;" class="mx-4" :src="`https://image.tmdb.org/t/p/w300${mv.poster_path}`" alt="">
+            <img style="width:300px; height:400px; object-fit: cover;" class="mx-4 donggle_poster" :src="`https://image.tmdb.org/t/p/w300${mv.poster_path}`" alt="">
         </span>
       </span> 
-    </div>   
+    </div>
+    </div>
   </div>
 </template>
 
@@ -130,4 +127,7 @@ export default {
 </script>
 
 <style>
+  .donggle_poster {
+    border-radius: 5%;
+  }
 </style>
