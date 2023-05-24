@@ -21,9 +21,19 @@
           <br>
           <h2>{{page_user_name}}님의 프로필 페이지</h2>
           <p>가입일 : {{date_joined.slice(0, 10)}} | 가입 시간: {{date_joined.slice(11,19)}}</p>
-          <p>포인트 : {{ page_user_point }}</p>
+          <p>경험치 : {{ page_user_point }} exp</p>
+          <p>랭크 : {{ rank_check(page_user_point) }}</p>
+          <p>다음 랭크까지 남은 경험치 : {{ left_exp }} exp</p>
+          <div class="progress-bar">
+            <div class="progress row" :style="{ width: (100-left_exp_per*100) + '%' }">
+              <span class="col-6 offset-md-4 text-center" style="display: inline-block;">
+                {{ 100 - left_exp_per * 100 }}%
+              </span>
+            </div>
+          </div>
         </div>
       </div>
+      <br>
       <button @click="clickFollow" class="btn btn-primary mx-3" :class="follow_status">팔로우</button>
       <span>{{page_user_name}}님이 팔로우하고 있는 사람: {{how_many_people_page_user_name_follow}}</span> |
       <span>{{page_user_name}}님을 팔로잉하는 사람: {{how_many_people_follow_page_user_name}}</span>
@@ -44,10 +54,37 @@
       </div>  
       <div>
         <h3>선호 영화 장르</h3>
-        <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name">
-        <button  v-if="your_profile_check()" class="btn text-light btn-outline-light" @click="addLikeGenre" >Add</button>
+        <!-- <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name"> -->
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="input-group align-items-center" style="width: 30%;">
+          <label class="input-group-text" for="inputGroupSelect01" >장르 선택</label>
+            <select class="form-select" id="inputGroupSelect01" v-model="like_genre_name" >
+            <!-- <option selected >Choose...</option> -->
+            <option value="모험">모험</option>
+            <option value="판타지">판타지</option>
+            <option value="애니메이션">애니메이션</option>
+            <option value="드라마">드라마</option>
+            <option value="공포">공포</option>
+            <option value="액션">액션</option>
+            <option value="코미디">코미디</option>
+            <option value="역사">역사</option>
+            <option value="서부">서부</option>
+            <option value="스릴러">스릴러</option>
+            <option value="범죄">범죄</option>
+            <option value="다큐멘터리">다큐멘터리</option>
+            <option value="SF">SF</option>
+            <option value="미스터리">미스터리</option>
+            <option value="음악">음악</option>
+            <option value="로맨스">로맨스</option>
+            <option value="가족">가족</option>
+            <option value="전쟁">전쟁</option>
+            <option value="TV 영화">TV 영화</option>
+            </select>
+          </div>
+        </div>
+        <button  v-if="your_profile_check()" class="btn text-light btn-outline-light m-3" @click="addLikeGenre">Add</button>
         <div class="" v-for="genre in like_genre_list" :key="genre.id">
-          {{ genre.genre_name }} <button v-if="your_profile_check()" class="btn text-light btn-outline-light p-1" @click="genreDel(genre.id)">Delete</button>
+          <span style="font-size: 20px;">{{ genre.genre_name }}</span> <button v-if="your_profile_check()" class="btn text-light btn-outline-light p-1" @click="genreDel(genre.id)">Delete</button>
         </div>
       </div>
       <br>
@@ -59,7 +96,7 @@
             <br>
             <a :href="`http://localhost:8080/detail/${movie.movie_id}`">{{ movie.movie_name }}</a>
             <br>
-            <button @click="likeMovieDel(movie.id)" class="btn text-light btn-outline-light p-1 m-1">Delete</button> 
+            <button  v-if="your_profile_check()" @click="likeMovieDel(movie.id)" class="btn text-light btn-outline-light p-1 m-1">Delete</button> 
           </div>
         </div>
       </div>
@@ -111,14 +148,48 @@ export default {
             like_genre_name: '',
             like_genre_list: '',
 
-            like_movie_list: ''
+            like_movie_list: '',
+
+            exp_rank: 'Bronze',
+            left_exp_per: 0,
+            left_exp: 0,
+
+            progress: 50, // 게이지의 퍼센트 값을 할당
           
         }
     },
     components: {
     NavigationBar,
     },
+    computed: {
+    progressContainerWidth() {
+      return this.progress * 0.4; // 게이지 자체의 가로 크기 계산 (40%)
+    },
+    },
     methods : {
+      rank_check(point) {
+        if (point < 5000) {
+          this.left_exp_per = (5000 - point)/5000
+          this.left_exp = 5000 - point
+        } else if (point > 5000 && point < 10000) {
+          this.exp_rank = 'Silver' 
+          this.left_exp_per = (10000 - point)/10000
+          this.left_exp = 10000 - point
+        } else if (point > 10000 && point < 20000) {
+          this.exp_rank = 'Gold'
+          this.left_exp = 20000 - point
+          this.left_exp_per = (20000 - point)/10000
+        } else if (point > 20000 && point < 60000) {
+          this.exp_rank = 'Platinum'
+          this.left_exp = 60000 - point
+          this.left_exp_per = (60000 - point)/40000
+        } else if (point > 60000 && point < 100000) {
+          this.exp_rank = 'Diamond'
+          this.left_exp = 100000 - point
+          this.left_exp_per = (100000 - point)/40000
+        }
+        return this.exp_rank
+      },
       toggleForm() {
         const form = document.getElementById("myForm");
         if (form.style.display === "none") {
@@ -126,6 +197,7 @@ export default {
         } else {
           form.style.display = "none";
         }
+        
       },
       like_movie_print(user_name) {
         const token = this.$store.state.token
@@ -297,7 +369,6 @@ export default {
     your_profile_check() {
       if (this.$store.state.nowUserName == this.page_user_name) {
         this.is_your_page = true
-        console.log(this.is_your_page, 'asdasdasasd')
       }
       return this.is_your_page
     },
@@ -436,8 +507,23 @@ export default {
     text-decoration: none;
     color: white;
   }
-  
+  .progress-bar {
+  width: 30%;
+  height: 20px;
+  background-color: #eee;
+  margin: 0 auto;
+  border-radius: 10px;
 
+}
+
+  .progress {
+    height: 100%;
+    background-color: skyblue;
+  }
+
+  input {
+  border-radius: 10px;
+  } 
   /* 링크에 마우스가 올라갔을 때 글씨를 볼드체로 변경 */
   a:hover {
     font-weight: bold;

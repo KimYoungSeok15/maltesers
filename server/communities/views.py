@@ -61,9 +61,8 @@ def search_freeboard_list(request, search_keyword):
     related_freeboard_list = get_list_or_404(Freeboard)
     related_freeboards = []
     for ll in related_freeboard_list:
-        if search_keyword in ll.title or search_keyword in ll.content:
+        if search_keyword in ll.title or search_keyword in ll.content or search_keyword in ll.Movie_title: # 리뷰 제목이나 내용이나 리뷰 무비 아이디에 있을 시
             related_freeboards.append(ll)
-            print(ll)
     related_freeboards_json = []        
     for k in related_freeboards:
         related_freeboards_json.append(
@@ -71,6 +70,10 @@ def search_freeboard_list(request, search_keyword):
                 "id": k.id,
                 "title": k.title,
                 "content" : k.content,
+                "Movie_title" : k.Movie_title,
+                "genre_name" : k.genre_name,
+                "rating" : k.rating,
+                "user_name" : k.user_name,
                 "created_at" : k.created_at,
                 "updated_at" : k.updated_at
             }

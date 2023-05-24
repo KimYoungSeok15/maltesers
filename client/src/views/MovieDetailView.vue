@@ -20,7 +20,7 @@
             <br>
             <div class="border">
               <div>
-                <button class="m-2"><a class="review_create_a" href="http://localhost:8080/reviewcreate">리뷰 작성하러 가기 </a> </button>
+                <button class="btn btn-outline-light m-3"><router-link class="aa" :to="{ name: 'reviewcreate', params: { movie_title: `${movieDetail.title}` }}">리뷰 작성</router-link></button>
                 <p>이 영화의 최근 리뷰</p>
                 <div>
                   <div class="m-1">
@@ -28,8 +28,9 @@
                       [{{related_reviews[0].title}}]
                     </a>
                     <p v-else >이 영화의 리뷰가 아직 없습니다!</p>
+                    
                   </div>
-                  
+                  <br>
                 </div>
               </div>
             </div>
@@ -69,7 +70,7 @@ export default {
       movieDetail: {},
       recommendDetails: [],
       related_reviews_keyword: '',
-      related_reviews: []
+      related_reviews: [],
     }
   },
   beforeRouteUpdate(to,from,next){
@@ -157,7 +158,9 @@ export default {
 	},
   created() {
     this.getMovie()
-  }
+
+  },
+
   
 }
 </script>
@@ -167,8 +170,9 @@ export default {
     border-radius: 5%;
   }
   .backdropcontainer {
-    min-height: 1200px
+    min-height: 1200px;
   }
+
   .box1 { 
     min-height: 605px
   }
