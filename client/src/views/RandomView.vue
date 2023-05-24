@@ -8,7 +8,7 @@
       <div class="container">
         <div class="border row">
           <router-link class="col-4 my-5" :to="`../detail/${randomMovies.movie_id}`" >
-            <img :src="`https://image.tmdb.org/t/p/w300${randomMovies.poster_path}`">
+            <img style="border-radius: 5%;" :src="`https://image.tmdb.org/t/p/w300${randomMovies.poster_path}`">
           </router-link> 
           <div class="col-4">
             <h3 class="fw-bold mt-3">{{ randomMovies.title }}</h3>

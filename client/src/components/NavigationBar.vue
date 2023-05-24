@@ -8,7 +8,7 @@
 			<router-link style="text-decoration: none;" to="/movies">Movie</router-link> |
 			<router-link style="text-decoration: none;" to="/random">Random</router-link> |
 			<router-link style="text-decoration: none;" to="/review">Reviews</router-link> |
-			<router-link style="text-decoration: none;" to="/weather">날씨 랜덤 무비</router-link> |
+			<!-- <router-link style="text-decoration: none;" to="/weather">날씨 랜덤 무비</router-link> | -->
 			<router-link style="text-decoration: none;" to="/recommend">Recommended Movie</router-link>
 		</span>
     <span class="">

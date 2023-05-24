@@ -54,7 +54,34 @@
       </div>  
       <div>
         <h3>선호 영화 장르</h3>
-        <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name">
+        <!-- <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name"> -->
+        <div class="d-flex justify-content-center align-items-center">
+          <div class="input-group align-items-center" style="width: 30%;">
+          <label class="input-group-text" for="inputGroupSelect01" >장르 선택</label>
+            <select class="form-select" id="inputGroupSelect01" v-model="like_genre_name" >
+            <!-- <option selected >Choose...</option> -->
+            <option value="모험">모험</option>
+            <option value="판타지">판타지</option>
+            <option value="애니메이션">애니메이션</option>
+            <option value="드라마">드라마</option>
+            <option value="공포">공포</option>
+            <option value="액션">액션</option>
+            <option value="코미디">코미디</option>
+            <option value="역사">역사</option>
+            <option value="서부">서부</option>
+            <option value="스릴러">스릴러</option>
+            <option value="범죄">범죄</option>
+            <option value="다큐멘터리">다큐멘터리</option>
+            <option value="SF">SF</option>
+            <option value="미스터리">미스터리</option>
+            <option value="음악">음악</option>
+            <option value="로맨스">로맨스</option>
+            <option value="가족">가족</option>
+            <option value="전쟁">전쟁</option>
+            <option value="TV 영화">TV 영화</option>
+            </select>
+          </div>
+        </div>
         <button  v-if="your_profile_check()" class="btn text-light btn-outline-light m-3" @click="addLikeGenre">Add</button>
         <div class="" v-for="genre in like_genre_list" :key="genre.id">
           <span style="font-size: 20px;">{{ genre.genre_name }}</span> <button v-if="your_profile_check()" class="btn text-light btn-outline-light p-1" @click="genreDel(genre.id)">Delete</button>
@@ -69,7 +96,7 @@
             <br>
             <a :href="`http://localhost:8080/detail/${movie.movie_id}`">{{ movie.movie_name }}</a>
             <br>
-            <button @click="likeMovieDel(movie.id)" class="btn text-light btn-outline-light p-1 m-1">Delete</button> 
+            <button  v-if="your_profile_check()" @click="likeMovieDel(movie.id)" class="btn text-light btn-outline-light p-1 m-1">Delete</button> 
           </div>
         </div>
       </div>
@@ -141,7 +168,10 @@ export default {
     },
     methods : {
       rank_check(point) {
-        if (point > 5000 && point < 10000) {
+        if (point < 5000) {
+          this.left_exp_per = (5000 - point)/5000
+          this.left_exp = 5000 - point
+        } else if (point > 5000 && point < 10000) {
           this.exp_rank = 'Silver' 
           this.left_exp_per = (10000 - point)/10000
           this.left_exp = 10000 - point
@@ -339,7 +369,6 @@ export default {
     your_profile_check() {
       if (this.$store.state.nowUserName == this.page_user_name) {
         this.is_your_page = true
-        console.log(this.is_your_page, 'asdasdasasd')
       }
       return this.is_your_page
     },

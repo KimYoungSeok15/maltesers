@@ -140,7 +140,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .underline-on-hover {
     text-decoration: none;
     font-weight: normal;
@@ -152,4 +152,7 @@ export default {
     font-weight: bold;
     font-size: 19px; /* 마우스를 올렸을 때 큰 글자 크기 */
   }
+  input {
+  border-radius: 10px;
+  } 
 </style>

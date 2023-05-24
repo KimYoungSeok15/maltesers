@@ -119,7 +119,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 .pagination {
   margin-top: 20px;
 }
@@ -135,4 +135,7 @@ export default {
 .pagination button.active {
   background-color: #ccc;
 }
+input {
+  border-radius: 10px;
+  } 
 </style>

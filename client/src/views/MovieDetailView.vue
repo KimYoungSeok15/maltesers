@@ -170,8 +170,9 @@ export default {
     border-radius: 5%;
   }
   .backdropcontainer {
-    min-height: 1200px
+    min-height: 1200px;
   }
+
   .box1 { 
     min-height: 605px
   }
