@@ -94,6 +94,11 @@ const routes = [
   name: 'signup',
   component: SignUpView
   },
+  {
+  path: '*',
+  name: 'naga',
+  component: MainView
+  }
 ]
 
 const router = new VueRouter({
