@@ -79,7 +79,7 @@ nav {
 	height:auto;
 	min-height:90px;
 	max-height:20px;
-	background:rgb(100,100,100);
+	background:rgb(100, 100, 100);
 	transition: transform 0.3s ease;
 }
 nav:hover {

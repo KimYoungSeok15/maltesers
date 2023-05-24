@@ -15,11 +15,24 @@
 				<main-Top-card :top="movie"/>  
 			</div>
 		</div>
-		<nav aria-label="Search results pages">
-			<div class="pagination">
-				<button v-for="page in totalPages" :key="page" @click="goToPage(page)" :class="{ active: currentPage === page }">{{ page }}</button>
-			</div>
-		</nav>		
+<ul class="pagination d-flex justify-content-center">
+    <!-- 이전 버튼 -->
+    <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+      <a class="page-link" href="javascript:void(0)" @click="goToPage(currentPage - 1)">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <!-- 페이지 번호 버튼 -->
+    <li class="page-item" v-for="page in totalPages" :key="page" @click="goToPage(page)" :class="{ active: currentPage === page }">
+      <a class="page-link" href="javascript:void(0)" :style="{ backgroundColor: currentPage === page ? '#fff' : '#0f0f0f', color: currentPage === page ? '#0f0f0f' : '#fff' }">{{ page }}</a>
+    </li>
+    <!-- 다음 버튼 -->
+    <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+      <a class="page-link" href="javascript:void(0)" @click="goToPage(currentPage + 1)">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
 	</div>	
 </template>
 
@@ -120,19 +133,13 @@ export default {
 </script>
 
 <style>
-.pagination {
-  margin-top: 20px;
+.pagination .page-link {
+	margin-top: 20px;
+  background-color: #0f0f0f;
+  color: #fff;
+	border-color: rgb(77, 77, 77);
+	outline: none; /* 클릭시 파란색 테두리 제거 */
+	box-shadow: none;
 }
 
-.pagination button {
-  margin-right: 5px;
-  background-color: #eaeaea;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.pagination button.active {
-  background-color: #ccc;
-}
 </style>

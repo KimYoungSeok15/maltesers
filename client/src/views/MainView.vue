@@ -1,127 +1,200 @@
 <template>
-	<div>
-	<NavigationBar/>
+  <div>
+    <NavigationBar/>
+    <br>
+    <h1 class="my-5">Main Page</h1>
+    <h2 class="fw-semibold bg-black py-3">오늘의 영화</h2>
+    <div class="backdropcontainer-wrapper">
+      <div class="backdropcontainer mx-auto" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`}">
+        <div class="row box1">
+          <div class="col-1"></div>
+          <img class="col-3 donggle_poster" style="cursor: pointer;" @click="GoDetail" :src="`https://image.tmdb.org/t/p/original${MostPopMovie.poster_path}`" alt="">
+          <div class="col-1"></div>
+          <div class="col-4 bg-black" style="--bs-bg-opacity: .2;"> 
+            <h1 class="fw-bold">{{MostPopMovie.title}} </h1>
+            <br>
+            <p>평점 :{{MostPopMovie.vote_average}}</p>
+            <p>개봉일 :{{MostPopMovie.release_date}}</p>
+            <span v-for="genre in MostPopMovie.genres" :key="genre.id">{{genre.name}}  </span>
+            <br>
+            <!-- <p style="line-height: 300%; text-align:left;">{{MostPopMovie.overview}}</p> -->
+            <br>
+          </div>
+          <br>
+        </div>			
+      </div>
+    </div>
+		<h2 class="fw-semibold bg-black py-3">평점 높은 영화</h2>
 		<br>
-		<h1>메인페이지입니다</h1>
-		<!-- <div>{{RateSortedMovies}}</div> -->
+		<div class="total-carousel-container">
+			<carousel :per-page="6" :paginationEnabled="false">
+				<slide v-for="(movie, index) in this.RateSortedMovies" :key="index">
+					<main-Top-card class="mx-5 w-75" :top="movie"/> 					
+				</slide>
+			</carousel>		
+		</div>			
 		<br>
-		<h2 class="border">평점 높은 영화</h2>
+		<h2 class="fw-semibold bg-black py-3">최신 영화</h2>		
 		<br>
-		<div class="d-flex row row-col-2">
-			<div class="col-2" v-for="(movie, index) in this.RateSortedMovies" :key="index"> 
-				<main-Top-card :top="movie"/>  
-			</div>
-		</div>
+		<div class="total-carousel-container">
+			<carousel :per-page="6" :paginationEnabled="false">
+				<slide v-for="(movie, index) in this.LatestSortedMovies" :key="index">
+					<main-Top-card class="mx-5 w-75" :top="movie"/> 					
+				</slide>
+			</carousel>		
+		</div>	
 		<br>
-		<h2 class="border">최신 영화</h2>		
+		<h2 class="fw-semibold bg-black py-3">인기 영화</h2>	
 		<br>
-		<div class=" d-flex row row-col-2">
-			<div  class="col-2" v-for="(movie, index) in this.LatestSortedMovies" :key="index"> 
-				<main-Top-card :top="movie"/>  		
-			</div>
-		</div>
-		<br>
-		<h2 class="border">인기 영화</h2>	
-		<br>
-		<div class=" d-flex row row-col-2">
-			<div  class="col-2" v-for="(movie, index) in this.PopularitySortedMovies" :key="index"> 
-				<main-Top-card :top="movie"/>  		
-			</div>
-		</div>
+		<div class="total-carousel-container">
+			<carousel :per-page="6" :paginationEnabled="false">
+				<slide v-for="(movie, index) in this.PopularitySortedMovies" :key="index">
+					<main-Top-card class="mx-5 w-75" :top="movie"/> 					
+				</slide>
+			</carousel>		
+		</div>	
 		<br>
 	</div>	
 </template>
 
 <script>
+import { Carousel, Slide } from 'vue-carousel'
 import MainTopCard from '../components/MainTopCard.vue'
 import NavigationBar from '@/components/NavigationBar.vue'
 import axios from 'axios'
 export default {
-	components: {
-		NavigationBar,
-		MainTopCard
-	},
+  components: {
+		Carousel,
+		Slide,
+    NavigationBar,
+    MainTopCard
+  },
   data() {
     return {
-			movieAll: '',
-			RateSortedMovies: '',
-			LatestSortedMovies: '',
-			PopularitySortedMovies: '',
+      movieAll: '',
+      RateSortedMovies: '',
+      LatestSortedMovies: '',
+      PopularitySortedMovies: '',
+      PopMovies: '',
+      MostPopMovie: null
+    }
+  },
+  computed: {
+    isLogin() {
+      return this.$store.getters.isLogin
+    }
+  },
+  methods: {
+    calculateScore(movie) {
+      let score = 0
+
+      // adult 점수 계산
+      if (movie.adult === false) {
+        score += 10
+      }
+
+      // original_language 점수 계산
+      if (movie.original_language === "ko") {
+        score += 30
+      } else if (movie.original_language === "en") {
+        score += 10
+      }
+
+      // popularity 점수 계산
+      score += Math.floor(movie.popularity / 100);
+
+      // vote_average 점수 계산
+      score += Math.round(movie.vote_average * 10)
+
+      // vote_count 점수 계산
+      score += Math.floor(movie.vote_count / 100)
+
+      return score
+    },
+		GoDetail(){
+			this.$router.push(`detail/${this.MostPopMovie.id}`)
 		}
-	},
-	computed: {
-		isLogin() {
-		return this.$store.getters.isLogin
-		}
-	},
-  // 전체 영화를 Django DB에서 받아와서 Store에 저장
+  },
   created() {
+		const TMDB_URL = `https://api.themoviedb.org/3/movie/popular?`		
     const djangoMovie = 'http://127.0.0.1:8000/api/m1/movies/'
-	this.isLogin
-      if (this.isLogin) {
-		axios({
+		this.isLogin
+    if (this.isLogin) {
+			const params = {
+				api_key: process.env.VUE_APP_Movie_API,
+				language: 'ko-KR',
+				region: 'KR',				
+				page: '1'
+			}			
+			// TMDB에서 인기있는 영화들을 가져온다.
+			axios({
+				methods: 'get',
+				url: TMDB_URL,
+				params: params,
+			})
+			.then((res)=>{
+				this.PopMovies = res.data.results
+				let tempObj = [...res.data.results]
+				tempObj.sort((a,b)=>new Date(a.release_date)- new Date(b.release_date))			
+				let maxScore = 0
+				for (const movie in this.PopMovies) {
+					let score = this.calculateScore(this.PopMovies[movie])
+					console.log(score, movie)
+					for (const [index, mov] of tempObj.entries()){
+						if (mov.release_date === this.PopMovies[movie].release_date){
+							score += index
+						}
+					}
+					if (score > maxScore) {
+						maxScore = score
+						this.MostPopMovie = this.PopMovies[movie]
+					}
+				}				
+			})
+		// 전체 영화를 Django DB에서 받아와서 Store에 저장
+			axios({
 			methods: 'get',
 			url: djangoMovie,
 		})
 		.then((response) => {
-		// console.log(response.data[0].title) - '대부'
 		this.movieAll = response.data
 		let temp1 = response.data
 		let temp2 = response.data
 		let temp3 = response.data
 		temp1.sort((a,b)=>b.vote_average-a.vote_average)
-		this.RateSortedMovies = temp1.slice(0,6)
+		this.RateSortedMovies = temp1.slice(0,24)
 		temp2.sort((a,b)=>new Date(b.release_date)- new Date(a.release_date))
-		this.LatestSortedMovies = temp2.slice(0,6)
+		this.LatestSortedMovies = temp2.slice(0,24)
 		temp3.sort((a,b)=>b.popularity-a.popularity)
-		this.PopularitySortedMovies = temp3.slice(0,6)
+		this.PopularitySortedMovies = temp3.slice(0,24)
 		this.$store.dispatch('getAllMovies', this.movieAll)  
 		})
-	} else {
+		} 
+		else {
         alert('로그인이 필요한 서비스 입니다')
         this.$router.push({ name: 'login'})
-	}
-  }
+		}
+	},
 
-
-	// computed: {
-    // ...mapState(['mainTopMovies', 'playingMovies'])
-	// },
-
-		// const TOPURL = 'https://api.themoviedb.org/3/movie/top_rated?'
-		// const params = {
-		// api_key: process.env.VUE_APP_Movie_API,
-		// language: 'ko-KR',
-		// page: '1',
-		// }
-		
-		// 1. 평점 높은 영화 불러오기
-
-
-		// 2. 최신 영화 불러오기
-
-
-		// 3. 개봉 예정영화 불러오기
-		// axios({
-		// 		methods: 'get',
-		// 		url: UPCOMINGURL,
-		// 		params: params,
-		// })
-		// .then((response) => {
-		// this.upComing = response.data.results
-		// this.$store.dispatch('upComing', this.upComing)
-		// tM() {
-		//   return this.$store.state.topRatedMovies
-		// },
-		
-		// ...mapState({
-		//   msg: state => state.topRatedMovies
-		// }),
-		// })
 }
 
 </script>
 
-<style>
+<style scoped>
+.backdropcontainer-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 110vh;
+}
 
+.backdropcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 50px;
+  box-sizing: border-box;
+  padding: 0px;
+}
 </style>

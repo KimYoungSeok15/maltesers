@@ -1,14 +1,16 @@
 <template>
   <div class="container">
-    <router-link :to="`detail/${top.movie_id}`">
+    <router-link :to="`detail/${top.movie_id || top.id}`">
       <img class="w-100 h-100 card-img-top"
            style="border-radius: 5%;"
            :src="TopURL"
            alt=""
-           :data-text="showText ? '마우스를 올려보세요' : ''"
            @mouseover="showText = true"
            @mouseout="showText = false"
       >
+      <div class="text-overlay w-100" v-if="showText">
+        <p class="text w-100">{{top.title}}</p>
+      </div>
     </router-link>
   </div>
 </template>
@@ -44,19 +46,25 @@ export default {
 
 .card-img-top:hover {
   transform: scale(1.1); /* 마우스를 올렸을 때 이미지 크기 확대 */
+  opacity: 0.5;
 }
 
 .text-overlay {
   position: absolute;
-  top: 50%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
   padding: 10px;
   border-radius: 5px;
+  pointer-events: none; /* 텍스트 영역에 마우스 이벤트를 비활성화 */
+  --bs-bg-opacity: .2;
 }
 
 .text {
-  color: #000;
+  color: #ffffff;
+  font-size: large;
+  margin: 0;
+  text-shadow: -1px 0px rgb(0, 0, 0), 0px 1px rgb(0, 0, 0), 1px 0px rgb(0, 0, 0), 0pxrgb(0, 0, 0)yellow;
+  font-weight: bold;  
 }
 </style>
