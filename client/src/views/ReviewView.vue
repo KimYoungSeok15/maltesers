@@ -8,13 +8,13 @@
       <br>
       <div class="row">
         <div class="col-1"></div>
-        <router-link to="/reviewcreate" class="btn btn-primary col-2 m-2"> 리뷰 작성</router-link>
+        <router-link :to="{ name: 'reviewcreate', params: { movie_title: ' ' }}" class="btn btn-primary col-2 m-2"> 리뷰 작성</router-link>
         <div class="col-1"></div>
         
       </div>
       <div class="">
-          <input type="text" placeholder="영화 리뷰 키워드 입력" v-model="article_key">
-          <button class="btn btn-primary m-2">검색</button>
+          <input type="text" placeholder="영화 리뷰 키워드 입력" v-model="review_key" @keypress.enter="getReview(review_key)">
+          <button @click="getReview(review_key)" class="btn btn-primary m-2">검색</button>
         </div>
       <br>
       <div class="row">
@@ -63,7 +63,8 @@ export default {
   data() {
     return {
 			articleAll: '',
-      article_key: '',
+      review_key: '',
+      reviewSearchURL: ''
 		}
 	},
   computed: {
@@ -71,32 +72,39 @@ export default {
       return this.$store.getters.isLogin
     }
   },
-  // 전체 게시글을 Django DB에서 받아와서 Store에 저장
-  created() {
-    
-    const djangoCommunity = 'http://127.0.0.1:8000/api/c1/freeboards'
-      this.isLogin
-      if (this.isLogin) {
-        this.$store.dispatch('getfreeArticles')
-        axios({
-            methods: 'get',
-            url: djangoCommunity,
-            headers:  {
-              Authorization : `Token ${this.$store.state.token}`
-            },
-        })
-        .then((response) => {
-          this.articleAll = response.data
-        })   
-        .catch(() => {
-          this.articleAll = ''
-        })     
-      } else {
-        alert('로그인이 필요한 서비스 입니다')
-        this.$router.push({ name: 'login'})
+  watch: {
+    review_key(newVal) {
+      if (newVal === '') {
+        this.getAllreview(); // 변경 감지 시 호출할 메소드
       }
+    },
   },
+  // 전체 게시글을 Django DB에서 받아와서 Store에 저장
+  
   methods: {
+    getAllreview() {
+        const djangoCommunity = 'http://127.0.0.1:8000/api/c1/freeboards'
+        this.isLogin
+        if (this.isLogin) {
+          this.$store.dispatch('getfreeArticles')
+          axios({
+              methods: 'get',
+              url: djangoCommunity,
+              headers:  {
+                Authorization : `Token ${this.$store.state.token}`
+              },
+          })
+          .then((response) => {
+            this.articleAll = response.data
+          })   
+          .catch(() => {
+            this.articleAll = ''
+          })     
+        } else {
+          alert('로그인이 필요한 서비스 입니다')
+          this.$router.push({ name: 'login'})
+        }
+    },   
     GoToFreeDetail(data){
       this.$router.push({name:'ReviewDetail', params: {id: data}})
       
@@ -106,7 +114,29 @@ export default {
       this.$router.push({name:'profile', params: {username: data}})
     
     },
-  }
+
+    getReview(review_key) {
+      if (review_key=='') { 
+        this.reviewSearchURL = `http://127.0.0.1:8000/api/c1/freeboards`
+      } else {
+        this.reviewSearchURL = `http://127.0.0.1:8000/api/c1/freeboards/${review_key}/`
+      }
+      axios({
+            methods: 'get',
+            url: this.reviewSearchURL,
+            headers:  {
+              Authorization : `Token ${this.$store.state.token}`
+            },
+          })
+          .then((res) => {
+            console.log(res)
+            this.articleAll = res.data
+          })
+    }
+  },
+  created() {
+    this.getAllreview()
+  },
 }
 </script>
 

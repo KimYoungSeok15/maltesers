@@ -75,7 +75,7 @@ const routes = [
     component: MovieDetailView
   },
   {
-    path: '/reviewcreate',
+    path: '/reviewcreate/:movie_title',
     name: 'reviewcreate',
     component: ReviewCreateView
   },  

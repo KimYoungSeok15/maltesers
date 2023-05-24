@@ -13,7 +13,7 @@
             <div class=""></div>
             <br>
             <div class="col-1">영화 제목 :</div>
-            <input class="col-4 border-white text-white" style="background-color: transparent;" type="text" v-model="movieTitle" placeholder="내용을 입력해주세요">
+            <input class="col-4 border-white text-white" style="background-color: transparent;" type="text" v-model="catch_movie_title" placeholder="내용을 입력해주세요" >
             <div class=""></div>
             <br>
             <div class="col-1">장르 :</div>
@@ -44,20 +44,64 @@ export default {
     return {
       reviewTitle:"",
       reviewContent:"",
-      movieTitle:"",
       genreName:"",
-      rating: 5
+      rating: 5,
+      catch_movie_title : this.$route.params.movie_title,
+      now_user: '',
     }
   },
   components: {
     NavigationBar
   },
   methods:{
+    // 글 쓸 때마다 1000 포인트씩 획득
+    getUserName_and_point_plus() {
+      axios({  
+          method: 'get',
+          url: `http://127.0.0.1:8000/accounts/user/`,
+          headers:  {
+          Authorization : `Token ${this.$store.state.token}`
+          },
+      })
+      .then((res)=> {
+        console.log(res)
+        this.now_user = res.data.username
+        this.getUserProfile_and_plus_point()
+      })
+    },
+    getUserProfile_and_plus_point() {
+      axios({  
+          method: 'get',
+          url: `http://127.0.0.1:8000/accounts/profile/userprofile/${this.now_user}/`,
+          headers:  {
+          Authorization : `Token ${this.$store.state.token}`
+          },
+      }).then((res)=> {
+        console.log(res.data.point)
+        this.plus_point(res.data.point)
+      })
+    }, 
+    plus_point(point) {
+      point = point + 1000
+      axios({  
+          method: 'put',
+          url: `http://127.0.0.1:8000/accounts/profile/userprofile/put/${this.now_user}/`,
+          headers:  {
+          Authorization : `Token ${this.$store.state.token}`
+          },
+          data: {
+            point
+          }
+      }).then((res)=> {
+        console.log(res.data)
+      })
+    },  
     postReview(){
+      
       const title = this.reviewTitle
       const content = this.reviewContent     
       const token = this.$store.state.token
-      const Movie_title = this.movieTitle
+      const Movie_title = this.catch_movie_title
       const genre_name = this.genreName
       const rating = this.rating
       let user_name = ''
@@ -79,6 +123,7 @@ export default {
         }                        
       }
       else {
+      this.getUserName_and_point_plus()
       axios({  
           method: 'get',
           url: getUsernameURL,
@@ -106,7 +151,6 @@ export default {
     }
   },
   created() {
-
   }
 }
 </script>
