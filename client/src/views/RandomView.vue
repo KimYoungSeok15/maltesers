@@ -2,17 +2,17 @@
   <div>
     <NavigationBar/>
     <div class="backdropcontainer" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${randomMovies.backdrop_path})`}" >
-      <h1>랜덤 영화 조회</h1>
-      <button @click="refresh" class="btn btn-primary m-3">Random!</button>
+      <button @click="refresh" class="btn btn-info m-3">Random!</button>
       <br>
       <div class="container">
-        <div class="border row">
-          <router-link class="col-4 my-5" :to="`../detail/${randomMovies.movie_id}`" >
+        <div class="row">
+          <router-link class="col-12 my-5" :to="`../detail/${randomMovies.movie_id}`" >
             <img style="border-radius: 5%;" :src="`https://image.tmdb.org/t/p/w300${randomMovies.poster_path}`">
           </router-link> 
+          <div class="col-4" ></div>
           <div class="col-4">
             <h3 class="fw-bold mt-3">{{ randomMovies.title }}</h3>
-            <p class="fw-bold mt-3">{{ randomMovies_genre_name }}</p>
+            <!-- <p class="fw-bold mt-3">{{ randomMovies_genre_name }}</p> -->
             <p class="fw-bold mt-3">{{ randomMovies.overview}}</p>
           </div>
         </div>

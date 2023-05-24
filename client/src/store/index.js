@@ -99,7 +99,7 @@ export default new Vuex.Store({
         var formatted_datetime = current_datetime.toISOString().slice(0, -1);
         
         // 한국 표준시간대(KST)와의 차이를 계산합니다. (분 단위)
-        var kstOffset = 18 * 60; // 한국은 UTC+9
+        var kstOffset = 9 * 60; // 한국은 UTC+9
         
         // 현재 시간에 한국 표준시간대(KST)와의 차이를 적용합니다.
         var date_joined = new Date(formatted_datetime);
