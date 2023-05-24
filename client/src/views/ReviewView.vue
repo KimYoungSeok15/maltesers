@@ -22,7 +22,7 @@
         <div v-if="articleAll" class="col-10">
           <div class="row">
             <div class="col-4 mb-3" v-for="article in articleAll" :key="article.id">
-              <div class="card border-white" style="background-color: transparent;">
+              <div class="card border-white" style="color: black; opacity: 0.8">
                 <div class="card-body">
                   <h5 class="card-title">{{ article.Movie_title }}</h5>
                   <p class="card-text underline-on-hover" @click="GoToFreeDetail(article.id)">제목: {{ article.title }}</p>
@@ -30,7 +30,7 @@
                   <p class="card-text">평점: {{ article.rating }}</p>
                   <div class="card-footer text-end border-white">
                     <p class="card-text">
-                      <button @click="GoToFreeDetail(article.id)" class="btn btn-outline-light">리뷰 보기</button>
+                      <button @click="GoToFreeDetail(article.id)" class="btn btn-dark">리뷰 보기</button>
                       <br>
                       <br>
                       작성자: <span @click="GoToProfile(article.user_name)" class="underline-on-hover">{{ article.user_name }}</span>
