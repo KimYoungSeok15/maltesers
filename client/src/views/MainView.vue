@@ -1,16 +1,15 @@
 <template>
   <div>
     <NavigationBar/>
-    <br>
     <h1 class="my-5">Main Page</h1>
-    <h2 class="fw-semibold bg-black py-3">오늘의 영화</h2>
-    <div class="backdropcontainer-wrapper">
+    <h2 class="fw-semibold bg-black py-3 m-0">오늘의 영화</h2>
+    <div class="backdropcontainer-wrapper" style="height:1000px">
       <div class="backdropcontainer mx-auto" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`}">
         <div class="row box1">
           <div class="col-1"></div>
-          <img class="col-3 donggle_poster" style="cursor: pointer;" @click="GoDetail" :src="`https://image.tmdb.org/t/p/original${MostPopMovie.poster_path}`" alt="">
+          <img class="col-3 donggle_poster" style="cursor: pointer;" @click="GoDetail(MostPopMovie.id)" :src="`https://image.tmdb.org/t/p/original${MostPopMovie.poster_path}`" alt="">
           <div class="col-1"></div>
-          <div class="col-4 bg-black" style="--bs-bg-opacity: .2;"> 
+          <div class="col-4 bg-black h-50" style="--bs-bg-opacity: .2;"> 
             <h1 class="fw-bold">{{MostPopMovie.title}} </h1>
             <br>
             <p>평점 :{{MostPopMovie.vote_average}}</p>
@@ -24,50 +23,33 @@
         </div>			
       </div>
     </div>
-		<h2 class="fw-semibold bg-black py-3">평점 높은 영화</h2>
-		<br>
-		<div class="total-carousel-container">
-			<carousel :per-page="6" :paginationEnabled="false">
-				<slide v-for="(movie, index) in this.RateSortedMovies" :key="index">
-					<main-Top-card class="mx-5 w-75" :top="movie"/> 					
-				</slide>
-			</carousel>		
-		</div>			
-		<br>
-		<h2 class="fw-semibold bg-black py-3">최신 영화</h2>		
-		<br>
-		<div class="total-carousel-container">
-			<carousel :per-page="6" :paginationEnabled="false">
-				<slide v-for="(movie, index) in this.LatestSortedMovies" :key="index">
-					<main-Top-card class="mx-5 w-75" :top="movie"/> 					
-				</slide>
-			</carousel>		
-		</div>	
-		<br>
-		<h2 class="fw-semibold bg-black py-3">인기 영화</h2>	
-		<br>
-		<div class="total-carousel-container">
-			<carousel :per-page="6" :paginationEnabled="false">
-				<slide v-for="(movie, index) in this.PopularitySortedMovies" :key="index">
-					<main-Top-card class="mx-5 w-75" :top="movie"/> 					
-				</slide>
-			</carousel>		
-		</div>	
-		<br>
+    <h2 class="fw-semibold bg-black py-3">평점 높은 영화</h2>
+    <br>
+    <carousel-container :movies="RateSortedMovies"></carousel-container>
+
+    <br>
+    <h2 class="fw-semibold bg-black py-3">최신 영화</h2>
+    <br>
+    <carousel-container :movies="LatestSortedMovies"></carousel-container>
+
+    <br>
+    <h2 class="fw-semibold bg-black py-3">인기 영화</h2>
+    <br>
+    <carousel-container :movies="PopularitySortedMovies"></carousel-container>
+
+    <br>
+
 	</div>	
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel'
-import MainTopCard from '../components/MainTopCard.vue'
 import NavigationBar from '@/components/NavigationBar.vue'
+import CarouselContainer from '@/components/CarouselContainer.vue'
 import axios from 'axios'
 export default {
   components: {
-		Carousel,
-		Slide,
     NavigationBar,
-    MainTopCard
+		CarouselContainer
   },
   data() {
     return {
@@ -111,8 +93,8 @@ export default {
 
       return score
     },
-		GoDetail(){
-			this.$router.push(`detail/${this.MostPopMovie.id}`)
+		GoDetail(movieId){
+			this.$router.push(`detail/${movieId}`)
 		}
   },
   created() {
