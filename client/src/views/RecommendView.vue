@@ -1,19 +1,35 @@
 <template>
   <div>
     <NavigationBar/>
-    <br>
-    <h2>좋아하시는 장르에 따른 추천 영화</h2>
-      <p>{{user_like_genre}}</p>
-    | <span v-for="genre in user_like_genre" :key="genre.id">
-      <span>{{genre.genre_name}}</span>
-      <span> | </span>
-    </span>
-    <p>{{all_genres}}</p>
-    <p>{{user_like_genre_id_name}}</p>
-    <p>{{recommend_movie_list}}</p>
-    <p>{{recommend_movie_list[0]}}</p>
-    <p>{{recommend_movie_list[1]}}</p>
-
+    <div class="backdropcontainer" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${recommend_movie.backdrop_path})`}">
+      <br>
+      <br>
+      <div class="row box1">
+        <div class="col-1"></div>
+          <img class="col-3" :src="`https://image.tmdb.org/t/p/w300${recommend_movie.poster_path}`" style="'opacity': '1'; border-radius: 5%" alt="">
+          <div class="col-1"></div>
+          <div class="col-5">
+          <h2>{{now_user}}님이 좋아하는 장르에 따른 추천 영화</h2>
+          <br>
+          <br>
+          <!-- | <span v-for="genre in user_like_genre" :key="genre.id">
+              <span>{{genre.genre_name}}</span>
+              <span> | </span>
+              <p>{{user_like_genre_id_name}}</p>
+            </span> -->
+            <div class="d-flex flex-wrap">
+              <span class="col-2 mx-0 px-0" v-for="genre_list in all_genres" :key="genre_list.name">
+                <span :class="{ 'white-border': pick_genre.includes(genre_list.name) }" class="p-1">{{ genre_list.name }}</span>
+              </span>
+            </div>
+          <!-- <p>{{recommend_movie}}</p> -->
+          <p>{{recommend_movie.title}}</p>
+          <p>{{recommend_movie.vote_average}}</p>
+          <p>{{recommend_movie.release_date}}</p>
+          <p>{{recommend_movie.overview}}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,14 +44,28 @@ export default {
     },
     data() {
       return {
+        now_user: this.$store.state.nowUserName,
         recommend_movie_list : [],
-        recommend_movie : '',
-        user_like_genre: '',
-        all_genres: '',
-        user_like_genre_id_name: ''
+        recommend_movie : [],
+        user_like_genre: [],
+        all_genres: [],
+        user_like_genre_id_name: '',
+        pick_genre: []
       }
     },
     methods : {
+      commonElements() {
+        const commonElements = this.all_genres
+        .filter(genre => {
+          const matchingGenre = this.user_like_genre.find(userGenre => userGenre.genre_name === genre.name);
+          return matchingGenre !== undefined;
+        })
+        .map(genre => genre.name); // name 속성만 추출하여 배열로 변환
+
+      console.log(commonElements);
+      this.pick_genre = commonElements;
+
+      },    
         get_genre_movie_list(a) {
             axios({
               method: 'get',
@@ -46,15 +76,22 @@ export default {
                 for (let ll of a) {
                   for (let l of res.data) {
                     if (l.genre_ids.includes(ll)) {
-                      console.log('포함')
-                      this.recommend_movie_list.push(l) // 유저가 선호하는 장르의 영화 리스트에 저장
+                      const duplicateMovieIndex = this.recommend_movie_list.findIndex(movie => movie.id === l.id);
+                      if (duplicateMovieIndex !== -1) {
+                        // 이미 중복된 키 값이 존재하는 경우 요소를 대체
+                        this.recommend_movie_list.splice(duplicateMovieIndex, 1, l);
+                      } else {
+                        this.recommend_movie_list.push(l);
+                      }
                     }
                   }
                 }
-              const randomNumber = Math.floor(Math.random() * this.recommend_movie_list.length); // 난수 생성
-              this.recommend_movie_list[randomNumber] = this.recommend_movie // 유저가 선호하는 장르의 영화 리스트에서 임의의 난수로 추출하여 영화 추천
+                const length = this.recommend_movie_list.length;
+                const randomNumber = Math.floor(Math.random() * length);
+                console.log(typeof randomNumber)
+                console.log(this.recommend_movie_list[randomNumber])
+                this.recommend_movie = this.recommend_movie_list[randomNumber]
               })
-
         },
         get_all_genre() {
           axios({
@@ -79,6 +116,8 @@ export default {
                 console.log(lst2)
                 this.user_like_genre_id_name = lst2
                 this.get_genre_movie_list(this.user_like_genre_id_name)
+                this.commonElements()
+
                 }
                 
               })
@@ -97,7 +136,7 @@ export default {
             console.log(res)
             this.user_like_genre = res.data
             this.get_all_genre()
-
+            
             
             
           })
@@ -109,10 +148,13 @@ export default {
     },
     created() {
       this.call_like_genre()
+      
     }
 }
 </script>
 
 <style>
-
+.white-border {
+  border: 1px solid white;
+}
 </style>

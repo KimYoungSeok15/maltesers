@@ -129,10 +129,9 @@ export default {
     }		
 	}
 }
-
 </script>
 
-<style>
+<style scoped>
 .pagination .page-link {
 	margin-top: 20px;
   background-color: #0f0f0f;
@@ -142,4 +141,19 @@ export default {
 	box-shadow: none;
 }
 
+.pagination button {
+  margin-right: 5px;
+  background-color: #eaeaea;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #ccc;
+}
+
+input {
+  border-radius: 10px;
+  } 
 </style>
