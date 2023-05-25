@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <img class="w-100 h-100 card-img-top"
+  <div class="container my-5">
+    <img class="w-100 h-100 card-img-top box1"
           style="border-radius: 5%; cursor: pointer;"
           :src="SlideURL"
           alt=""
@@ -46,7 +46,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   position: relative; /* 상대적인 위치 설정 */
   display: inline-block; /* 인라인 요소로 표시 */
@@ -78,5 +78,10 @@ export default {
   margin: 0;
   text-shadow: -1px 0px rgb(0, 0, 0), 0px 1px rgb(0, 0, 0), 1px 0px rgb(0, 0, 0), 0pxrgb(0, 0, 0)yellow;
   font-weight: bold;  
+}
+
+.box1 {
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
 }
 </style>
