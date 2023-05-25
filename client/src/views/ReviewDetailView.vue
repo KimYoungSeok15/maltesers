@@ -258,5 +258,10 @@ export default {
 </script>
 
 <style>
-
+  .underline-on-hover:hover {
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 16px; /* 마우스를 올렸을 때 큰 글자 크기 */
+    cursor: pointer;
+  }
 </style>

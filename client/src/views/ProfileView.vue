@@ -34,6 +34,8 @@
         </div>
       </div>
       <br>
+      <span class="ms-5 ps-5">팔로잉: {{how_many_people_page_user_name_follow}}</span> |
+      <span>팔로워: {{how_many_people_follow_page_user_name}}</span>
       <button @click="clickFollow" class="btn btn-primary mx-3" :class="follow_status">팔로우</button>
       <span>{{page_user_name}}님이 팔로우하고 있는 사람: {{how_many_people_page_user_name_follow}}</span> |
       <span>{{page_user_name}}님을 팔로잉하는 사람: {{how_many_people_follow_page_user_name}}</span>
@@ -42,7 +44,11 @@
       <br>
       <div class="container">
         <div class="row">
-          <p class="col-3">{{page_user_name}}님이 팔로우하고 있는 사람 목록</p>
+          <p class="col-3">{{page_user_name}}님의 팔로잉</p>
+          <div class="content-container col-3" v-for="people in how_many_people_page_user_name_follow_list" :key="people.id">
+            <p>{{people.following}}</p>
+          </div>
+          <p class="col-3">{{page_user_name}}님의 팔로워</p>
           <div class="content-container col-3" v-for="people in how_many_people_follow_page_user_name_list" :key="people.id">
             <p>{{people.user_name}}</p>
           </div>
