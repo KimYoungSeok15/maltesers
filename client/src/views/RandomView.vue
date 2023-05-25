@@ -1,19 +1,19 @@
 <template>
   <div>
     <NavigationBar/>
-    <div class="backdropcontainer" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${randomMovies.backdrop_path})`}" >
+    <div class="backdropcontainer" style="padding-top:100px;" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${randomMovies.backdrop_path})`}" >
       <button @click="refresh" class="btn btn-outline-light m-3 m-3">Random!</button>
       <br>
       <div class="container">
         <div class="row">
-          <router-link class="col-12 my-5" :to="`../detail/${randomMovies.movie_id}`" >
+          <router-link class="col-12 my-3" :to="`../detail/${randomMovies.movie_id}`" >
             <img style="border-radius: 5%;" :src="`https://image.tmdb.org/t/p/w300${randomMovies.poster_path}`">
           </router-link> 
           <div class="col-4" ></div>
-          <div class="col-4">
+          <div class="col-4" style="color:white">
             <h3 class="fw-bold mt-3">{{ randomMovies.title }}</h3>
             <!-- <p class="fw-bold mt-3">{{ randomMovies_genre_name }}</p> -->
-            <p class="fw-bold mt-3">{{ randomMovies.overview}}</p>
+            <p class="mt-3">{{ randomMovies.overview}}</p>
           </div>
         </div>
       </div>
@@ -97,7 +97,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
   .underline-on-hover {
     text-decoration: none;
     font-weight: normal;
@@ -110,6 +110,9 @@ export default {
     font-size: 19px; /* 마우스를 올렸을 때 큰 글자 크기 */
   }
   .backdropcontainer {
-    min-height: 1000px
+    min-height: 1000px;
+    width: 100vw;
+    position: absolute;
+    top: 0;    
   }
 </style>

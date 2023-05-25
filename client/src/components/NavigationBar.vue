@@ -1,8 +1,6 @@
 <template>
 	<nav class="d-flex justify-content-around m-310 pt-4" :style="{ opacity : navOpacity,  transition: 'opacity 1.5s'}">
-		<div class="bg-white" style="height:47px">
-			<img src="@/assets/hooni2.png" @click="GoMain" style="height: 47px; width: 100px;" class="" alt="">		
-		</div>
+			<img src="@/assets/hooni2.png" @click="GoMain" style="height: 47px; width: 100px; cursor: pointer;" class="" alt="">		
 		<span class="mt-2" id="links">
 			<router-link style="text-decoration: none;" to="/main">Main</router-link> |
 			<router-link style="text-decoration: none;" to="/movies">Movie</router-link> |
@@ -28,7 +26,7 @@ export default {
 	data() {
 		return {
 			user : this.$store.state.nowUserName,
-			navOpacity: 0.9,
+			navOpacity: 1.0,
 			timer: null,
 			profile_pic_URL: '',
 		}
@@ -85,7 +83,7 @@ export default {
 			this.navOpacity = 0.0
       clearTimeout(this.timer); // 이전 타이머 제거
       this.timer = setTimeout(() => {
-        this.navOpacity = 0.9; // 초기값으로 되돌림
+        this.navOpacity = 1.0; // 초기값으로 되돌림
       }, 250); // 원하는 시간으로 설정 (여기서는 2초로 설정)
     },		
 	},
@@ -103,7 +101,7 @@ nav {
 	height:auto;
 	min-height:90px;
 	max-height:20px;
-	background:rgb(12, 19, 79);
+	background:rgb(0, 0, 0);
 	transition: transform 0.3s ease;
 	font-size: 20px;
 }

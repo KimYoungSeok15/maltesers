@@ -4,7 +4,7 @@
     <h2 class="fw-semibold py-3 m-0">오늘의 영화</h2>
     <div class="backdropcontainer-wrapper" style="height: 471px">
     <div v-show="MostPopMovie" class="backdropcontainer" :style="{
-      backgroundImage: `linear-gradient(to bottom, transparent, rgba(255, 255, 255, 1.0)), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`,
+      backgroundImage: `linear-gradient(to bottom, transparent, rgba(92, 70, 156, 1.0)), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`,
       backgroundPosition: 'center'
     }">
         <div class="row box1" style="width: 1000px; display: flex; justify-content: center;">

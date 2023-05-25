@@ -73,7 +73,7 @@ export default {
 }
 
 .text {
-  color: #ffffff;
+  color: rgb(0, 0, 0);
   font-size: large;
   margin: 0;
   text-shadow: -1px 0px rgb(0, 0, 0), 0px 1px rgb(0, 0, 0), 1px 0px rgb(0, 0, 0), 0pxrgb(0, 0, 0)yellow;

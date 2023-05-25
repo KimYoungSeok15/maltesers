@@ -29,9 +29,9 @@
                 <span :class="{ 'white-border': pick_genre.includes(genre_list.name) }" class="p-1">{{ genre_list.name }}</span>
               </span>
             </div>
-          <!-- <p>{{recommend_movie}}</p> -->
-          <p>{{recommend_movie.title}}</p>
-          <p>{{recommend_movie.vote_average}}</p>
+          <br>
+          <p style="font-size:30px;">{{recommend_movie.title}}</p>
+          <p>평점 : {{recommend_movie.vote_average}}</p>
           <p>{{recommend_movie.release_date}}</p>
           <p>{{recommend_movie.overview}}</p>
         </div>
@@ -170,5 +170,14 @@ export default {
 <style>
 .white-border {
   border: 1px solid white;
+}
+
+.backdropcontainer {
+  min-height: 1000px;
+  width: 100vw;
+  position: absolute;
+  top: 0;    
+  color: white;
+  padding-top: 200px;
 }
 </style>

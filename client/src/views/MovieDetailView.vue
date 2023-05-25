@@ -5,10 +5,10 @@
       <br>
       <div class="row box1">
         <div class="col-1"></div>
-          <img class="col-4 donggle_poster" :src="`https://image.tmdb.org/t/p/w400${movieDetail.poster_path}`" style="'opacity': '1';" alt="">
+          <img class="col-4 donggle_poster" :src="`https://image.tmdb.org/t/p/original${movieDetail.poster_path}`" style="'opacity': '1';" alt="">
           <div class="col-1"></div>
           <div class="col-4"> 
-            <h1>{{movieDetail.title}} </h1>
+            <h1 style="color:white;">{{movieDetail.title}} </h1>
             <button class="btn btn-outline-light m-3" @click="likes_plus(movieDetail)" >좋아요</button>
             <br>
             <p>평점 :{{movieDetail.vote_average}}</p>
@@ -37,12 +37,12 @@
           </div>
           <br>
       </div>
-      <h2>비슷한 영화</h2>
+      <h2 style="color:white;">비슷한 영화</h2>
       <div class="row">
       <span class="col-3" v-for="mv in recommendDetails" :key="mv.id">
         <span @click="move(mv.id)">
           <p>{{mv.title}}</p>
-            <img style="width:300px; height:400px; object-fit: cover;" class="mx-4 donggle_poster" :src="`https://image.tmdb.org/t/p/w400${mv.poster_path}`" alt="">
+            <img style="width:300px; height:400px; object-fit: cover; cursor: pointer;" class="mx-4 donggle_poster" :src="`https://image.tmdb.org/t/p/w400${mv.poster_path}`" alt="">
         </span>
       </span> 
     </div>
@@ -165,6 +165,13 @@ export default {
   }
   .backdropcontainer {
     min-height: 1200px;
+    position: absolute;
+    top: 0;
+    padding-top: 100px;
+  }
+  
+  p {
+    color: white;
   }
 
   .box1 { 

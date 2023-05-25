@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100%">
+  <div style="min-height: 1000px; background-color:rgb(172, 177, 214); color:black;">
     <NavigationBar/>
     <br>
     <div class="container">
@@ -42,17 +42,17 @@
         <div class="col-1"></div>      
         <div v-if="Comments" style="font-size:1px" class="col-10">
           <div v-for="comment in Comments" :key=comment.id class="">
-            <span v-if="!(UpdatingCommentId.includes(comment.id))" style="font-size:15px" class="col-4 mx-3">내용 : {{comment.content}}</span> 
+            <span v-if="!(UpdatingCommentId.includes(comment.id))" style="font-size:15px;" class="col-4 ms-5">내용 : {{comment.content}}</span> 
             <input v-if="UpdatingCommentId.includes(comment.id)" @keyup.enter="UpdateComment(comment.id, comment.content)" v-model="comment.content" style="font-size:5px" class="col-4 mx-3">
-            <span v-if="!(UpdatingCommentId.includes(comment.id))" class="col-4 mx-3" style="font-size:15px"> 작성자 : {{comment.user_name}} </span>
-            <span v-if="comment.user_name === User" @click="StartUpdateComment(comment.id, comment.content)" class="mx-2" style="color:green">수정</span> 
-            <span v-if="comment.user_name === User" @click="DeleteComment(comment.id)" style="color:red">삭제</span>
+            <span v-if="!(UpdatingCommentId.includes(comment.id))" class="col-4 mx-5" style="font-size:15px; position:absolute; left:750px;"> 작성자 : {{comment.user_name}} </span>
+            <span v-if="comment.user_name === User" @click="StartUpdateComment(comment.id, comment.content)" class="mx-2" style="color:green; cursor:pointer; font-size:15px; position:absolute; left:1100px;">수정</span> 
+            <span v-if="comment.user_name === User" @click="DeleteComment(comment.id)" style="color:red; cursor:pointer; font-size:15px; position:absolute; left:1150px;">삭제</span>
             <hr class="m-1">
           </div>  
         </div> 
       </div>
     </div> 
-    <div class="container mt-3">
+    <div class="container my-3">
       <input @keyup.enter="CreateComment" type="text" v-model="CommentCreateContext" placeholder="댓글 입력">
       <button @click="CreateComment" class="btn btn-outline-light m-2" value="Add">Add</button>
     </div>    

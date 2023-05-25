@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div style="height:1000px; background-color: #5C469C;">
     <div style="height: 100px;"></div>    
-    <img src="@/assets/hooni2.png" id="image" class="" alt="">    
+    <img @click="GoMain" src="@/assets/hooni2.png" style="cursor: pointer;" id="image" class="" alt="">   
+    <div class="border col-4 offset-4">     
     <div style="height: 50px;"></div>
     <h1 style="height: 100px;">Sign Up Page</h1>
     <form @submit.prevent="signUp">
@@ -17,6 +18,7 @@
       <button class="btn btn-outline-light" type="submit">제출</button>
     </form>
     <button @click="GoBack" class="btn mt-3 btn-outline-light m-3">돌아가기</button>
+    </div>
   </div>
 </template>
 
@@ -43,8 +45,10 @@ export default {
     },
     GoBack() {
       this.$router.push({ name: 'login' })
-    }
-    
+    },
+    GoMain() {
+      this.$router.push({name:'intro'})
+    }    
   },
   
 }
