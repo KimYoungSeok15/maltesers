@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script scoped>
 import { Carousel, Slide } from 'vue-carousel'
 import MainSlideCard from '../components/MainSlideCard.vue'
 
@@ -23,3 +23,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.box1 {
+  border-radius: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
+}
+</style>

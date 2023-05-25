@@ -1,10 +1,10 @@
 <template>
   <div style="min-height:1250px;">
 	<NavigationBar/>
-    <br>
-		<h1>전체 영화</h1>
+		<br>
+		<h1>Movie</h1>
+		<hr>
 		<input class="my-5" v-model="SearchText" @keyup.enter="Search" type="text"> <button @click="Search" class="btn btn-primary">검색</button>
-    <br>
 		<div v-if="!SearchedMovies" class="d-flex row row-col-2">
 			<div class="col-2 mb-4 p-10" v-for="(movie, index) in this.visibleMovies" :key="index"> 
 				<main-Top-card :top="movie"/>  
