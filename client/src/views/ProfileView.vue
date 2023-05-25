@@ -56,7 +56,7 @@
         <h3>선호 영화 장르</h3>
         <!-- <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name"> -->
         <div class="d-flex justify-content-center align-items-center">
-          <div class="input-group align-items-center" style="width: 30%;">
+          <div class="input-group align-items-center" style="width: 20%;">
           <label class="input-group-text" for="inputGroupSelect01" >장르 선택</label>
             <select class="form-select" id="inputGroupSelect01" v-model="like_genre_name" >
             <!-- <option selected >Choose...</option> -->

@@ -7,10 +7,10 @@
         <div class="col-1"></div>
         <div class="col-10 border">
           <br>
-          <span style="font-size:30px;" class="col-4">제목 : {{ReviewTitle}}</span><p class="col-4"></p><span class="col-4" v-if="ReviewCreatedAt"> 작성자 : {{ReviewWriter}}</span>
+          <span style="font-size:30px;" class="col-4">제목 : {{ReviewTitle}}</span><p class="col-4"></p><span @click="GoToProfile(ReviewWriter)" class="underline-on-hover col-4" v-if="ReviewCreatedAt"> 작성자 : {{ReviewWriter}}</span>
           <hr>
-          <p class="d-flex justify-content-end mx-3 px-3" style="font-size:15px;" v-if="ReviewUpdatedAt"> 작성일자 : {{ReviewUpdatedAt}}</p>
-          <p class="d-flex justify-content-end mx-3 px-3" style="font-size:15px;" v-if="ReviewCreatedAt"> 수정일자 : {{ReviewCreatedAt}}</p>
+          <p class="d-flex justify-content-end mx-3 px-3" style="font-size:15px;" v-if="ReviewUpdatedAt"> 수정 일자 : {{ReviewUpdatedAt.slice(0, 10)}} {{ReviewUpdatedAt.slice(11, 19)}}</p>
+          <p class="d-flex justify-content-end mx-3 px-3" style="font-size:15px;" v-if="ReviewCreatedAt"> 작성 일자 : {{ReviewCreatedAt.slice(0, 10)}} {{ReviewCreatedAt.slice(11, 19)}}</p>
           <div class="d-flex justify-content-end border-top mx-3 px-3">
             <p class="m-0">영화 제목: {{ MovieTitle }}</p>
           </div>
@@ -192,7 +192,11 @@ export default {
           this.GetComments()
         }
         )
-    }
+    },
+    GoToProfile(data){
+      this.$router.push({name:'profile', params: {username: data}})
+    
+    },
   },
   created() {
       const token = this.$store.state.token

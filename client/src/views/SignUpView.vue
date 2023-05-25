@@ -16,7 +16,7 @@
       <br>
       <input type="submit" value="SignUp">
     </form>
-    <button @click="GoBack" class="mt-3">돌아가기</button>
+    <button @click="GoBack" class="mt-3 btn-outline-light m-3">돌아가기</button>
   </div>
 </template>
 

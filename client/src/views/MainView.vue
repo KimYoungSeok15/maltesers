@@ -1,24 +1,20 @@
 <template>
-  <div>
+  <div class="">
     <NavigationBar/>
-    <h1 class="my-5">Main Page</h1>
     <h2 class="fw-semibold bg-black py-3 m-0">오늘의 영화</h2>
     <div class="backdropcontainer-wrapper" style="height:1000px">
       <div class="backdropcontainer mx-auto" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`}">
         <div class="row box1">
-          <div class="col-1"></div>
-          <img class="col-3 donggle_poster" style="cursor: pointer;" @click="GoDetail(MostPopMovie.id)" :src="`https://image.tmdb.org/t/p/original${MostPopMovie.poster_path}`" alt="">
-          <div class="col-1"></div>
-          <div class="col-4 bg-black h-50" style="--bs-bg-opacity: .2;"> 
+          <img class="col-4 offset-4 donggle_poster" style="cursor: pointer;" @click="GoDetail(MostPopMovie.id)" :src="`https://image.tmdb.org/t/p/original${MostPopMovie.poster_path}`" alt="">
+          <!-- <div class="col-4 bg-black h-50" style="--bs-bg-opacity: .2;"> 
             <h1 class="fw-bold">{{MostPopMovie.title}} </h1>
             <br>
             <p>평점 :{{MostPopMovie.vote_average}}</p>
             <p>개봉일 :{{MostPopMovie.release_date}}</p>
             <span v-for="genre in MostPopMovie.genres" :key="genre.id">{{genre.name}}  </span>
             <br>
-            <!-- <p style="line-height: 300%; text-align:left;">{{MostPopMovie.overview}}</p> -->
             <br>
-          </div>
+          </div> -->
           <br>
         </div>			
       </div>

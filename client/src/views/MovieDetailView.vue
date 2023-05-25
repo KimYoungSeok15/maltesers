@@ -9,7 +9,7 @@
           <div class="col-1"></div>
           <div class="col-4"> 
             <h1>{{movieDetail.title}} </h1>
-            <button @click="likes_plus(movieDetail)" >좋아요</button>
+            <button class="btn btn-outline-light m-3" @click="likes_plus(movieDetail)" >좋아요</button>
             <br>
             <p>평점 :{{movieDetail.vote_average}}</p>
             <p>개봉일 :{{movieDetail.release_date}}</p>
