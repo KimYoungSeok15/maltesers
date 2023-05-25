@@ -122,7 +122,8 @@ export default {
       })
     },  
     postReview(){
-      
+      console.log(typeof this.reviewTitle)
+      console.log(typeof this.catch_movie_title)
       const title = this.reviewTitle
       const content = this.reviewContent     
       const token = this.$store.state.token
