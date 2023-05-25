@@ -1,7 +1,7 @@
 <template>
   <div style="height:1000px; background-color: #5C469C;">
     <div style="height: 100px;"></div>     
-    <img @click="GoMain" src="@/assets/hooni2.png" style="cursor: pointer;" id="image" alt="">
+    <img @click="GoMain" src="@/assets/hooni3.png" style="cursor: pointer;" id="image" alt="">
     <div class="border col-4 offset-4">
       <div style="height: 50px;"></div>    
         <h1 style="height: 70px;">LogIn Page</h1>

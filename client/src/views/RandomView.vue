@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavigationBar/>
-    <div class="backdropcontainer" style="padding-top:100px;" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${randomMovies.backdrop_path})`}" >
+    <div class="backdropcontainer" style="padding-top:100px; min-height:1250px;" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${randomMovies.backdrop_path})`}" >
       <button @click="refresh" class="btn btn-outline-light m-3 m-3">Random!</button>
       <br>
       <div class="container">

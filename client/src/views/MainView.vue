@@ -1,12 +1,11 @@
 <template>
-  <div class="">
+  <div style="color:rgb(50,50,50)">
     <NavigationBar/>
-    <h2 class="fw-semibold py-3 m-0">오늘의 영화</h2>
-    <div class="backdropcontainer-wrapper" style="height: 471px">
-    <div v-show="MostPopMovie" class="backdropcontainer" :style="{
-      backgroundImage: `linear-gradient(to bottom, transparent, rgba(92, 70, 156, 1.0)), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`,
-      backgroundPosition: 'center'
-    }">
+    <div class="backdropcontainer-wrapper" style="height: 800px">
+      <h2 class="fw-semibold" style="color:black; z-index:3; position:absolute; top:230px;">오늘의 영화</h2>
+      <div v-show="MostPopMovie" class="backdropcontainer" :style="{
+        backgroundImage: `linear-gradient(to bottom, transparent, rgba(219, 223, 234, 0.7)), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`,
+        backgroundPosition: 'center'}">
         <div class="row box1" style="width: 1000px; display: flex; justify-content: center;">
           <div class="col-3" style="height: 400px; width: 300px;">
             <img class="donggle_poster" style="cursor: pointer; width: 100%; height: 100%; object-fit: contain;" @click="GoDetail(MostPopMovie.id)" :src="`https://image.tmdb.org/t/p/original${MostPopMovie.poster_path}`" alt="">
@@ -15,20 +14,19 @@
       </div>
     </div>
     <br>
-    <h2 class="fw-semibold py-0 px-2" style="text-align: left;">평점 높은 영화</h2>
+    <h2 class="fw-semibold py-0 px-4" style="position:relative; text-align: left; z-index:4;">평점 높은 영화</h2>
     <hr>
     <carousel-container id="carousel" :movies="RateSortedMovies"></carousel-container>
 
     <br>
-    <h2 class="fw-semibold py-0 px-2" style="text-align: left;">최신 영화</h2>
-    <br>
+    <h2 class="fw-semibold py-0 px-4" style="text-align: left;">최신 영화</h2>
+    <hr>
     <carousel-container :movies="LatestSortedMovies"></carousel-container>
 
     <br>
-    <h2 class="fw-semibold py-0 px-2" style="text-align: left;">인기 영화</h2>
-    <br>
+    <h2 class="fw-semibold py-0 px-4" style="text-align: left;">인기 영화</h2>
+    <hr>
     <carousel-container :movies="PopularitySortedMovies"></carousel-container>
-
     <br>
 
 	</div>	

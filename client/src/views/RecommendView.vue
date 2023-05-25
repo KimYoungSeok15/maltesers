@@ -3,7 +3,7 @@
     <NavigationBar/>
     <div class="backdropcontainer" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${recommend_movie.backdrop_path})`}">
       <div v-if="check_input_genre" style="position: relative; display: inline-block;">
-        <img src="@/assets/lalaland33.jpg" style="opacity: 0.5; width:100vW; height:1100px">
+        <img src="@/assets/lalaland33.jpg" style="opacity: 0.5; width:100vW; height:100vh">
         <div  style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
           <h1 class="fw-semibold">{{ now_user }}님!</h1>
           <br>
@@ -11,12 +11,12 @@
         </div>
       </div>
       <br>
-      <div class="row box1">
-        <div class="col-1"></div>
-          <img class="col-3" :src="`https://image.tmdb.org/t/p/original${recommend_movie.poster_path}`" style="'opacity': '1'; border-radius: 5%" alt="">
+      <div v-if="!check_input_genre" class="row box1">
+        <div class="col-1 mt-5 pt-5"></div>
+          <img class="col-3 mt-5 pt-5" :src="`https://image.tmdb.org/t/p/original${recommend_movie.poster_path}`" style="'opacity': '1'; border-radius: 5%" alt="">
           <div class="col-1"></div>
           <div class="col-5">
-          <h2 v-if="!check_input_genre">{{now_user}}님이 좋아하는 장르에 따른 추천 영화</h2>
+          <h2 class="pt-5 mt-5" v-if="!check_input_genre">{{now_user}}님이 좋아하는 장르에 따른 추천 영화</h2>
           <br>
           <br>
           <!-- | <span v-for="genre in user_like_genre" :key="genre.id">
@@ -167,17 +167,16 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .white-border {
   border: 1px solid white;
 }
 
 .backdropcontainer {
   min-height: 1000px;
-  width: 100vw;
+  height: 970px;
   position: absolute;
   top: 0;    
   color: white;
-  padding-top: 200px;
 }
 </style>

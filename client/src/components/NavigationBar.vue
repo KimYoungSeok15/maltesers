@@ -1,6 +1,6 @@
 <template>
 	<nav class="d-flex justify-content-around m-310 pt-4" :style="{ opacity : navOpacity,  transition: 'opacity 1.5s'}">
-			<img src="@/assets/hooni2.png" @click="GoMain" style="height: 47px; width: 100px; cursor: pointer;" class="" alt="">		
+			<img src="@/assets/hooni3.png" @click="GoMain" style="height: 47px; width: 100px; cursor: pointer;" class="" alt="">		
 		<span class="mt-2" id="links">
 			<router-link style="text-decoration: none;" to="/main">Main</router-link> |
 			<router-link style="text-decoration: none;" to="/movies">Movie</router-link> |

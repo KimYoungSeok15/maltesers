@@ -1,18 +1,18 @@
 <template>
   <div style="height:1000px; background-color: #5C469C;">
     <div style="height: 100px;"></div>    
-    <img @click="GoMain" src="@/assets/hooni2.png" style="cursor: pointer;" id="image" class="" alt="">   
+    <img @click="GoMain" src="@/assets/hooni3.png" style="cursor: pointer;" id="image" class="" alt="">   
     <div class="border col-4 offset-4">     
     <div style="height: 50px;"></div>
-    <h1 style="height: 100px;">Sign Up Page</h1>
+    <h1 style="height: 100px;">회원가입</h1>
     <form @submit.prevent="signUp">
-      <label for="username">username : </label>
+      <label for="username" class="me-4">사용자이름 :</label>
       <input type="text" id="username" v-model="username"><br>
       <br>
-      <label for="password1"> password : </label>
+      <label for="password1" class="me-4 ms-3"> 비밀번호 : </label>
       <input type="password" id="password1" v-model="password1"><br>
       <br>
-      <label for="password2"> password confirmation : </label>
+      <label for="password2" class="me-2"> 비밀번호 확인 : </label>
       <input type="password" id="password2" v-model="password2"><br>
       <br>
       <button class="btn btn-outline-light" type="submit">제출</button>
