@@ -21,17 +21,18 @@
         </div>			
       </div>
     </div>
-    <h2 class="fw-semibold bg-black py-3">평점 높은 영화</h2>
+    <br>
+    <h2 class="fw-semibold py-0 px-2" style="text-align: left;">평점 높은 영화</h2>
     <br>
     <carousel-container :movies="RateSortedMovies"></carousel-container>
 
     <br>
-    <h2 class="fw-semibold bg-black py-3">최신 영화</h2>
+    <h2 class="fw-semibold py-0 px-2" style="text-align: left;">최신 영화</h2>
     <br>
     <carousel-container :movies="LatestSortedMovies"></carousel-container>
 
     <br>
-    <h2 class="fw-semibold bg-black py-3">인기 영화</h2>
+    <h2 class="fw-semibold py-0 px-2" style="text-align: left;">인기 영화</h2>
     <br>
     <carousel-container :movies="PopularitySortedMovies"></carousel-container>
 
