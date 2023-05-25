@@ -4,6 +4,8 @@
     <div class="backdropcontainer" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${recommend_movie.backdrop_path})`}">
       <br>
       <br>
+      <h1>{{ message }}</h1>
+      <br>
       <div class="row box1">
         <div class="col-1"></div>
           <img class="col-3" :src="`https://image.tmdb.org/t/p/w300${recommend_movie.poster_path}`" style="'opacity': '1'; border-radius: 5%" alt="">
@@ -50,7 +52,8 @@ export default {
         user_like_genre: [],
         all_genres: [],
         user_like_genre_id_name: '',
-        pick_genre: []
+        pick_genre: [],
+        message: '',
       }
     },
     methods : {
@@ -66,32 +69,32 @@ export default {
       this.pick_genre = commonElements;
 
       },    
-        get_genre_movie_list(a) {
-            axios({
-              method: 'get',
-              url: `http://127.0.0.1:8000/api/m1/movies`,
-              })
-              .then((res) => {
-                console.log(a)
-                for (let ll of a) {
-                  for (let l of res.data) {
-                    if (l.genre_ids.includes(ll)) {
-                      const duplicateMovieIndex = this.recommend_movie_list.findIndex(movie => movie.id === l.id);
-                      if (duplicateMovieIndex !== -1) {
-                        // 이미 중복된 키 값이 존재하는 경우 요소를 대체
-                        this.recommend_movie_list.splice(duplicateMovieIndex, 1, l);
-                      } else {
-                        this.recommend_movie_list.push(l);
-                      }
+      get_genre_movie_list(a) {
+          axios({
+            method: 'get',
+            url: `http://127.0.0.1:8000/api/m1/movies`,
+            })
+            .then((res) => {
+              console.log(a)
+              for (let ll of a) {
+                for (let l of res.data) {
+                  if (l.genre_ids.includes(ll)) {
+                    const duplicateMovieIndex = this.recommend_movie_list.findIndex(movie => movie.id === l.id);
+                    if (duplicateMovieIndex !== -1) {
+                      // 이미 중복된 키 값이 존재하는 경우 요소를 대체
+                      this.recommend_movie_list.splice(duplicateMovieIndex, 1, l);
+                    } else {
+                      this.recommend_movie_list.push(l);
                     }
                   }
                 }
-                const length = this.recommend_movie_list.length;
-                const randomNumber = Math.floor(Math.random() * length);
-                console.log(typeof randomNumber)
-                console.log(this.recommend_movie_list[randomNumber])
-                this.recommend_movie = this.recommend_movie_list[randomNumber]
-              })
+              }
+            const length = this.recommend_movie_list.length;
+            const randomNumber = Math.floor(Math.random() * length);
+            console.log(typeof randomNumber)
+            console.log(this.recommend_movie_list[randomNumber])
+            this.recommend_movie = this.recommend_movie_list[randomNumber]
+            })
         },
         get_all_genre() {
           axios({
@@ -106,19 +109,20 @@ export default {
                 }
                 console.log(lst)
                 this.all_genres = res.data
-                let lst2 = [] // 유저가 좋아하는 장르 아이디와 이름 담은 배열
-                for (let k of lst) {
-                  for (let i of this.all_genres) {
-                    if (i.name == k) {
-                      lst2.push(i.id)
-                    } 
-                }
+                let lst2 = this.all_genres.filter(i => lst.includes(i.name)).map(i => i.id);
+                // let lst2 = [] // 유저가 좋아하는 장르 아이디와 이름 담은 배열
+                // for (let k of lst) {
+                //   for (let i of this.all_genres) {
+                //     if (i.name == k) {
+                //       lst2.push(i.id)
+                //     } 
+                // }
                 console.log(lst2)
                 this.user_like_genre_id_name = lst2
                 this.get_genre_movie_list(this.user_like_genre_id_name)
                 this.commonElements()
 
-                }
+              
                 
               })
         },
@@ -135,6 +139,7 @@ export default {
           .then((res) => {
             console.log(res)
             this.user_like_genre = res.data
+            console.log('call_like_genre 실행')
             this.get_all_genre()
             
             
@@ -143,11 +148,13 @@ export default {
           .catch(() => {
             console.log("좋아하는 장르 데이터베이스 빈 값")
             this.like_genre_list = ''
+            this.message = '프로필에서 좋아하는 장르 입력해주세요'
           })
       },
     },
     created() {
       this.call_like_genre()
+
       
     }
 }

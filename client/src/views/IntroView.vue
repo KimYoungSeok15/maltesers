@@ -18,7 +18,7 @@ export default {
 
 <style>
   #bk_grnd_img {
-    background:url("@/assets/lalaland22.jpg");
+    background:url("@/assets/lalaland23.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;

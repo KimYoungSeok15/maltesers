@@ -187,6 +187,10 @@ export default {
           this.exp_rank = 'Diamond'
           this.left_exp = 100000 - point
           this.left_exp_per = (100000 - point)/40000
+        } else if (point > 100000) {
+          this.exp_rank = 'master'
+          this.left_exp = 1000000000
+          this.left_exp_per = 100
         }
         return this.exp_rank
       },

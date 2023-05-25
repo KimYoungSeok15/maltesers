@@ -60,15 +60,13 @@ export default {
             // 이미 나온 수라면 재귀적으로 다시 호출하여 새로운 수를 생성합니다.
             return generateUniqueRandomNumber();
           }
-          
           previousNumbers.push(randomIndex);
-          
           // 중복을 방지한 유일한 수를 반환합니다.
           return randomIndex;
         }
 
         // 사용 예시
-        console.log(generateUniqueRandomNumber());
+        console.log(generateUniqueRandomNumber(), 'asdsadasds');
 
         this.randomMovies = response.data[generateUniqueRandomNumber()]
         console.log(this.randomMovies)

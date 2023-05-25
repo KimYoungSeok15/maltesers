@@ -107,7 +107,7 @@ export default {
       })
     }, 
     plus_point(point) {
-      point = point + 1000
+      point = point + 50000// 글 쓸때 1000씩 경험치 부여
       axios({  
           method: 'put',
           url: `http://127.0.0.1:8000/accounts/profile/userprofile/put/${this.now_user}/`,

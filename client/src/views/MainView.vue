@@ -2,10 +2,12 @@
   <div class="">
     <NavigationBar/>
     <h2 class="fw-semibold bg-black py-3 m-0">오늘의 영화</h2>
-    <div class="backdropcontainer-wrapper" style="height:1000px">
-      <div class="backdropcontainer mx-auto" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`}">
-        <div class="row box1">
-          <img class="col-4 offset-4 donggle_poster" style="cursor: pointer;" @click="GoDetail(MostPopMovie.id)" :src="`https://image.tmdb.org/t/p/original${MostPopMovie.poster_path}`" alt="">
+    <div class="backdropcontainer-wrapper" style="height: 471px">
+      <div class="backdropcontainer" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`}">
+        <div class="row box1" style="width: 1000px; display: flex; justify-content: center;">
+          <div class="col-3" style="height: 400px; width: 400px;">
+            <img class="donggle_poster" style="cursor: pointer; width: 100%; height: 100%; object-fit: contain;" @click="GoDetail(MostPopMovie.id)" :src="`https://image.tmdb.org/t/p/original${MostPopMovie.poster_path}`" alt="">
+          </div>
           <!-- <div class="col-4 bg-black h-50" style="--bs-bg-opacity: .2;"> 
             <h1 class="fw-bold">{{MostPopMovie.title}} </h1>
             <br>
@@ -163,7 +165,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 110vh;
+  height: 471px;
+  overflow: hidden;
 }
 
 .backdropcontainer {
@@ -171,8 +174,9 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 50px;
+  height: 471px;
   box-sizing: border-box;
   padding: 0px;
+  max-height: 300px;
 }
 </style>
