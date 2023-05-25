@@ -34,28 +34,34 @@
         </div>
       </div>
       <br>
-      <span class="ms-5 ps-5">팔로잉: {{how_many_people_page_user_name_follow}}</span> |
+      <span>팔로잉: {{how_many_people_page_user_name_follow}}</span> |
       <span>팔로워: {{how_many_people_follow_page_user_name}}</span>
-      <button @click="clickFollow" class="btn btn-primary mx-3" :class="follow_status">팔로우</button>
+      <br>
+      <button v-if="!your_profile_check()" @click="clickFollow" class="btn btn-primary mx-3" :class="follow_status">
+        <span>팔로우</span>
+      </button>
       <br>
       <br>
       <br>
       <div class="container">
         <div class="row">
-          <div class="content-container col-3">
-            <p class="">{{page_user_name}}님의 팔로잉</p>
-            <p v-for="people in how_many_people_page_user_name_follow_list" :key="people.id">1{{people.following}}</p>
+          <div class="col-2"></div>
+          <p class="px-3 col-2">{{page_user_name}}님의 팔로잉</p>
+          <div class="col-2 border content-container" style="height:50px">
+            <div class="px-3" v-for="people in how_many_people_page_user_name_follow_list" :key="people.id"><a :href="`http://localhost:8080/profile/${people.following}`">{{people.following}}</a></div>
           </div>
-          <div class="content-container col-3" >
-            <p class="col-3">{{page_user_name}}님의 팔로워</p>
-            <p v-for="people in how_many_people_follow_page_user_name_list" :key="people.id">{{people.user_name}}</p>
+          <p class="col-2">{{page_user_name}}님의 팔로워</p>
+          <div class="col-2 border content-container" style="height:50px">
+            <div class="px-3" v-for="people in how_many_people_follow_page_user_name_list" :key="people.id"><a :href="`http://localhost:8080/profile/${people.user_name}`">{{people.user_name}}</a></div>
           </div>
         </div>
       </div>  
       <div>
+        <br>
         <h3>선호 영화 장르</h3>
+        <hr>
         <!-- <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name"> -->
-        <div class="d-flex justify-content-center align-items-center">
+        <div v-if="your_profile_check()" class="d-flex justify-content-center align-items-center">
           <div class="input-group align-items-center" style="width: 20%;">
           <label class="input-group-text" for="inputGroupSelect01" >장르 선택</label>
             <select class="form-select" id="inputGroupSelect01" v-model="like_genre_name" >
@@ -90,6 +96,7 @@
       <br>
       <div class="container">
         <h3>좋아요한 영화 목록</h3>
+        <hr>
         <div class="row">
           <div class="col-3" v-for="movie in like_movie_list" :key=movie.id >
             <router-link :to="`../detail/${movie.movie_id}`"><img class="donggle_poster" :src="`https://image.tmdb.org/t/p/w200${movie.poster_path}`"></router-link>
@@ -152,6 +159,11 @@ export default {
             left_exp: 0,
 
             progress: 50, // 게이지의 퍼센트 값을 할당
+
+            modalOpen: false, // 모달 상태 저장
+
+            emi_follow: false,
+
           
         }
     },
@@ -164,6 +176,12 @@ export default {
     },
     },
     methods : {
+      openModal() {
+      this.modalOpen = true; 
+      },
+      closeModal() {
+        this.modalOpen = false; 
+      },
       rank_check(point) {
         if (point < 5000) {
           this.left_exp_per = (5000 - point)/5000

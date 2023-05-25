@@ -25,8 +25,7 @@
                 <div>
                   <div class="m-1">
                     <div v-for="(i) in related_reviews" :key="i.title" >
-                      <a class="aa" v-if="related_reviews[0]" :href="`http://localhost:8080/review/${i.id}`">[{{ i.title }}]</a>
-                      <p v-else >이 영화의 리뷰가 아직 없습니다!</p>
+                      <a class="aa" :href="`http://localhost:8080/review/${i.id}`">[{{ i.title }}]</a>
                     </div> 
                   </div>
                   <br>
@@ -87,16 +86,7 @@ export default {
       .then((res) => {
         this.related_reviews = res.data
         console.log(res.data.length)
-        if (res.data.length < 3) {
-          for (let i = 0; i < res.data.length; i++) {
-          this.related_reviews.push(res.data[i]);
-        }
-        } else {
-          for (let i = 0; i < 3; i++) {
-          this.related_reviews.push(res.data[i]);
-        }
-        }
-        
+        this.related_reviews = res.data
         console.log(this.related_reviews)
         this.related_reviews.reverse()
       })
