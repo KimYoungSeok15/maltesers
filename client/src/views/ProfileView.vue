@@ -115,10 +115,7 @@
       </div>
     </div>
     <div>
-      
     </div>
-    
-
   </div>
 </template>
 
@@ -308,7 +305,10 @@ export default {
       const genre_name = this.like_genre_name
       if (genre_name == '') {
         alert("장르를 입력해주세요!")
-      } else {
+      } else if ( this.checkGenreNameMatch( this.like_genre_list, genre_name ) ){
+        alert("이미 추가한 장르입니다!")
+      }
+      else {
         axios({
         method: 'post',
         url: `http://127.0.0.1:8000/accounts/profile/userprofile/user_like_genre/${user_name}/`,
@@ -325,6 +325,14 @@ export default {
           this.refresh_genre()
         })
       }  
+    },
+    checkGenreNameMatch(like_genre_list, genre_name) {
+      for (let i = 0; i < like_genre_list.length; i++) {
+        if (like_genre_list[i].genre_name === genre_name) {
+          return true;
+        }
+      }
+        return false;
     },
     clickFollow() {
       const user_name = this.$store.state.nowUserName

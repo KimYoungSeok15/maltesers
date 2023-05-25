@@ -1,7 +1,7 @@
 <template>
   <div class="back" >
     <NavigationBar/>
-    <div class="backdropcontainer" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${movieDetail.backdrop_path})`}">
+    <div class="backdropcontainer" v-if="movieDetail.backdrop_path" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${movieDetail.backdrop_path})`}">
       <br>
       <div class="row box1">
         <div class="col-1"></div>
@@ -42,7 +42,7 @@
       <span class="col-3" v-for="mv in recommendDetails" :key="mv.id">
         <span @click="move(mv.id)">
           <p>{{mv.title}}</p>
-            <img style="width:300px; height:400px; object-fit: cover;" class="mx-4 donggle_poster" :src="`https://image.tmdb.org/t/p/w300${mv.poster_path}`" alt="">
+            <img style="width:300px; height:400px; object-fit: cover;" class="mx-4 donggle_poster" :src="`https://image.tmdb.org/t/p/w400${mv.poster_path}`" alt="">
         </span>
       </span> 
     </div>
@@ -80,15 +80,12 @@ export default {
   },
   methods:{
     call_review() {
-      console.log(this.related_reviews_keyword)
       const key = this.related_reviews_keyword
-      console.log(key)
       axios({  
           method: 'get',
           url: `http://127.0.0.1:8000/api/c1/freeboards/${key}/`,
       })
       .then((res) => {
-        console.log(res, 'ㅁㅁㅁㅁㅁㅁㅁㅁㅁ')
         this.related_reviews = res.data
         this.related_reviews.reverse()
       })
@@ -125,7 +122,6 @@ export default {
           params: params,
       })
       .then((response) => {
-        console.log(response);
         this.movieDetail = response.data
         console.log(this.movieDetail, 'ㅁㄴㅇㅁㄴㅇㅁㄴㅇㄴ')
         this.related_reviews_keyword= this.movieDetail.title.slice(0,2)  
@@ -137,7 +133,6 @@ export default {
           params: params,
       })
       .then((response) => {
-        console.log(response.data.results);
         for (const movieidx in response.data.results) {
           if (movieidx === '4'){
             break
@@ -147,7 +142,6 @@ export default {
       });
     },
     move(data){
-      // console.log(data);
       this.$router.push({name:'detail', params: {id: data}})
 
       this.$router.go()

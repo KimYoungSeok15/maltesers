@@ -13,7 +13,7 @@
       <br>
       <div class="row box1">
         <div class="col-1"></div>
-          <img class="col-3" :src="`https://image.tmdb.org/t/p/w300${recommend_movie.poster_path}`" style="'opacity': '1'; border-radius: 5%" alt="">
+          <img class="col-3" :src="`https://image.tmdb.org/t/p/original${recommend_movie.poster_path}`" style="'opacity': '1'; border-radius: 5%" alt="">
           <div class="col-1"></div>
           <div class="col-5">
           <h2 v-if="!check_input_genre">{{now_user}}님이 좋아하는 장르에 따른 추천 영화</h2>
@@ -35,7 +35,6 @@
           <p>{{recommend_movie.release_date}}</p>
           <p>{{recommend_movie.overview}}</p>
         </div>
-        <img style="width:200px; height:60px" src="@/assets/copy.png" alt="">
       </div>
     </div>
   </div>
@@ -60,7 +59,7 @@ export default {
         user_like_genre_id_name: '',
         pick_genre: [],
         message: '',
-        check_input_genre: true
+        check_input_genre: false
       }
     },
     methods : {
@@ -156,7 +155,7 @@ export default {
             console.log("좋아하는 장르 데이터베이스 빈 값")
             this.like_genre_list = ''
             this.message = '프로필에서 좋아하는 장르 입력하고 영화 추천을 받아보세요!'
-            this.check_input_genre = 'false'
+            this.check_input_genre = 'true'
           })
       },
     },

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MovieView from '../views/MovieView.vue'
 import RandomView from '../views/RandomView.vue'
-import weatherRandomView from '../views/weatherRandomView.vue'
 import MovieDetailView from '../views/MovieDetailView.vue'
 import MainView from '../views/MainView.vue'
 import IntroView from '../views/IntroView.vue'
@@ -63,11 +62,6 @@ const routes = [
     path: '/review/:id',
     name: 'ReviewDetail',
     component: ReviewDetailView
-  },
-  {
-    path: '/weather',
-    name: 'weather',
-    component: weatherRandomView
   },
   {
     path: '/detail/:id',

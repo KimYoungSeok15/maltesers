@@ -1,30 +1,23 @@
 <template>
   <div class="">
     <NavigationBar/>
-    <h2 class="fw-semibold bg-black py-3 m-0">오늘의 영화</h2>
+    <h2 class="fw-semibold py-3 m-0">오늘의 영화</h2>
     <div class="backdropcontainer-wrapper" style="height: 471px">
-      <div class="backdropcontainer" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`}">
+    <div v-show="MostPopMovie" class="backdropcontainer" :style="{
+      backgroundImage: `linear-gradient(to bottom, transparent, rgba(255, 255, 255, 1.0)), url(https://image.tmdb.org/t/p/original${MostPopMovie.backdrop_path})`,
+      backgroundPosition: 'center'
+    }">
         <div class="row box1" style="width: 1000px; display: flex; justify-content: center;">
-          <div class="col-3" style="height: 400px; width: 400px;">
+          <div class="col-3" style="height: 400px; width: 300px;">
             <img class="donggle_poster" style="cursor: pointer; width: 100%; height: 100%; object-fit: contain;" @click="GoDetail(MostPopMovie.id)" :src="`https://image.tmdb.org/t/p/original${MostPopMovie.poster_path}`" alt="">
           </div>
-          <!-- <div class="col-4 bg-black h-50" style="--bs-bg-opacity: .2;"> 
-            <h1 class="fw-bold">{{MostPopMovie.title}} </h1>
-            <br>
-            <p>평점 :{{MostPopMovie.vote_average}}</p>
-            <p>개봉일 :{{MostPopMovie.release_date}}</p>
-            <span v-for="genre in MostPopMovie.genres" :key="genre.id">{{genre.name}}  </span>
-            <br>
-            <br>
-          </div> -->
-          <br>
         </div>			
       </div>
     </div>
     <br>
     <h2 class="fw-semibold py-0 px-2" style="text-align: left;">평점 높은 영화</h2>
-    <br>
-    <carousel-container :movies="RateSortedMovies"></carousel-container>
+    <hr>
+    <carousel-container id="carousel" :movies="RateSortedMovies"></carousel-container>
 
     <br>
     <h2 class="fw-semibold py-0 px-2" style="text-align: left;">최신 영화</h2>
@@ -52,11 +45,11 @@ export default {
   },
   data() {
     return {
-      movieAll: '',
-      RateSortedMovies: '',
-      LatestSortedMovies: '',
-      PopularitySortedMovies: '',
-      PopMovies: '',
+      movieAll: [],
+      RateSortedMovies: [],
+      LatestSortedMovies: [],
+      PopularitySortedMovies: [],
+      PopMovies: [],
       MostPopMovie: null
     }
   },
@@ -167,7 +160,6 @@ export default {
   justify-content: center;
   align-items: center;
   height: 471px;
-  overflow: hidden;
 }
 
 .backdropcontainer {
@@ -175,9 +167,10 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 471px;
+  height: 1000px;
   box-sizing: border-box;
   padding: 0px;
   max-height: 300px;
+  z-index: 0;
 }
 </style>

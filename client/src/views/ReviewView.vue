@@ -4,17 +4,17 @@
     <br>
     <h1 class="fw-bold">리뷰 게시판</h1>
     
-    <div class="container border">
+    <div class="container border border-dark">
       <br>
       <div class="row">
         <div class="col-1"></div>
-        <router-link :to="{ name: 'reviewcreate', params: { movie_title: ' ' }}" class="btn btn-outline-light m-3 col-2 m-2"> 리뷰 작성</router-link>
+        <router-link :to="{ name: 'reviewcreate', params: { movie_title: ' ' }}" class="btn btn-outline-dark m-3 col-2 m-2"> 리뷰 작성</router-link>
         <div class="col-1"></div>
         
       </div>
       <div class="">
           <input type="text" placeholder="영화 리뷰 키워드 입력" v-model="review_key" @keypress.enter="getReview(review_key)">
-          <button @click="getReview(review_key)" class="btn btn-outline-light m-2">검색</button>
+          <button @click="getReview(review_key)" class="btn btn-outline-dark m-2">검색</button>
         </div>
       <br>
       <div class="row">
@@ -23,17 +23,17 @@
           <div class="row">
             <div class="col-4 mb-3" v-for="article in articleAll" :key="article.id">
               <div class="card border-white" style="color: black; opacity: 0.8">
-                <div class="card-body">
+                <div class="card-body border border-dark">
                   <h5 class="card-title">{{ article.Movie_title }}</h5>
                   <p class="card-text underline-on-hover" @click="GoToFreeDetail(article.id)">제목: {{ article.title }}</p>
                   <p class="card-text">장르: {{ article.genre_name }}</p>
                   <p class="card-text">평점: {{ article.rating }}</p>
                   <div class="card-footer text-end border-white">
-                    <p class="card-text">
-                      <button @click="GoToFreeDetail(article.id)" class="btn btn-dark">리뷰 보기</button>
-                      <br>
-                      <br>
-                      작성자: <span @click="GoToProfile(article.user_name)" class="underline-on-hover">{{ article.user_name }}</span>
+                    <p class="card-text" style="display: flex;">
+                      <button @click="GoToFreeDetail(article.id)" class="btn mx-auto btn-dark" style="justify-content: center;">리뷰 보기</button>
+                    </p>
+                    <p>
+                      <span @click="GoToProfile(article.user_name)" class="underline-on-hover">작성자: {{ article.user_name }}</span>
                     </p>
                     <p class="card-text m-0 px-3">
                       생성시간: {{ article.created_at.slice(0, 10) }} {{ article.created_at.slice(11, 19) }}

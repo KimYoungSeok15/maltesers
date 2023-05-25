@@ -20,8 +20,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #ffffff;
-  background-color: rgb(46, 46, 46);  
+  color: rgb(12, 19, 79);
+  background-color: rgb(255, 255, 255);  
   /* color: #2c3e50; */
 }
 
@@ -31,7 +31,7 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #ffffff;
 }
 
 nav a.router-link-exact-active {

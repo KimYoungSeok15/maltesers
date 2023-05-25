@@ -1,8 +1,6 @@
 <template>
   <div>
     <a href="http://localhost:8080/detail"><img :src=UpComingURL alt=""></a>
-    <!-- <p>{{ movie.title }}</p> -->
-    <!-- <p>{{ movie.overview }}</p> -->
   </div>
 </template>
 
