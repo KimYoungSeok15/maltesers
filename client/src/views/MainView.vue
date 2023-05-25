@@ -168,7 +168,6 @@ export default {
   height: 1000px;
   box-sizing: border-box;
   padding: 0px;
-  max-height: 300px;
   z-index: 0;
 }
 </style>

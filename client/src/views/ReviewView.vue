@@ -24,13 +24,13 @@
             <div class="col-4 mb-3" v-for="article in articleAll" :key="article.id">
               <div class="card" style="padding: 10px; background-color:rgb(172, 177, 214);"> 
                 <div class="card-body m-1" style="padding:0px; background-color:white">
-                  <h5 class="card-title">{{ article.Movie_title }}</h5>
+                  <h5 class="card-title m-3">{{ article.Movie_title }}</h5>
                   <p class="card-text underline-on-hover" style="cursor: pointer" @click="GoToFreeDetail(article.id)">제목: {{ article.title }}</p>
                   <p class="card-text">장르: {{ article.genre_name }}</p>
-                  <p class="card-text">평점: {{ article.rating }}</p>
-                  <div class="card-footer text-end border-white ">
+                  <p class="card-text mb-2">평점: {{ article.rating }}</p>
+                  <div class="card-footer bg-light text-end">
                     <p class="card-text" style="display: flex; justify-content: center;">
-                      <button @click="GoToFreeDetail(article.id)" class="btn mx-auto btn-light">리뷰 보기</button>
+                      <button @click="GoToFreeDetail(article.id)" class="btn mx-auto btn-outline-dark">리뷰 보기</button>
                     </p>
                     <p style="display: flex; justify-content: center;">
                       <span @click="GoToProfile(article.user_name)" style="cursor:pointer" class="underline-on-hover">작성자: {{ article.user_name }}</span>

@@ -9,12 +9,12 @@
       <br>
         <div class="row">
             <div class="col-1">제목 :</div>
-            <input class="col-4 border-black text-black" style="background-color: transparent;" type="text" v-model="reviewTitle" placeholder="제목을 입력해주세요">
+            <input class="col-4 border-black text-black" style="" type="text" v-model="reviewTitle" placeholder="제목을 입력해주세요">
             <div class=""></div>
             <br>
             <div class="col-1">영화 제목 :</div>
-            <input class="col-4 border-black" style="background-color: transparent;" type="text" v-model="catch_movie_title" placeholder="내용을 입력해주세요" >
-            <!-- <input class="col-4 border-white text-white" style="background-color: transparent;" type="text" v-model="genreName" placeholder="내용을 입력해주세요"> -->
+            <input class="col-4 border-black" style="" type="text" v-model="catch_movie_title" placeholder="내용을 입력해주세요" >
+            <!-- <input class="col-4 border-white text-white" style="" type="text" v-model="genreName" placeholder="내용을 입력해주세요"> -->
             <div class="col-7">
               <div class="input-group col-3" style="width: 30%;  opacity: 1.0;">
               <label class="input-group-text border-black" for="inputGroupSelect01" >장르</label>
@@ -45,14 +45,18 @@
             <div class=""></div>
             <br>
             <div class="col-1">평점 :</div>
-            <input class="col-1 border-black text-black" style="background-color: transparent;" type="number" min="1" max="10" v-model="rating" placeholder="">
+            <input class="col-1 border-black text-black" style="" type="number" min="1" max="10" v-model="rating" placeholder="">
             <div class=""></div>
             <br>
             <div class="col-1">내용 :</div>
-            <input class="col-10 border-black text-black" style="padding-bottom: 300px; background-color: transparent;"  type="text" v-model="reviewContent" placeholder="내용을 입력해주세요">
+            <input class="col-10 border-black text-black" style="padding-bottom: 300px; "  type="text" v-model="reviewContent" placeholder="내용을 입력해주세요">
             <div class=""></div>
             <br>
-            <div><button @click="postReview" class="btn btn-outline-dark col-2 mt-4" value="Add">Add</button> <br></div>
+            <span>
+              <button @click="postReview" class="btn btn-outline-dark col-2 mt-4 mx-3" value="Add">등록</button>
+              <button @click="goBack" class="btn btn-outline-dark col-2 mt-4 mx-3" value="Add">뒤로가기</button>
+              <br>
+            </span>
         </div>
         <br>
     </div>
@@ -174,6 +178,9 @@ export default {
       })
       }
 
+    },
+    goBack(){
+      this.$router.push({ name: 'review' })
     }
   },
   created() {

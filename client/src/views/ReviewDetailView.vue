@@ -2,20 +2,19 @@
   <div style="min-height: 1000px; background-color:rgb(172, 177, 214); color:black;">
     <NavigationBar/>
     <br>
-    <div class="container">
-      <div class="row">
+    <div class="container" style="background-color:white; width:916px; padding:10px;">
         <div class="col-1"></div>
-        <div class="col-10 border">
+        <div class="col-12 border" style="">
           <br>
-          <span style="font-size:30px;" class="col-4">제목 : {{ReviewTitle}}</span><p class="col-4"></p><span @click="GoToProfile(ReviewWriter)" class="underline-on-hover col-4" v-if="ReviewCreatedAt"> 작성자 : {{ReviewWriter}}</span>
+          <span style="font-size:30px;" class="col-4">{{ReviewTitle}}</span><p class="col-4"></p><span @click="GoToProfile(ReviewWriter)" class="underline-on-hover col-4" v-if="ReviewCreatedAt"> 작성자 : {{ReviewWriter}}</span>
           <hr>
           <p class="d-flex justify-content-end mx-3 px-3" style="font-size:15px;" v-if="ReviewUpdatedAt"> 수정 일자 : {{ReviewUpdatedAt.slice(0, 10)}} {{ReviewUpdatedAt.slice(11, 19)}}</p>
           <p class="d-flex justify-content-end mx-3 px-3" style="font-size:15px;" v-if="ReviewCreatedAt"> 작성 일자 : {{ReviewCreatedAt.slice(0, 10)}} {{ReviewCreatedAt.slice(11, 19)}}</p>
           <div class="d-flex justify-content-end border-top mx-3 px-3">
-            <p class="m-0">영화 제목: {{ MovieTitle }}</p>
+            <p class="m-0">영화 : {{ MovieTitle }}</p>
           </div>
           <div class="d-flex justify-content-end mx-3 px-3">
-            <p> 장르 : {{Genre}}</p>
+            <p class="my-2"> 장르 : {{Genre}}</p>
           </div>     
           <div class="d-flex justify-content-end mx-3 px-3">
             <p> 평점 : {{Rating}}</p>
@@ -28,21 +27,21 @@
 
           <div class="row">
             <div class="col-3"></div>
-            <div class="col-2"><router-link class="btn btn-outline-light" to="/review">뒤로가기</router-link></div>
-            <div class="col-2"><router-link class="btn btn-outline-light" v-if="WriterIsUser" :to="`/review/${ReviewId}/update`">수정하기</router-link></div>
-            <div class="col-2"><div @click="DeleteReview" class="btn btn-outline-light" v-if="WriterIsUser">삭제하기</div></div>
+            <div class="col-2"><router-link class="btn btn-outline-dark" to="/review">뒤로가기</router-link></div>
+            <div class="col-2"><router-link class="btn btn-outline-dark" v-if="WriterIsUser" :to="`/review/${ReviewId}/update`">수정하기</router-link></div>
+            <div class="col-2"><div @click="DeleteReview" class="btn btn-outline-dark" v-if="WriterIsUser">삭제하기</div></div>
           </div>
           <br>
         </div>
-      </div>
+
     </div>
-    <div class="container mt-5">
-      <p> 댓글 리스트 </p>
+    <div class="container mt-4">
+      <p style="font-size: 30px;"> 댓글 </p>
       <div class="row">
         <div class="col-1"></div>      
         <div v-if="Comments" style="font-size:1px" class="col-10">
           <div v-for="comment in Comments" :key=comment.id class="">
-            <span v-if="!(UpdatingCommentId.includes(comment.id))" style="font-size:15px;" class="col-4 ms-5">내용 : {{comment.content}}</span> 
+            <span v-if="!(UpdatingCommentId.includes(comment.id))" style="font-size:15px;" class="col-4 ms-5">{{comment.content}}</span> 
             <input v-if="UpdatingCommentId.includes(comment.id)" @keyup.enter="UpdateComment(comment.id, comment.content)" v-model="comment.content" style="font-size:5px" class="col-4 mx-3">
             <span v-if="!(UpdatingCommentId.includes(comment.id))" class="col-4 mx-5" style="font-size:15px; position:absolute; left:750px;"> 작성자 : {{comment.user_name}} </span>
             <span v-if="comment.user_name === User" @click="StartUpdateComment(comment.id, comment.content)" class="mx-2" style="color:green; cursor:pointer; font-size:15px; position:absolute; left:1100px;">수정</span> 

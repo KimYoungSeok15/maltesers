@@ -3,7 +3,7 @@
     <NavigationBar/>
     <div class="backdropcontainer" :style="{ backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(https://image.tmdb.org/t/p/original${recommend_movie.backdrop_path})`}">
       <div v-if="check_input_genre" style="position: relative; display: inline-block;">
-        <img src="@/assets/lalaland33.jpg" style="opacity: 0.5; width:100vW; height:100vh">
+        <img src="@/assets/lalaland33.jpg" style="opacity: 0.5; width:100vW; height:1200px;">
         <div  style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); z-index: 1;">
           <h1 class="fw-semibold">{{ now_user }}님!</h1>
           <br>
@@ -173,7 +173,7 @@ export default {
 }
 
 .backdropcontainer {
-  min-height: 1000px;
+  min-height: 1200px;
   height: 970px;
   position: absolute;
   top: 0;    
