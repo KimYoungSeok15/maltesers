@@ -40,8 +40,11 @@ export default {
       const payload = {
         username, password1, password2
       }
+      if (password1 !== password2){
+        alert('비밀번호가 서로 다릅니다!')
+      } else {
       this.$store.dispatch('signUp', payload)
-      
+      }
     },
     GoBack() {
       this.$router.push({ name: 'login' })

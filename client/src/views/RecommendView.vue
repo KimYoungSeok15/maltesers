@@ -33,7 +33,7 @@
           <p style="font-size:30px;">{{recommend_movie.title}}</p>
           <p>평점 : {{recommend_movie.vote_average}}</p>
           <p>{{recommend_movie.release_date}}</p>
-          <p>{{recommend_movie.overview}}</p>
+          <p id="content">{{recommend_movie.overview}}</p>
         </div>
       </div>
     </div>

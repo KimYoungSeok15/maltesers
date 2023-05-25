@@ -13,7 +13,7 @@
         
       </div>
       <div class="">
-          <input type="text" placeholder="영화 리뷰 키워드 입력" v-model="review_key" @keypress.enter="getReview(review_key)">
+          <input type="text" placeholder="영화 리뷰 키워드 입력" class="ms-5 me-1" v-model="review_key" @keypress.enter="getReview(review_key)">
           <button @click="getReview(review_key)" class="btn btn-light m-2">검색</button>
         </div>
       <br>

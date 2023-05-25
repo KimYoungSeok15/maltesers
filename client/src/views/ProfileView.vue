@@ -58,6 +58,7 @@
       </div>  
       <div>
         <br>
+        <br>
         <h3>선호 영화 장르</h3>
         <hr>
         <!-- <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name"> -->
@@ -523,7 +524,7 @@ export default {
     height: 100%;
     position: relative;
     overflow: hidden;
-    
+
   }
   .circle {
     border-radius: 50%;

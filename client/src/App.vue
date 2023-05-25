@@ -15,14 +15,14 @@ export default {
 </script>
 
 <style>
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: rgb(31, 31, 31);
   background-color:rgb(219, 223, 234);
-  /* color: #2c3e50; */
+  font-family: line;
 }
 
 nav {
@@ -38,5 +38,16 @@ nav a.router-link-exact-active {
   color: #42b983;
 }
 
-
+@font-face {
+    font-family: 'line';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'content';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
 </style>
