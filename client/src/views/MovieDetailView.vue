@@ -24,11 +24,10 @@
                 <p>이 영화의 최근 리뷰</p>
                 <div>
                   <div class="m-1">
-                    <a class="aa" v-if="related_reviews[0]" :href="`http://localhost:8080/review/${related_reviews[0].id}`">
-                      [{{related_reviews[0].title}}]
-                    </a>
-                    <p v-else >이 영화의 리뷰가 아직 없습니다!</p>
-                    
+                    <div v-for="(i) in related_reviews" :key="i.title" >
+                      <a class="aa" v-if="related_reviews[0]" :href="`http://localhost:8080/review/${i.id}`">[{{ i.title }}]</a>
+                      <p v-else >이 영화의 리뷰가 아직 없습니다!</p>
+                    </div> 
                   </div>
                   <br>
                 </div>
@@ -83,10 +82,22 @@ export default {
       const key = this.related_reviews_keyword
       axios({  
           method: 'get',
-          url: `http://127.0.0.1:8000/api/c1/freeboards/${key}/`,
+          url: `http://127.0.0.1:8000/api/c1/freeboards/search/${key}/`,
       })
       .then((res) => {
         this.related_reviews = res.data
+        console.log(res.data.length)
+        if (res.data.length < 3) {
+          for (let i = 0; i < res.data.length; i++) {
+          this.related_reviews.push(res.data[i]);
+        }
+        } else {
+          for (let i = 0; i < 3; i++) {
+          this.related_reviews.push(res.data[i]);
+        }
+        }
+        
+        console.log(this.related_reviews)
         this.related_reviews.reverse()
       })
       .catch((err) => {

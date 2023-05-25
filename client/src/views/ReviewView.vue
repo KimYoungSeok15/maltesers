@@ -119,7 +119,7 @@ export default {
       if (review_key=='') { 
         this.reviewSearchURL = `http://127.0.0.1:8000/api/c1/freeboards`
       } else {
-        this.reviewSearchURL = `http://127.0.0.1:8000/api/c1/freeboards/${review_key}/`
+        this.reviewSearchURL = `http://127.0.0.1:8000/api/c1/freeboards/search/${review_key}/`
       }
       axios({
             methods: 'get',
