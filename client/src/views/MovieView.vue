@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div style="min-height:1250px;">
 	<NavigationBar/>
     <br>
 		<h1>전체 영화</h1>

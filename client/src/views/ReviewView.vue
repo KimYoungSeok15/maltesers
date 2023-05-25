@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="min-height:1500px;">
     <NavigationBar/>    
     <br>
     <h1 class="fw-bold">리뷰 게시판</h1>
