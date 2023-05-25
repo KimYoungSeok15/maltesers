@@ -14,9 +14,9 @@
       <label for="password2"> password confirmation : </label>
       <input type="password" id="password2" v-model="password2"><br>
       <br>
-      <input type="submit" value="SignUp">
+      <button class="btn btn-outline-light" type="submit">제출</button>
     </form>
-    <button @click="GoBack" class="mt-3 btn-outline-light m-3">돌아가기</button>
+    <button @click="GoBack" class="btn mt-3 btn-outline-light m-3">돌아가기</button>
   </div>
 </template>
 

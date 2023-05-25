@@ -15,7 +15,35 @@
             <br>
             <div class="col-1">장르 :</div>
             <input class="col-10" type="text" v-model="genreName" placeholder="내용을 입력해주세요">
-            <div class=""></div>    
+            <div class="col-7">
+              <div class="input-group col-3" style="width: 30%;  opacity: 0.5;">
+              <label class="input-group-text" for="inputGroupSelect01" >장르</label>
+                <select class="form-select" id="inputGroupSelect01" v-model="genreName" >
+                <!-- <option selected >Choose...</option> -->
+                <option value="모험">모험</option>
+                <option value="판타지">판타지</option>
+                <option value="애니메이션">애니메이션</option>
+                <option value="드라마">드라마</option>
+                <option value="공포">공포</option>
+                <option value="액션">액션</option>
+                <option value="코미디">코미디</option>
+                <option value="역사">역사</option>
+                <option value="서부">서부</option>
+                <option value="스릴러">스릴러</option>
+                <option value="범죄">범죄</option>
+                <option value="다큐멘터리">다큐멘터리</option>
+                <option value="SF">SF</option>
+                <option value="미스터리">미스터리</option>
+                <option value="음악">음악</option>
+                <option value="로맨스">로맨스</option>
+                <option value="가족">가족</option>
+                <option value="전쟁">전쟁</option>
+                <option value="TV 영화">TV 영화</option>
+                </select>
+              </div>
+            </div>
+            <div class=""></div>
+                
             <br>
             <div class="col-1">내용 :</div>
             <input class="col-10" style="height:500px;"  type="text" v-model="updatedContent" placeholder="내용을 입력해주세요">

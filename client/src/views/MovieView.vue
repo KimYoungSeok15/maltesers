@@ -1,8 +1,8 @@
 <template>
-	<div>
+  <div class="">
 	<NavigationBar/>
     <br>
-		<h1>전체 영화 페이지입니다</h1>
+		<h1>전체 영화</h1>
 		<input class="my-5" v-model="SearchText" @keyup.enter="Search" type="text"> <button @click="Search" class="btn btn-primary">검색</button>
     <br>
 		<div v-if="!SearchedMovies" class="d-flex row row-col-2">
@@ -132,6 +132,10 @@ export default {
 </script>
 
 <style scoped>
+.backdropcontainer {
+  background:url("@/assets/lalaland23.jpg");
+  opacity: 0.5;
+}
 .pagination .page-link {
 	margin-top: 20px;
   background-color: #0f0f0f;
