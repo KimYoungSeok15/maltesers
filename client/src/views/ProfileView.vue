@@ -106,7 +106,7 @@
       <div v-if="profile_freeboard_list">
         <div class="" v-for="freeboard_article in profile_freeboard_list" :key="freeboard_article.id">
           <div class="border">
-            <p class="underline-on-hover m-0" @click="GoToFreeDetail(freeboard_article)" >[제목 : {{freeboard_article.title}}] || 작성 시간 : {{freeboard_article.created_at.slice(0, 10)}} {{freeboard_article.created_at.slice(11, 19)}}</p>
+            <a class="underline-on-hover m-0 " @click="GoToFreeDetail(freeboard_article)" >[제목 : {{freeboard_article.title}}] || 작성 시간 : {{freeboard_article.created_at.slice(0, 10)}} {{freeboard_article.created_at.slice(11, 19)}}</a>
           </div>
         </div>
       </div>
@@ -517,7 +517,7 @@ export default {
   }
   a {
     text-decoration: none;
-    color: white;
+    color: black;
   }
   .progress-bar {
   width: 30%;
