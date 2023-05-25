@@ -6,15 +6,11 @@
         <div class="row">
             <h3 class="">게시글 수정</h3>
             <div class="col-1">제목 :</div>
-            <input class="col-10" type="text" v-model="updatedTitle" placeholder="내용을 입력해주세요">
+            <input class="col-4 text-white" type="text" v-model="updatedTitle" placeholder="내용을 입력해주세요" style="background-color: transparent;">
             <div class=""></div>    
             <br>
-            <div class="col-1">영화 제목 :</div>
-            <input class="col-10" type="text" v-model="movieTitle" placeholder="내용을 입력해주세요">
-            <div class=""></div>    
-            <br>
-            <div class="col-1">장르 :</div>
-            <input class="col-10" type="text" v-model="genreName" placeholder="내용을 입력해주세요">
+            <div class="col-1 text-white">영화 제목 :</div>
+            <input class="col-4 text-white" type="text" v-model="movieTitle" placeholder="내용을 입력해주세요" style="background-color: transparent;">   
             <div class="col-7">
               <div class="input-group col-3" style="width: 30%;  opacity: 0.5;">
               <label class="input-group-text" for="inputGroupSelect01" >장르</label>
@@ -43,16 +39,16 @@
               </div>
             </div>
             <div class=""></div>
-                
-            <br>
-            <div class="col-1">내용 :</div>
-            <input class="col-10" style="height:500px;"  type="text" v-model="updatedContent" placeholder="내용을 입력해주세요">
-            <div class=""></div>     
             <br>
             <div class="col-1">평점 :</div>
-            <input class="col-1" type="number" min="1" max="10" v-model="rating" placeholder="">            
+            <input class="col-1 text-white" type="number" min="1" max="10" v-model="rating" placeholder="" style="background-color: transparent;">            
             <div class=""></div>    
-            <br>                                           
+            <br>
+
+            <div class="col-1">내용 :</div>
+            <input class="col-10 text-white" style="padding-bottom: 300px; background-color: transparent;"  type="text" v-model="updatedContent" placeholder="내용을 입력해주세요">
+            <div class=""></div>     
+                                                   
 
             <button @click="updateReview" class="btn btn-primary col-2 mt-4" value="Add">수정하기</button>
         </div>
