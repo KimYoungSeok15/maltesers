@@ -85,7 +85,6 @@ export default {
       })
       .then((res) => {
         this.related_reviews = res.data
-        this.related_reviews = res.data
         this.related_reviews.reverse()
       })
       .catch((err) => {
