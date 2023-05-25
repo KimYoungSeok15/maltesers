@@ -37,28 +37,27 @@
       <span class="ms-5 ps-5">팔로잉: {{how_many_people_page_user_name_follow}}</span> |
       <span>팔로워: {{how_many_people_follow_page_user_name}}</span>
       <button @click="clickFollow" class="btn btn-primary mx-3" :class="follow_status">팔로우</button>
-      <span>{{page_user_name}}님이 팔로우하고 있는 사람: {{how_many_people_page_user_name_follow}}</span> |
-      <span>{{page_user_name}}님을 팔로잉하는 사람: {{how_many_people_follow_page_user_name}}</span>
       <br>
       <br>
       <br>
       <div class="container">
-        <div class="row">
-          <p class="col-3">{{page_user_name}}님의 팔로잉</p>
-          <div class="content-container col-3" v-for="people in how_many_people_page_user_name_follow_list" :key="people.id">
-            <p>{{people.following}}</p>
+        <div class="row" style="diplay:flex; justify-content: center; align-items: center;">
+          <div class="content-container col-3 mx-5" style="height: 130px; border: 2px solid black;">
+            <br>
+            <div class="">{{page_user_name}}님의 팔로잉</div>
+            <hr>
+            <div v-for="people in how_many_people_page_user_name_follow_list" :key="people.id">{{people.following}}</div>
           </div>
-          <p class="col-3">{{page_user_name}}님의 팔로워</p>
-          <div class="content-container col-3" v-for="people in how_many_people_follow_page_user_name_list" :key="people.id">
-            <p>{{people.user_name}}</p>
-          </div>
-          <p class="col-3">{{page_user_name}}님을 팔로우하고 있는 사람 목록</p>
-          <div class="content-container col-3" v-for="people in how_many_people_page_user_name_follow_list" :key="people.id">
-            <p>{{people.following}}</p>
+          <div class="content-container col-3 mx-5" style="height: 130px; border: 2px solid black;">
+            <br>
+            <p class="">{{page_user_name}}님의 팔로워</p>
+            <hr>
+            <p v-for="people in how_many_people_follow_page_user_name_list" :key="people.id">{{people.user_name}}</p>
           </div>
         </div>
       </div>  
       <div>
+        <br>
         <h3>선호 영화 장르</h3>
         <!-- <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name"> -->
         <div class="d-flex justify-content-center align-items-center">
@@ -510,7 +509,7 @@ export default {
     height: 100%;
     position: relative;
     overflow: hidden;
-    
+
   }
   .circle {
     border-radius: 50%;

@@ -13,7 +13,7 @@
             <br>
             <p>평점 :{{movieDetail.vote_average}}</p>
             <p>개봉일 :{{movieDetail.release_date}}</p>
-            <span v-for="genre in movieDetail.genres" :key="genre.id">{{genre.name}}  </span>
+            <span v-for="genre in movieDetail.genres" :key="genre.id" style="color:white">{{genre.name}} </span>
             <br>
             <br>
             <p>{{movieDetail.overview}}</p>
@@ -86,7 +86,6 @@ export default {
       })
       .then((res) => {
         this.related_reviews = res.data
-        console.log(res.data.length)
         if (res.data.length < 3) {
           for (let i = 0; i < res.data.length; i++) {
           this.related_reviews.push(res.data[i]);
@@ -97,7 +96,6 @@ export default {
         }
         }
         
-        console.log(this.related_reviews)
         this.related_reviews.reverse()
       })
       .catch((err) => {
@@ -134,7 +132,6 @@ export default {
       })
       .then((response) => {
         this.movieDetail = response.data
-        console.log(this.movieDetail, 'ㅁㄴㅇㅁㄴㅇㅁㄴㅇㄴ')
         this.related_reviews_keyword= this.movieDetail.title.slice(0,2)  
         this.call_review()
       })
@@ -144,6 +141,7 @@ export default {
           params: params,
       })
       .then((response) => {
+        this.recommendDetails = []        
         for (const movieidx in response.data.results) {
           if (movieidx === '4'){
             break

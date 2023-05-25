@@ -13,7 +13,7 @@
           <div class="col-4" style="color:white">
             <h3 class="fw-bold mt-3">{{ randomMovies.title }}</h3>
             <!-- <p class="fw-bold mt-3">{{ randomMovies_genre_name }}</p> -->
-            <p class="mt-3">{{ randomMovies.overview}}</p>
+            <p id="content" class="mt-3">{{ randomMovies.overview}}</p>
           </div>
         </div>
       </div>

@@ -91,8 +91,6 @@ export default new Vuex.Store({
         }
       })
       .then(res => {
-        console.log(res)
-        // context.commit('SIGN_UP', res.data.key)
         context.commit('SAVE_TOKEN', res.data.key)
         context.commit('SAVE_USERID', username)
         var current_datetime = new Date();
@@ -111,7 +109,10 @@ export default new Vuex.Store({
           }
         })
       })
-      .catch(err => console.log(err))
+      .catch((err)=>{
+        console.log(err)
+        alert('회원가입에 실패했습니다!')
+      })
     },
 
     LogIn(context, payload) {
