@@ -1,5 +1,5 @@
 <template>
-  <div style="min-height:1250px;">
+  <div class="backdropcontainer" style="min-height:1250px;">
 	<NavigationBar/>
 		<br>
 		<h1>Movie</h1>
@@ -133,8 +133,8 @@ export default {
 
 <style scoped>
 .backdropcontainer {
-  background:url("@/assets/lalaland23.jpg");
-  opacity: 0.5;
+  background:url("@/assets/eternal12.jpg");
+  opacity: 0.9;
 }
 .pagination .page-link {
 	margin-top: 20px;

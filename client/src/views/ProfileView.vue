@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="backdropcontainer">
     <NavigationBar/>
     <br>
-    <div class="container border mycontainer" >
+    <div class="container border mycontainer" style="border-radius: 30px; opacity:0.9">
       <br>
       <div class="row">
         <div class="profile_pic_box">
@@ -34,21 +34,21 @@
         </div>
       </div>
       <br>
+      <span class="ms-5 ps-5">팔로잉: {{how_many_people_page_user_name_follow}}</span> |
+      <span>팔로워: {{how_many_people_follow_page_user_name}}</span>
       <button @click="clickFollow" class="btn btn-primary mx-3" :class="follow_status">팔로우</button>
-      <span>{{page_user_name}}님이 팔로우하고 있는 사람: {{how_many_people_page_user_name_follow}}</span> |
-      <span>{{page_user_name}}님을 팔로잉하는 사람: {{how_many_people_follow_page_user_name}}</span>
       <br>
       <br>
       <br>
       <div class="container">
         <div class="row">
-          <p class="col-3">{{page_user_name}}님이 팔로우하고 있는 사람 목록</p>
-          <div class="content-container col-3" v-for="people in how_many_people_follow_page_user_name_list" :key="people.id">
-            <p>{{people.user_name}}</p>
+          <div class="content-container col-3">
+            <p class="">{{page_user_name}}님의 팔로잉</p>
+            <p v-for="people in how_many_people_page_user_name_follow_list" :key="people.id">1{{people.following}}</p>
           </div>
-          <p class="col-3">{{page_user_name}}님을 팔로우하고 있는 사람 목록</p>
-          <div class="content-container col-3" v-for="people in how_many_people_page_user_name_follow_list" :key="people.id">
-            <p>{{people.following}}</p>
+          <div class="content-container col-3" >
+            <p class="col-3">{{page_user_name}}님의 팔로워</p>
+            <p v-for="people in how_many_people_follow_page_user_name_list" :key="people.id">{{people.user_name}}</p>
           </div>
         </div>
       </div>  
@@ -82,9 +82,9 @@
             </select>
           </div>
         </div>
-        <button  v-if="your_profile_check()" class="btn text-light btn-outline-light m-3" @click="addLikeGenre">Add</button>
+        <button  v-if="your_profile_check()" class="btn text-dark btn-outline-dark m-3" @click="addLikeGenre">Add</button>
         <div class="" v-for="genre in like_genre_list" :key="genre.id">
-          <span style="font-size: 20px;">{{ genre.genre_name }}</span> <button v-if="your_profile_check()" class="btn text-light btn-outline-light p-1" @click="genreDel(genre.id)">Delete</button>
+          <span style="font-size: 20px;">{{ genre.genre_name }}</span> <button v-if="your_profile_check()" class="btn text-dark btn-outline-dark p-1" @click="genreDel(genre.id)">Delete</button>
         </div>
       </div>
       <br>
@@ -96,7 +96,7 @@
             <br>
             <a :href="`http://localhost:8080/detail/${movie.movie_id}`">{{ movie.movie_name }}</a>
             <br>
-            <button  v-if="your_profile_check()" @click="likeMovieDel(movie.id)" class="btn text-light btn-outline-light p-1 m-1">Delete</button> 
+            <button  v-if="your_profile_check()" @click="likeMovieDel(movie.id)" class="btn text-dark btn-outline-dark p-1 m-1">Delete</button> 
           </div>
         </div>
       </div>
@@ -493,6 +493,7 @@ export default {
 <style scoped>
   .mycontainer {
     min-height: 942.39px;
+    background-color: white;
   }
 
   .content-container {
@@ -540,4 +541,8 @@ export default {
   a:hover {
     font-weight: bold;
   }
+  .backdropcontainer {
+  background:url("@/assets/eternal12.jpg");
+  opacity: 0.9;
+}
 </style>
