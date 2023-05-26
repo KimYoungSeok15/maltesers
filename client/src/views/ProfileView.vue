@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="backdropcontainer">
     <NavigationBar/>
     <br>
-    <div class="container border mycontainer" >
+    <div class="container border mycontainer" style="border-radius: 30px; opacity:0.9">
       <br>
       <div class="row">
         <div class="profile_pic_box">
@@ -34,33 +34,35 @@
         </div>
       </div>
       <br>
-      <span class="ms-5 ps-5">팔로잉: {{how_many_people_page_user_name_follow}}</span> |
+      <span>팔로잉: {{how_many_people_page_user_name_follow}}</span> |
       <span>팔로워: {{how_many_people_follow_page_user_name}}</span>
-      <button @click="clickFollow" class="btn btn-primary mx-3" :class="follow_status">팔로우</button>
+      <br>
+      <button v-if="!your_profile_check()" @click="clickFollow" class="btn btn-primary mx-3" :class="follow_status">
+        <span>팔로우</span>
+      </button>
       <br>
       <br>
       <br>
       <div class="container">
-        <div class="row" style="diplay:flex; justify-content: center; align-items: center;">
-          <div class="content-container col-3 mx-5" style="height: 130px; border: 2px solid black;">
-            <br>
-            <div class="">{{page_user_name}}님의 팔로잉</div>
-            <hr>
-            <div v-for="people in how_many_people_page_user_name_follow_list" :key="people.id">{{people.following}}</div>
+        <div class="row">
+          <div class="col-2"></div>
+          <p class="px-3 col-2">{{page_user_name}}님의 팔로잉</p>
+          <div class="col-2 border content-container" style="height:50px">
+            <div class="px-3" v-for="people in how_many_people_page_user_name_follow_list" :key="people.id"><a :href="`http://localhost:8080/profile/${people.following}`">{{people.following}}</a></div>
           </div>
-          <div class="content-container col-3 mx-5" style="height: 130px; border: 2px solid black;">
-            <br>
-            <p class="">{{page_user_name}}님의 팔로워</p>
-            <hr>
-            <p v-for="people in how_many_people_follow_page_user_name_list" :key="people.id">{{people.user_name}}</p>
+          <p class="col-2">{{page_user_name}}님의 팔로워</p>
+          <div class="col-2 border content-container" style="height:50px">
+            <div class="px-3" v-for="people in how_many_people_follow_page_user_name_list" :key="people.id"><a :href="`http://localhost:8080/profile/${people.user_name}`">{{people.user_name}}</a></div>
           </div>
         </div>
       </div>  
       <div>
         <br>
+        <br>
         <h3>선호 영화 장르</h3>
+        <hr>
         <!-- <input  v-if="your_profile_check()" @keypress.enter="addLikeGenre" type="text" placeholder="영화 장르 입력" v-model="like_genre_name"> -->
-        <div class="d-flex justify-content-center align-items-center">
+        <div v-if="your_profile_check()" class="d-flex justify-content-center align-items-center">
           <div class="input-group align-items-center" style="width: 20%;">
           <label class="input-group-text" for="inputGroupSelect01" >장르 선택</label>
             <select class="form-select" id="inputGroupSelect01" v-model="like_genre_name" >
@@ -87,21 +89,22 @@
             </select>
           </div>
         </div>
-        <button  v-if="your_profile_check()" class="btn text-light btn-outline-light m-3" @click="addLikeGenre">Add</button>
+        <button  v-if="your_profile_check()" class="btn text-dark btn-outline-dark m-3" @click="addLikeGenre">Add</button>
         <div class="" v-for="genre in like_genre_list" :key="genre.id">
-          <span style="font-size: 20px;">{{ genre.genre_name }}</span> <button v-if="your_profile_check()" class="btn text-light btn-outline-light p-1" @click="genreDel(genre.id)">Delete</button>
+          <span style="font-size: 20px;">{{ genre.genre_name }}</span> <button v-if="your_profile_check()" class="btn text-dark btn-outline-dark p-1" @click="genreDel(genre.id)">Delete</button>
         </div>
       </div>
       <br>
       <div class="container">
         <h3>좋아요한 영화 목록</h3>
+        <hr>
         <div class="row">
           <div class="col-3" v-for="movie in like_movie_list" :key=movie.id >
             <router-link :to="`../detail/${movie.movie_id}`"><img class="donggle_poster" :src="`https://image.tmdb.org/t/p/w200${movie.poster_path}`"></router-link>
             <br>
             <a :href="`http://localhost:8080/detail/${movie.movie_id}`">{{ movie.movie_name }}</a>
             <br>
-            <button  v-if="your_profile_check()" @click="likeMovieDel(movie.id)" class="btn text-light btn-outline-light p-1 m-1">Delete</button> 
+            <button  v-if="your_profile_check()" @click="likeMovieDel(movie.id)" class="btn text-dark btn-outline-dark p-1 m-1">Delete</button> 
           </div>
         </div>
       </div>
@@ -157,6 +160,11 @@ export default {
             left_exp: 0,
 
             progress: 50, // 게이지의 퍼센트 값을 할당
+
+            modalOpen: false, // 모달 상태 저장
+
+            emi_follow: false,
+
           
         }
     },
@@ -169,6 +177,12 @@ export default {
     },
     },
     methods : {
+      openModal() {
+      this.modalOpen = true; 
+      },
+      closeModal() {
+        this.modalOpen = false; 
+      },
       rank_check(point) {
         if (point < 5000) {
           this.left_exp_per = (5000 - point)/5000
@@ -498,6 +512,7 @@ export default {
 <style scoped>
   .mycontainer {
     min-height: 942.39px;
+    background-color: white;
   }
 
   .content-container {
@@ -545,4 +560,8 @@ export default {
   a:hover {
     font-weight: bold;
   }
+  .backdropcontainer {
+  background:url("@/assets/eternal12.jpg");
+  opacity: 0.9;
+}
 </style>

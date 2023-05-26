@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="backdropcontainer">
     <NavigationBar/>
     <br>
     <h2 class="">게시글 등록</h2>
@@ -188,6 +188,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.backdropcontainer {
+  background:url("@/assets/eternal12.jpg");
+  opacity: 0.9;
+}
 </style>
